@@ -1,15 +1,15 @@
 package br.com.contmatic.prova01.model.empresa;
 
 import static br.com.contmatic.prova01.model.util.CpfUtil.isCpf;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaDataLimite;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaDataMinima;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaMaiorIdade;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaRegex;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanho;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMaximo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMinimo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaValorNulo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaVazio;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarDataLimite;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarDataMinima;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarMaiorIdade;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarRegex;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanho;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMaximo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMinimo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorNulo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarVazio;
 import static br.com.contmatic.prova01.model.util.constant.empresa.FuncionarioConstant.MENSAGEM_ERRO_CPF_NULL;
 import static br.com.contmatic.prova01.model.util.constant.empresa.FuncionarioConstant.MENSAGEM_ERRO_CPF_REGEX;
 import static br.com.contmatic.prova01.model.util.constant.empresa.FuncionarioConstant.MENSAGEM_ERRO_CPF_TAMANHO;
@@ -80,10 +80,10 @@ public class Funcionario extends Auditoria {
 	}
 
 	public void setCpf(String cpf) {
-		verificaValorNulo(cpf, MENSAGEM_ERRO_CPF_NULL);
-		verificaVazio(cpf, MENSAGEM_ERRO_CPF_VAZIO);
-		verificaRegex(cpf, REGEX_NUMEROS, MENSAGEM_ERRO_CPF_REGEX);
-		verificaTamanho(cpf, TAMAMNHO_CPF, MENSAGEM_ERRO_CPF_TAMANHO);
+		verificarValorNulo(cpf, MENSAGEM_ERRO_CPF_NULL);
+		verificarVazio(cpf, MENSAGEM_ERRO_CPF_VAZIO);
+		verificarRegex(cpf, REGEX_NUMEROS, MENSAGEM_ERRO_CPF_REGEX);
+		verificarTamanho(cpf, TAMAMNHO_CPF, MENSAGEM_ERRO_CPF_TAMANHO);
 		isCpf(cpf);
 		this.cpf = cpf;
 	}
@@ -93,11 +93,11 @@ public class Funcionario extends Auditoria {
 	}
 
 	public void setNome(String nome) {
-		verificaValorNulo(nome, MENSAGEM_ERRO_NOME_NULL);
-		verificaVazio(nome, MENSAGEM_ERRO_NOME_VAZIO);
-		verificaTamanhoMinimo(nome, TAMANHO_MINIMO_NOME, MENSAGEM_ERRO_TAMANHO_MINIMO_NOME);
-		verificaTamanhoMaximo(nome, TAMANHO_MAXIMO_NOME, MENSAGEM_ERRO_NOME_TAMANHO);
-		verificaRegex(nome, REGEX_NOME, MENSAGEM_ERRO_NOME_REGEX);
+		verificarValorNulo(nome, MENSAGEM_ERRO_NOME_NULL);
+		verificarVazio(nome, MENSAGEM_ERRO_NOME_VAZIO);
+		verificarTamanhoMinimo(nome, TAMANHO_MINIMO_NOME, MENSAGEM_ERRO_TAMANHO_MINIMO_NOME);
+		verificarTamanhoMaximo(nome, TAMANHO_MAXIMO_NOME, MENSAGEM_ERRO_NOME_TAMANHO);
+		verificarRegex(nome, REGEX_NOME, MENSAGEM_ERRO_NOME_REGEX);
 		this.nome = nome;
 	}
 
@@ -106,10 +106,10 @@ public class Funcionario extends Auditoria {
 	}
 
 	public void setDataNascimento(LocalDate dataNascimento) {
-		verificaValorNulo(dataNascimento, MENSAGEM_ERRO_DATA_NULL);
-		verificaDataMinima(dataNascimento, MENSAGEM_ERRO_DATA_MINIMA);
-		verificaDataLimite(dataNascimento, MENSAGEM_ERRO_DATA_LIMITE);
-		verificaMaiorIdade(dataNascimento, MENSAGEM_ERRO_DATA_NASCIMENTO);
+		verificarValorNulo(dataNascimento, MENSAGEM_ERRO_DATA_NULL);
+		verificarDataMinima(dataNascimento, MENSAGEM_ERRO_DATA_MINIMA);
+		verificarDataLimite(dataNascimento, MENSAGEM_ERRO_DATA_LIMITE);
+		verificarMaiorIdade(dataNascimento, MENSAGEM_ERRO_DATA_NASCIMENTO);
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -118,10 +118,10 @@ public class Funcionario extends Auditoria {
 	}
 
 	public void setEndereco(Set<Endereco> enderecos) {
-		verificaValorNulo(enderecos, MENSAGEM_ERRO_ENDERECO_NULL);
-		verificaVazio(enderecos, MENSAGEM_ERRO_ENDERECO_VAZIO);
-		verificaTamanhoMinimo(enderecos, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_ENDERECO);
-		verificaTamanhoMaximo(enderecos, TAMANHO_LISTA_ENDERECO, MENSAGEM_ERRO_ENDERECO_TAMANHO);
+		verificarValorNulo(enderecos, MENSAGEM_ERRO_ENDERECO_NULL);
+		verificarVazio(enderecos, MENSAGEM_ERRO_ENDERECO_VAZIO);
+		verificarTamanhoMinimo(enderecos, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_ENDERECO);
+		verificarTamanhoMaximo(enderecos, TAMANHO_LISTA_ENDERECO, MENSAGEM_ERRO_ENDERECO_TAMANHO);
 		this.enderecos = enderecos;
 	}
 
@@ -130,10 +130,10 @@ public class Funcionario extends Auditoria {
 	}
 
 	public void setEmail(Set<Email> emails) {
-		verificaValorNulo(emails, MENSAGEM_ERRO_EMAIL_NULL);
-		verificaVazio(emails, MENSAGEM_ERRO_EMAIL_VAZIO);
-		verificaTamanhoMinimo(emails, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_TELEFONE);
-		verificaTamanhoMaximo(emails, TAMANHO_LISTA_EMAIL, MENSAGEM_ERRO_EMAIL_TAMANHO);
+		verificarValorNulo(emails, MENSAGEM_ERRO_EMAIL_NULL);
+		verificarVazio(emails, MENSAGEM_ERRO_EMAIL_VAZIO);
+		verificarTamanhoMinimo(emails, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_TELEFONE);
+		verificarTamanhoMaximo(emails, TAMANHO_LISTA_EMAIL, MENSAGEM_ERRO_EMAIL_TAMANHO);
 		this.emails = emails;
 	}
 
@@ -142,10 +142,10 @@ public class Funcionario extends Auditoria {
 	}
 
 	public void setTelefone(Set<Telefone> telefones) {
-		verificaValorNulo(telefones, MENSAGEM_ERRO_TELEFONE_NULL);
-		verificaVazio(telefones, MENSAGEM_ERRO_TELEFONE_VAZIO);
-		verificaTamanhoMinimo(telefones, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_TELEFONE);
-		verificaTamanhoMaximo(telefones, TAMANHO_LISTA_TELEFONE, MENSAGEM_ERRO_TELEFONE_TAMANHO);
+		verificarValorNulo(telefones, MENSAGEM_ERRO_TELEFONE_NULL);
+		verificarVazio(telefones, MENSAGEM_ERRO_TELEFONE_VAZIO);
+		verificarTamanhoMinimo(telefones, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_TELEFONE);
+		verificarTamanhoMaximo(telefones, TAMANHO_LISTA_TELEFONE, MENSAGEM_ERRO_TELEFONE_TAMANHO);
 		this.telefones = telefones;
 	}
 
@@ -154,7 +154,7 @@ public class Funcionario extends Auditoria {
 	}
 
 	public void setSetor(Setor setor) {
-		verificaValorNulo(setor, MENSAGEM_ERRO_SETOR_NULL);
+		verificarValorNulo(setor, MENSAGEM_ERRO_SETOR_NULL);
 		this.setor = setor;
 	}
 

@@ -12,11 +12,11 @@ import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -234,9 +234,11 @@ class AuditoriaTest {
 		assertThat(auditoria.toString(), containsString(dataString));
 	}
 
-	@Ignore
+	@Test
+	@Disabled
 	void test25_deve_ser_ignorado() {
 		auditoria.setNomeCriador("teste");
+		assertEquals("teste", auditoria.getNomeCriador());
 		System.out.println(auditoria.getNomeCriador());
 	}
 }

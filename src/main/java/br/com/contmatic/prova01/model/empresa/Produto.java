@@ -1,12 +1,12 @@
 package br.com.contmatic.prova01.model.empresa;
 
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaRegex;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMaximo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMinimo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaValorMaximo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaValorMinimo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaValorNulo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaVazio;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarRegex;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMaximo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMinimo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorMaximo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorMinimo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorNulo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarVazio;
 import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_CODIGO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_CODIGO_NULL;
 import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_NOME_NULL;
@@ -48,11 +48,11 @@ public class Produto extends Auditoria {
 	}
 
 	public void setNome(String nome) {
-		verificaValorNulo(nome, MENSAGEM_ERRO_NOME_NULL);
-		verificaVazio(nome, MENSAGEM_ERRO_NOME_VAZIO);
-		verificaRegex(nome, REGEX_LETRAS, MENSAGEM_ERRO_NOME_REGEX);
-		verificaTamanhoMinimo(nome, TAMANHO_MINIMO_NOME, MENSAGEM_ERRO_NOME_TAMANHO_MINIMO);
-		verificaTamanhoMaximo(nome, TAMANHO_NOME, MENSAGEM_ERRO_NOME_TAMANHO);
+		verificarValorNulo(nome, MENSAGEM_ERRO_NOME_NULL);
+		verificarVazio(nome, MENSAGEM_ERRO_NOME_VAZIO);
+		verificarRegex(nome, REGEX_LETRAS, MENSAGEM_ERRO_NOME_REGEX);
+		verificarTamanhoMinimo(nome, TAMANHO_MINIMO_NOME, MENSAGEM_ERRO_NOME_TAMANHO_MINIMO);
+		verificarTamanhoMaximo(nome, TAMANHO_NOME, MENSAGEM_ERRO_NOME_TAMANHO);
 		this.nome = nome;
 	}
 
@@ -61,9 +61,9 @@ public class Produto extends Auditoria {
 	}
 
 	public void setValor(BigDecimal valor) {
-		verificaValorNulo(valor, MENSAGEM_ERRO_VALOR_NULL);
-		verificaValorMinimo(valor, VALOR_MINIMO, MENSAGEM_ERRO_VALOR);
-		verificaValorMaximo(valor, VALOR_MAXIMO, MENSAGEM_ERRO_VALOR);
+		verificarValorNulo(valor, MENSAGEM_ERRO_VALOR_NULL);
+		verificarValorMinimo(valor, VALOR_MINIMO, MENSAGEM_ERRO_VALOR);
+		verificarValorMaximo(valor, VALOR_MAXIMO, MENSAGEM_ERRO_VALOR);
 		this.valor = valor;
 	}
 
@@ -72,9 +72,9 @@ public class Produto extends Auditoria {
 	}
 
 	public void setCodigo(Integer codigo) {
-		verificaValorNulo(codigo, MENSAGEM_ERRO_CODIGO_NULL);
-		verificaValorMinimo(codigo, VALOR_CODIGO_MINIMO, MENSAGEM_ERRO_CODIGO);
-		verificaValorMaximo(codigo, VALOR_CODIGO_MAXIMO, MENSAGEM_ERRO_CODIGO);
+		verificarValorNulo(codigo, MENSAGEM_ERRO_CODIGO_NULL);
+		verificarValorMinimo(codigo, VALOR_CODIGO_MINIMO, MENSAGEM_ERRO_CODIGO);
+		verificarValorMaximo(codigo, VALOR_CODIGO_MAXIMO, MENSAGEM_ERRO_CODIGO);
 		this.codigo = codigo;
 	}
 

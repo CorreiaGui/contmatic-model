@@ -1,6 +1,6 @@
 package br.com.contmatic.prova01.model.util;
 
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaCaracteresRepetidos;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarCaracteresRepetidos;
 
 public final class CpfUtil {
 
@@ -17,22 +17,32 @@ public final class CpfUtil {
 	}
 
 	public static void isCpf(String cpf) {
-		verificaCaracteresRepetidos(cpf, ERROR_MESSAGE_NUMEROS_IGUAIS_CPF);
+		verificarCaracteresRepetidos(cpf, ERROR_MESSAGE_NUMEROS_IGUAIS_CPF);
 		validarDigitos(cpf);
 	}
 
 	private static char calcularDigitoVerificador(String cpf, int peso, int posicaoDigito) {
+		int soma = obterValorSoma(cpf, peso, posicaoDigito);
+		int resultado = obterResultado(soma);
+		return (char) (resultado + POSICAO_DE_0_TABELA_ASCII);
+	}
+
+	private static int obterResultado(int soma) {
+		int resultado = 11 - (soma % 11);
+		if (resultado > 9) {
+			return 0;
+		}
+		return resultado;
+	}
+
+	private static int obterValorSoma(String cpf, int peso, int posicaoDigito) {
 		int soma = VALOR_INICIAL_DA_SOMA;
 		for (int indice = 0; indice < posicaoDigito; indice++) {
 			int numero = (cpf.charAt(indice) - POSICAO_DE_0_TABELA_ASCII);
 			soma += (numero * peso);
 			peso--;
 		}
-		int resultado = 11 - (soma % 11);
-		if (resultado > 9) {
-			return 0;
-		}
-		return (char) (resultado + POSICAO_DE_0_TABELA_ASCII);
+		return soma;
 	}
 
 	private static void verificarCpfValido(String cpf, char digito1, char digito2) {

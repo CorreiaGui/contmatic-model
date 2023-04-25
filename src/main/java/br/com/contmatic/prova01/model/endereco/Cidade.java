@@ -1,10 +1,10 @@
 package br.com.contmatic.prova01.model.endereco;
 
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaRegex;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMaximo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMinimo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaValorNulo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaVazio;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarRegex;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMaximo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMinimo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorNulo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarVazio;
 import static br.com.contmatic.prova01.model.util.constant.endereco.CidadeConstant.MENSAGEM_ERRO_ESTADO_NULL;
 import static br.com.contmatic.prova01.model.util.constant.endereco.CidadeConstant.MENSAGEM_ERRO_NOME_NULL;
 import static br.com.contmatic.prova01.model.util.constant.endereco.CidadeConstant.MENSAGEM_ERRO_NOME_REGEX;
@@ -36,11 +36,11 @@ public class Cidade extends Auditoria {
 	}
 
 	public void setNome(String nome) {
-		verificaValorNulo(nome, MENSAGEM_ERRO_NOME_NULL);
-		verificaVazio(nome, MENSAGEM_ERRO_NOME_VAZIO);
-		verificaTamanhoMinimo(nome, TAMANHO_MINIMO_NOME, MENSAGEM_ERRO_NOME_TAMANHO_MINIMO);
-		verificaTamanhoMaximo(nome, TAMANHO_NOME, MENSAGEM_ERRO_NOME_TAMANHO);
-		verificaRegex(nome, REGEX_LETRA, MENSAGEM_ERRO_NOME_REGEX);
+		verificarValorNulo(nome, MENSAGEM_ERRO_NOME_NULL);
+		verificarVazio(nome, MENSAGEM_ERRO_NOME_VAZIO);
+		verificarTamanhoMinimo(nome, TAMANHO_MINIMO_NOME, MENSAGEM_ERRO_NOME_TAMANHO_MINIMO);
+		verificarTamanhoMaximo(nome, TAMANHO_NOME, MENSAGEM_ERRO_NOME_TAMANHO);
+		verificarRegex(nome, REGEX_LETRA, MENSAGEM_ERRO_NOME_REGEX);
 		this.nome = nome;
 	}
 
@@ -49,7 +49,7 @@ public class Cidade extends Auditoria {
 	}
 
 	public void setEstado(Estado estado) {
-		verificaValorNulo(estado, MENSAGEM_ERRO_ESTADO_NULL);
+		verificarValorNulo(estado, MENSAGEM_ERRO_ESTADO_NULL);
 		this.estado = estado;
 	}
 

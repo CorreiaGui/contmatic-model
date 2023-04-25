@@ -1,9 +1,9 @@
 package br.com.contmatic.prova01.model.empresa;
 
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMaximo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMinimo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaValorNulo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaVazio;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMaximo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMinimo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorNulo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarVazio;
 import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.MENSAGEM_ERRO_LISTA_FUNCIONARIO_NULL;
 import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.MENSAGEM_ERRO_LISTA_FUNCIONARIO_TAMANHO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.MENSAGEM_ERRO_LSITA_FUNCIONARIO_VAZIO;
@@ -41,10 +41,10 @@ public class Setor extends Auditoria {
 	}
 
 	public void setNome(String nome) {
-		verificaValorNulo(nome, MENSAGEM_ERRO_NOME_NULL);
-		verificaVazio(nome, MENSAGEM_ERRO_NOME_VAZIO);
-		verificaTamanhoMinimo(nome, TAMANHO_MINIMO_NOME, MENSAGEM_ERRO_TAMANHO_MINIMO_NOME);
-		verificaTamanhoMaximo(nome, TAMANHO_NOME, MENSAGEM_ERRO_NOME_TAMANHO);
+		verificarValorNulo(nome, MENSAGEM_ERRO_NOME_NULL);
+		verificarVazio(nome, MENSAGEM_ERRO_NOME_VAZIO);
+		verificarTamanhoMinimo(nome, TAMANHO_MINIMO_NOME, MENSAGEM_ERRO_TAMANHO_MINIMO_NOME);
+		verificarTamanhoMaximo(nome, TAMANHO_NOME, MENSAGEM_ERRO_NOME_TAMANHO);
 		this.nome = nome;
 	}
 
@@ -53,10 +53,10 @@ public class Setor extends Auditoria {
 	}
 
 	public void setFuncionarios(List<Funcionario> funcionarios) {
-		verificaValorNulo(funcionarios, MENSAGEM_ERRO_LISTA_FUNCIONARIO_NULL);
-		verificaVazio(funcionarios, MENSAGEM_ERRO_LSITA_FUNCIONARIO_VAZIO);
-		verificaTamanhoMinimo(funcionarios, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_FUNCIONARIO);
-		verificaTamanhoMaximo(funcionarios, TAMANHO_LISTA_FUNCIONARIO, MENSAGEM_ERRO_LISTA_FUNCIONARIO_TAMANHO);
+		verificarValorNulo(funcionarios, MENSAGEM_ERRO_LISTA_FUNCIONARIO_NULL);
+		verificarVazio(funcionarios, MENSAGEM_ERRO_LSITA_FUNCIONARIO_VAZIO);
+		verificarTamanhoMinimo(funcionarios, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_FUNCIONARIO);
+		verificarTamanhoMaximo(funcionarios, TAMANHO_LISTA_FUNCIONARIO, MENSAGEM_ERRO_LISTA_FUNCIONARIO_TAMANHO);
 		this.funcionarios = funcionarios;
 	}
 
@@ -65,7 +65,7 @@ public class Setor extends Auditoria {
 	}
 
 	public void setResponsavel(Funcionario responsavel) {
-		verificaValorNulo(responsavel, MENSAGEM_ERRO_RESPONSAVEL_NULL);
+		verificarValorNulo(responsavel, MENSAGEM_ERRO_RESPONSAVEL_NULL);
 		this.responsavel = responsavel;
 	}
 

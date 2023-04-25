@@ -1,11 +1,11 @@
 package br.com.contmatic.prova01.model.telefone;
 
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaRegex;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanho;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMaximo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMinimo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaValorNulo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaVazio;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarRegex;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanho;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMaximo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMinimo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorNulo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarVazio;
 import static br.com.contmatic.prova01.model.util.constant.telefone.TelefoneConstant.MENSAGEM_ERRO_DDD_NULL;
 import static br.com.contmatic.prova01.model.util.constant.telefone.TelefoneConstant.MENSAGEM_ERRO_DDD_REGEX;
 import static br.com.contmatic.prova01.model.util.constant.telefone.TelefoneConstant.MENSAGEM_ERRO_DDD_TAMANHO;
@@ -52,11 +52,11 @@ public class Telefone extends Auditoria {
 	}
 
 	public void setDdi(String ddi) {
-		verificaValorNulo(ddi, MENSAGEM_ERRO_DDI_NULL);
-		verificaVazio(ddi, MENSAGEM_ERRO_DDI_VAZIO);
-		verificaTamanhoMinimo(ddi, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_DDI);
-		verificaTamanhoMaximo(ddi, TAMANHO_DDI, MENSAGEM_ERRO_DDI_TAMANHO);
-		verificaRegex(ddi, REGEX_DDI, MENSAGEM_ERRO_DDI_REGEX);
+		verificarValorNulo(ddi, MENSAGEM_ERRO_DDI_NULL);
+		verificarVazio(ddi, MENSAGEM_ERRO_DDI_VAZIO);
+		verificarTamanhoMinimo(ddi, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_DDI);
+		verificarTamanhoMaximo(ddi, TAMANHO_DDI, MENSAGEM_ERRO_DDI_TAMANHO);
+		verificarRegex(ddi, REGEX_DDI, MENSAGEM_ERRO_DDI_REGEX);
 		this.ddi = ddi;
 	}
 
@@ -65,10 +65,10 @@ public class Telefone extends Auditoria {
 	}
 
 	public void setDdd(String ddd) {
-		verificaValorNulo(ddd, MENSAGEM_ERRO_DDD_NULL);
-		verificaVazio(ddd, MENSAGEM_ERRO_DDD_VAZIO);
-		verificaRegex(ddd, REGEX_DDD, MENSAGEM_ERRO_DDD_REGEX);
-		verificaTamanho(ddd, TAMANHO_DDD, MENSAGEM_ERRO_DDD_TAMANHO);
+		verificarValorNulo(ddd, MENSAGEM_ERRO_DDD_NULL);
+		verificarVazio(ddd, MENSAGEM_ERRO_DDD_VAZIO);
+		verificarRegex(ddd, REGEX_DDD, MENSAGEM_ERRO_DDD_REGEX);
+		verificarTamanho(ddd, TAMANHO_DDD, MENSAGEM_ERRO_DDD_TAMANHO);
 		this.ddd = ddd;
 	}
 
@@ -77,11 +77,11 @@ public class Telefone extends Auditoria {
 	}
 
 	public void setNumero(String numero) {
-		verificaValorNulo(numero, MENSAGEM_ERRO_NUMERO_NULL);
-		verificaVazio(numero, MENSAGEM_ERRO_NUMERO_VAZIO);
-		verificaRegex(numero, REGEX_NUMERO, MENSAGEM_ERRO_NUMERO_REGEX);
-		verificaTamanhoMinimo(numero, TAMANHO_MINIMO_NUMERO, MENSAGEM_ERRO_TAMANHO_MINIMO_NUMERO);
-		verificaTamanhoMaximo(numero, TAMANHO_NUMERO, MENSAGEM_ERRO_NUMERO_TAMANHO);
+		verificarValorNulo(numero, MENSAGEM_ERRO_NUMERO_NULL);
+		verificarVazio(numero, MENSAGEM_ERRO_NUMERO_VAZIO);
+		verificarRegex(numero, REGEX_NUMERO, MENSAGEM_ERRO_NUMERO_REGEX);
+		verificarTamanhoMinimo(numero, TAMANHO_MINIMO_NUMERO, MENSAGEM_ERRO_TAMANHO_MINIMO_NUMERO);
+		verificarTamanhoMaximo(numero, TAMANHO_NUMERO, MENSAGEM_ERRO_NUMERO_TAMANHO);
 		this.numero = numero;
 	}
 

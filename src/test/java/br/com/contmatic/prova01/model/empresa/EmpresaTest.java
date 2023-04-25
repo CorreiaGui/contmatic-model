@@ -38,7 +38,7 @@ class EmpresaTest {
 		empresa = new Empresa("62031611000154");
 	}
 
-	@Test
+	@Test 
 	void deve_aceitar_cnpj_valido() {
 		assertEquals("62031611000154", empresa.getCnpj());
 	}

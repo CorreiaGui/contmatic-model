@@ -1,13 +1,13 @@
 package br.com.contmatic.prova01.model.endereco;
 
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaRegex;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanho;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMaximo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMinimo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaValorMaximo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaValorMinimo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaValorNulo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaVazio;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarRegex;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanho;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMaximo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMinimo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorMaximo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorMinimo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorNulo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarVazio;
 import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_CEP_NULL;
 import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_CEP_REGEX;
 import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_CEP_TAMANHO;
@@ -62,10 +62,10 @@ public class Endereco extends Auditoria {
 	}
 
 	public void setCep(String cep) {
-		verificaValorNulo(cep, MENSAGEM_ERRO_CEP_NULL);
-		verificaVazio(cep, MENSAGEM_ERRO_CEP_VAZIO);
-		verificaRegex(cep, REGEX_NUMERO, MENSAGEM_ERRO_CEP_REGEX);
-		verificaTamanho(cep, TAMANHO_CEP, MENSAGEM_ERRO_CEP_TAMANHO);
+		verificarValorNulo(cep, MENSAGEM_ERRO_CEP_NULL);
+		verificarVazio(cep, MENSAGEM_ERRO_CEP_VAZIO);
+		verificarRegex(cep, REGEX_NUMERO, MENSAGEM_ERRO_CEP_REGEX);
+		verificarTamanho(cep, TAMANHO_CEP, MENSAGEM_ERRO_CEP_TAMANHO);
 		this.cep = cep;
 	}
 
@@ -74,11 +74,11 @@ public class Endereco extends Auditoria {
 	}
 
 	public void setLogradouro(String logradouro) {
-		verificaValorNulo(logradouro, MENSAGEM_ERRO_LOGRADOURO_NULL);
-		verificaVazio(logradouro, MENSAGEM_ERRO_LOGRADOURO_VAZIO);
-		verificaTamanhoMinimo(logradouro, TAMANHO_MINIMO_LOGRADOURO, MENSAGEM_ERRO_TAMANHO_MINIMO_LOGRADOURO);
-		verificaTamanhoMaximo(logradouro, TAMANHO_LOGRADOURO, MENSAGEM_ERRO_LOGRADOURO_TAMANHO);
-		verificaRegex(logradouro, REGEX_LETRA, MENSAGEM_ERRO_LOGRADOURO_REGEX);
+		verificarValorNulo(logradouro, MENSAGEM_ERRO_LOGRADOURO_NULL);
+		verificarVazio(logradouro, MENSAGEM_ERRO_LOGRADOURO_VAZIO);
+		verificarTamanhoMinimo(logradouro, TAMANHO_MINIMO_LOGRADOURO, MENSAGEM_ERRO_TAMANHO_MINIMO_LOGRADOURO);
+		verificarTamanhoMaximo(logradouro, TAMANHO_LOGRADOURO, MENSAGEM_ERRO_LOGRADOURO_TAMANHO);
+		verificarRegex(logradouro, REGEX_LETRA, MENSAGEM_ERRO_LOGRADOURO_REGEX);
 		this.logradouro = logradouro;
 	}
 
@@ -87,9 +87,9 @@ public class Endereco extends Auditoria {
 	}
 
 	public void setNumero(Integer numero) {
-		verificaValorNulo(numero, MENSAGEM_ERRO_NUMERO_NULL);
-		verificaValorMinimo(numero, TAMANHO_MINIMO_NUMERO, MENSAGEM_ERRO_NUMERO_MINIMO);
-		verificaValorMaximo(numero, TAMANHO_MAXIMO_NUMERO, MENSAGEM_ERRO_NUMERO_MAXIMO);
+		verificarValorNulo(numero, MENSAGEM_ERRO_NUMERO_NULL);
+		verificarValorMinimo(numero, TAMANHO_MINIMO_NUMERO, MENSAGEM_ERRO_NUMERO_MINIMO);
+		verificarValorMaximo(numero, TAMANHO_MAXIMO_NUMERO, MENSAGEM_ERRO_NUMERO_MAXIMO);
 		this.numero = numero;
 	}
 
@@ -98,10 +98,10 @@ public class Endereco extends Auditoria {
 	}
 
 	public void setComplemento(String complemento) {
-		verificaValorNulo(complemento, MENSAGEM_ERRO_COMPLEMENTO_NULL);
-		verificaVazio(complemento, MENSAGEM_ERRO_COMPLEMENTO_VAZIO);
-		verificaTamanhoMinimo(complemento, TAMANHO_MINIMO_COMPLEMENTO, MENSAGEM_ERRO_COMPLEMENTO_TAMANHO_MINIMO);
-		verificaTamanhoMaximo(complemento, TAMANHO_COMPLEMENTO, MENSAGEM_ERRO_COMPLEMENTO_TAMANHO);
+		verificarValorNulo(complemento, MENSAGEM_ERRO_COMPLEMENTO_NULL);
+		verificarVazio(complemento, MENSAGEM_ERRO_COMPLEMENTO_VAZIO);
+		verificarTamanhoMinimo(complemento, TAMANHO_MINIMO_COMPLEMENTO, MENSAGEM_ERRO_COMPLEMENTO_TAMANHO_MINIMO);
+		verificarTamanhoMaximo(complemento, TAMANHO_COMPLEMENTO, MENSAGEM_ERRO_COMPLEMENTO_TAMANHO);
 		this.complemento = complemento;
 	}
 
@@ -110,7 +110,7 @@ public class Endereco extends Auditoria {
 	}
 
 	public void setCidade(Cidade cidade) {
-		verificaValorNulo(cidade, MENSAGEM_ERRO_CIDADE_NULL);
+		verificarValorNulo(cidade, MENSAGEM_ERRO_CIDADE_NULL);
 		this.cidade = cidade;
 	}
 

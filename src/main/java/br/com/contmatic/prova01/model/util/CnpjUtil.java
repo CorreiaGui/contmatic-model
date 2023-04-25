@@ -1,6 +1,6 @@
 package br.com.contmatic.prova01.model.util;
 
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaCaracteresRepetidos;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarCaracteresRepetidos;
 
 public final class CnpjUtil {
 
@@ -18,11 +18,25 @@ public final class CnpjUtil {
 	}
 
 	public static void isCnpj(String cnpj) {
-		verificaCaracteresRepetidos(cnpj, MENSAGEM_ERRO_NUMEROS_IGUAIS_CNPJ);
+		verificarCaracteresRepetidos(cnpj, MENSAGEM_ERRO_NUMEROS_IGUAIS_CNPJ);
 		validarDigitos(cnpj);
 	}
 
 	private static char calcularDigitoVeridicador(String cnpj, int peso, int posicaoDigito) {
+		int soma = obterValorSoma(cnpj, peso, posicaoDigito);
+		int resultado = obterResultado(soma);
+		return (char) ((POSICAO_12O_DIGITO - resultado) + POSICAO_DE_0_TABELA_ASCII);
+	}
+
+	private static int obterResultado(int soma) {
+		int resultado = soma % 11; 
+		if (resultado <= 1) {
+			return 0;
+		}
+		return resultado;
+	}
+
+	private static int obterValorSoma(String cnpj, int peso, int posicaoDigito) {
 		int soma = VALOR_INICIAL_SOMA;
 		for (int indice = posicaoDigito; indice >= 0; indice--) {
 			int numero = (cnpj.charAt(indice) - POSICAO_DE_0_TABELA_ASCII);
@@ -32,11 +46,7 @@ public final class CnpjUtil {
 				peso = VALOR_INICIAL_PESO;
 			}
 		}
-		int resultado = soma % 11;
-		if (resultado <= 1) {
-			return 0;
-		}
-		return (char) ((11 - resultado) + POSICAO_DE_0_TABELA_ASCII);
+		return soma;
 	}
 
 	private static void verificaCnpjValido(String cnpj, char digito1, char digito2) {

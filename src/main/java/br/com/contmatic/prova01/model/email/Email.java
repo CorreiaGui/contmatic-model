@@ -1,10 +1,10 @@
 package br.com.contmatic.prova01.model.email;
 
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaRegex;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMaximo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMinimo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaValorNulo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaVazio;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarRegex;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMaximo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMinimo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorNulo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarVazio;
 import static br.com.contmatic.prova01.model.util.constant.email.EmailConstant.EMAIL_REGEX;
 import static br.com.contmatic.prova01.model.util.constant.email.EmailConstant.MENSAGEM_ERRO_EMAIL_NULL;
 import static br.com.contmatic.prova01.model.util.constant.email.EmailConstant.MENSAGEM_ERRO_EMAIL_REGEX;
@@ -40,11 +40,11 @@ public class Email extends Auditoria {
 	}
 
 	public void setTipo(String tipo) {
-		verificaValorNulo(tipo, MENSAGEM_ERRO_TIPO_NULL);
-		verificaVazio(tipo, MENSAGEM_ERRO_TIPO_VAZIO);
-		verificaTamanhoMinimo(tipo, TAMANHO_MINIMO, MENSAGEM_ERRO_EMAIL_TAMANHO_MINIMO);
-		verificaTamanhoMaximo(tipo, TAMANHO_TIPO, MENSAGEM_ERRO_TIPO_TAMANHO);
-		verificaRegex(tipo, TIPO_REGEX, MENSAGEM_ERRO_TIPO_REGEX);
+		verificarValorNulo(tipo, MENSAGEM_ERRO_TIPO_NULL);
+		verificarVazio(tipo, MENSAGEM_ERRO_TIPO_VAZIO);
+		verificarTamanhoMinimo(tipo, TAMANHO_MINIMO, MENSAGEM_ERRO_EMAIL_TAMANHO_MINIMO);
+		verificarTamanhoMaximo(tipo, TAMANHO_TIPO, MENSAGEM_ERRO_TIPO_TAMANHO);
+		verificarRegex(tipo, TIPO_REGEX, MENSAGEM_ERRO_TIPO_REGEX);
 		this.tipo = tipo;
 	}
 
@@ -53,11 +53,11 @@ public class Email extends Auditoria {
 	}
 
 	public void setEndereco(String endereco) {
-		verificaValorNulo(endereco, MENSAGEM_ERRO_EMAIL_NULL);
-		verificaVazio(endereco, MENSAGEM_ERRO_EMAIL_VAZIO);
-		verificaTamanhoMaximo(endereco, TAMANHO_EMAIL, MENSAGEM_ERRO_EMAIL_TAMANHO);
-		verificaTamanhoMinimo(endereco, TAMANHO_MINIMO, MENSAGEM_ERRO_EMAIL_TAMANHO_MINIMO);
-		verificaRegex(endereco, EMAIL_REGEX, MENSAGEM_ERRO_EMAIL_REGEX);
+		verificarValorNulo(endereco, MENSAGEM_ERRO_EMAIL_NULL);
+		verificarVazio(endereco, MENSAGEM_ERRO_EMAIL_VAZIO);
+		verificarTamanhoMaximo(endereco, TAMANHO_EMAIL, MENSAGEM_ERRO_EMAIL_TAMANHO);
+		verificarTamanhoMinimo(endereco, TAMANHO_MINIMO, MENSAGEM_ERRO_EMAIL_TAMANHO_MINIMO);
+		verificarRegex(endereco, EMAIL_REGEX, MENSAGEM_ERRO_EMAIL_REGEX);
 		this.endereco = endereco;
 	}
 

@@ -1,11 +1,11 @@
 package br.com.contmatic.prova01.model.endereco;
 
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaRegex;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanho;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMaximo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMinimo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaValorNulo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaVazio;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarRegex;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanho;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMaximo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMinimo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorNulo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarVazio;
 import static br.com.contmatic.prova01.model.util.constant.endereco.EstadoConstant.MENSAGEM_ERRO_NOME_NULL;
 import static br.com.contmatic.prova01.model.util.constant.endereco.EstadoConstant.MENSAGEM_ERRO_NOME_REGEX;
 import static br.com.contmatic.prova01.model.util.constant.endereco.EstadoConstant.MENSAGEM_ERRO_NOME_VAZIO;
@@ -41,10 +41,10 @@ public class Estado extends Auditoria {
 	}
 
 	public void setSigla(String sigla) {
-		verificaValorNulo(sigla, MENSAGEM_ERRO_SIGLA_NULL);
-		verificaVazio(sigla, MENSAGEM_ERRO_SIGLA_VAZIO);
-		verificaTamanho(sigla, TAMANHO_SIGLA, MENSAGEM_ERRO_SIGLA_TAMANHO);
-		verificaRegex(sigla, REGEX_SIGLA, MENSAGEM_ERRO_SIGLA_REGEX);
+		verificarValorNulo(sigla, MENSAGEM_ERRO_SIGLA_NULL);
+		verificarVazio(sigla, MENSAGEM_ERRO_SIGLA_VAZIO);
+		verificarTamanho(sigla, TAMANHO_SIGLA, MENSAGEM_ERRO_SIGLA_TAMANHO);
+		verificarRegex(sigla, REGEX_SIGLA, MENSAGEM_ERRO_SIGLA_REGEX);
 		this.sigla = sigla;
 	}
 
@@ -53,11 +53,11 @@ public class Estado extends Auditoria {
 	}
 
 	public void setNome(String nome) {
-		verificaValorNulo(nome, MENSAGEM_ERRO_NOME_NULL);
-		verificaVazio(nome, MENSAGEM_ERRO_NOME_VAZIO);
-		verificaTamanhoMinimo(nome, TAMANHO_MINIMO_NOME, MENSAGEM_ERRO_TAMANHO_MINIMO_NOME);
-		verificaTamanhoMaximo(nome, TAMANHO_NOME, MENSAGEM_ERRO_TAMANHO_MAXIMO_NOME);
-		verificaRegex(nome, REGEX_LETRA, MENSAGEM_ERRO_NOME_REGEX);
+		verificarValorNulo(nome, MENSAGEM_ERRO_NOME_NULL);
+		verificarVazio(nome, MENSAGEM_ERRO_NOME_VAZIO);
+		verificarTamanhoMinimo(nome, TAMANHO_MINIMO_NOME, MENSAGEM_ERRO_TAMANHO_MINIMO_NOME);
+		verificarTamanhoMaximo(nome, TAMANHO_NOME, MENSAGEM_ERRO_TAMANHO_MAXIMO_NOME);
+		verificarRegex(nome, REGEX_LETRA, MENSAGEM_ERRO_NOME_REGEX);
 		this.nome = nome;
 	}
 

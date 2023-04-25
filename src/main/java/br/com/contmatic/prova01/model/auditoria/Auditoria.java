@@ -1,12 +1,12 @@
 package br.com.contmatic.prova01.model.auditoria;
 
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaDataMaxima;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaDataMinima;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaRegex;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMaximo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaTamanhoMinimo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaValorNulo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificaVazio;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarDataMaxima;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarDataMinima;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarRegex;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMaximo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMinimo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorNulo;
+import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarVazio;
 import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_DATA_CRIACAO;
 import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_DATA_CRIACAO_NULL;
 import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_DATA_EDICAO;
@@ -37,16 +37,16 @@ public class Auditoria {
 
 	private ZonedDateTime dataEdicao;
 
-	public String getNomeCriador() {
+	public String getNomeCriador() { 
 		return this.nomeCriador;
 	}
 
 	public void setNomeCriador(String nomeCriador) {
-		verificaValorNulo(nomeCriador, MENSAGEM_ERRO_NOME_CRIADOR_NULL);
-		verificaVazio(nomeCriador, MENSAGEM_ERRO_NOME_CRIADOR_VAZIO);
-		verificaRegex(nomeCriador, REGEX_LETRAS, MENSAGEM_ERRO_NOME_CRIADOR_REGEX);
-		verificaTamanhoMinimo(nomeCriador, TAMANHO_NOME_MINIMO, MENSAGEM_ERRO_NOME_CRIADOR_TAMANHO_MINIMO);
-		verificaTamanhoMaximo(nomeCriador, TAMANHO_NOME_MAXIMO, MENSAGEM_ERRO_NOME_CRIADOR_TAMANHO);
+		verificarValorNulo(nomeCriador, MENSAGEM_ERRO_NOME_CRIADOR_NULL);
+		verificarVazio(nomeCriador, MENSAGEM_ERRO_NOME_CRIADOR_VAZIO);
+		verificarRegex(nomeCriador, REGEX_LETRAS, MENSAGEM_ERRO_NOME_CRIADOR_REGEX);
+		verificarTamanhoMinimo(nomeCriador, TAMANHO_NOME_MINIMO, MENSAGEM_ERRO_NOME_CRIADOR_TAMANHO_MINIMO);
+		verificarTamanhoMaximo(nomeCriador, TAMANHO_NOME_MAXIMO, MENSAGEM_ERRO_NOME_CRIADOR_TAMANHO);
 		this.nomeCriador = nomeCriador;
 	}
 
@@ -55,9 +55,9 @@ public class Auditoria {
 	}
 
 	public void setDataCriacao(ZonedDateTime dataCriacao) {
-		verificaValorNulo(dataCriacao, MENSAGEM_ERRO_DATA_CRIACAO_NULL);
-		verificaDataMinima(dataCriacao, MENSAGEM_ERRO_DATA_CRIACAO);
-		verificaDataMaxima(dataCriacao, MENSAGEM_ERRO_DATA_CRIACAO);
+		verificarValorNulo(dataCriacao, MENSAGEM_ERRO_DATA_CRIACAO_NULL);
+		verificarDataMinima(dataCriacao, MENSAGEM_ERRO_DATA_CRIACAO);
+		verificarDataMaxima(dataCriacao, MENSAGEM_ERRO_DATA_CRIACAO);
 		this.dataCriacao = dataCriacao;
 	}
 
@@ -66,11 +66,11 @@ public class Auditoria {
 	}
 
 	public void setNomeEditor(String nomeEditor) {
-		verificaValorNulo(nomeEditor, MENSAGEM_ERRO_NOME_EDITOR_NULL);
-		verificaVazio(nomeEditor, MENSAGEM_ERRO_NOME_EDITOR_VAZIO);
-		verificaRegex(nomeEditor, REGEX_LETRAS, MENSAGEM_ERRO_NOME_EDITOR_REGEX);
-		verificaTamanhoMinimo(nomeEditor, TAMANHO_NOME_MINIMO, MENSAGEM_ERRO_NOME_EDITOR_TAMANHO_MINIMO);
-		verificaTamanhoMaximo(nomeEditor, TAMANHO_NOME_MAXIMO, MENSAGEM_ERRO_NOME_EDITOR_TAMANHO);
+		verificarValorNulo(nomeEditor, MENSAGEM_ERRO_NOME_EDITOR_NULL);
+		verificarVazio(nomeEditor, MENSAGEM_ERRO_NOME_EDITOR_VAZIO);
+		verificarRegex(nomeEditor, REGEX_LETRAS, MENSAGEM_ERRO_NOME_EDITOR_REGEX);
+		verificarTamanhoMinimo(nomeEditor, TAMANHO_NOME_MINIMO, MENSAGEM_ERRO_NOME_EDITOR_TAMANHO_MINIMO);
+		verificarTamanhoMaximo(nomeEditor, TAMANHO_NOME_MAXIMO, MENSAGEM_ERRO_NOME_EDITOR_TAMANHO);
 		this.nomeEditor = nomeEditor;
 	}
 
@@ -79,9 +79,9 @@ public class Auditoria {
 	}
 
 	public void setDataEdicao(ZonedDateTime dataEdicao) {
-		verificaValorNulo(dataEdicao, MENSAGEM_ERRO_DATA_EDICAO_NULL);
-		verificaDataMinima(dataEdicao, MENSAGEM_ERRO_DATA_EDICAO);
-		verificaDataMaxima(dataEdicao, MENSAGEM_ERRO_DATA_EDICAO);
+		verificarValorNulo(dataEdicao, MENSAGEM_ERRO_DATA_EDICAO_NULL);
+		verificarDataMinima(dataEdicao, MENSAGEM_ERRO_DATA_EDICAO);
+		verificarDataMaxima(dataEdicao, MENSAGEM_ERRO_DATA_EDICAO);
 		this.dataEdicao = dataEdicao;
 	}
 
