@@ -10,43 +10,26 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import br.com.contmatic.prova01.model.util.enums.SiglaEstado;
+
 class EstadoTest {
 
 	Estado estado;
 
 	@BeforeEach
 	void set_up() {
-		estado = new Estado("SP");
+		estado = new Estado(SiglaEstado.valueOf("SP"));
 	}
 
 	@Test
 	void deve_aceitar_sigla_valida() {
-		assertEquals("SP", estado.getSigla());
+		assertEquals(SiglaEstado.valueOf("SP"), estado.getSigla());
 	}
 
 	@Test
 	void nao_deve_aceitar_sigla_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> estado.setSigla(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> estado.setSigla(null));
 		assertTrue(thrown.getMessage().contains("O campo sigla é de preenchimento obrigatório."));
-	}
-
-	@Test
-	void nao_deve_aceitar_sigla_vazio() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
-				() -> estado.setSigla("                   "));
-		assertTrue(thrown.getMessage().contains("O campo sigla com espaços em branco é invalido."));
-	}
-
-	@Test
-	void nao_deve_aceitar_sigla_invalida() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> estado.setSigla("AB"));
-		assertTrue(thrown.getMessage().contains("Singla invalida."));
-	}
-
-	@Test
-	void nao_deve_aceitar_sigla_diferente_2_caracteres() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> estado.setSigla("AAA"));
-		assertTrue(thrown.getMessage().contains("O campo sigla permite apenas dois caracteres."));
 	}
 
 	@Test
@@ -57,7 +40,7 @@ class EstadoTest {
 
 	@Test
 	void nao_deve_aceitar_nome_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> estado.setNome(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> estado.setNome(null));
 		assertTrue(thrown.getMessage().contains("O campo nome é de preenchimento obrigatório."));
 	}
 
@@ -110,13 +93,13 @@ class EstadoTest {
 
 	@Test
 	void deve_retornar_verdadeiro_equals_mesma_instancia() {
-		Estado estado2 = new Estado("SP");
+		Estado estado2 = new Estado(SiglaEstado.valueOf("SP"));
 		assertEquals(estado, estado2);
 	}
 
 	@Test
 	void deve_retornar_falso_equals_instancia_diferentes() {
-		Estado estado2 = new Estado("RJ");
+		Estado estado2 = new Estado(SiglaEstado.valueOf("RJ"));
 		assertNotEquals(estado, estado2);
 	}
 

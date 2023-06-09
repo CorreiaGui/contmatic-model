@@ -30,7 +30,7 @@ class SetorTest {
 
 	@Test
 	void nao_deve_aceitar_nome_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> setor.setNome(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> setor.setNome(null));
 		assertTrue(thrown.getMessage().contains("O campo nome do setor é de preenchimento obrigatório."));
 	}
 
@@ -64,7 +64,7 @@ class SetorTest {
 
 	@Test
 	void nao_deve_aceitar_lista_funcionarios_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+		NullPointerException thrown = assertThrows(NullPointerException.class,
 				() -> setor.setFuncionarios(null));
 		assertTrue(thrown.getMessage().contains("O campo funcionarios do setor é de preenchimento obrigatório."));
 	}
@@ -98,7 +98,7 @@ class SetorTest {
 
 	@Test
 	void nao_deve_aceitar_funcionario_responsavel_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+		NullPointerException thrown = assertThrows(NullPointerException.class,
 				() -> setor.setResponsavel(null));
 		assertTrue(thrown.getMessage().contains("O campo responsável do setor é de preenchimento obrigatório."));
 	}

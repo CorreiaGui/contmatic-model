@@ -79,7 +79,7 @@ class FuncionarioTest {
 
 	@Test
 	void nao_deve_aceitar_nome_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> funcionario.setNome(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> funcionario.setNome(null));
 		assertTrue(thrown.getMessage().contains("O campo NOME do funcionário é de preenchimento obrigatório."));
 	}
 
@@ -119,7 +119,7 @@ class FuncionarioTest {
 
 	@Test
 	void nao_deve_aceitar_data_nascimento_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+		NullPointerException thrown = assertThrows(NullPointerException.class,
 				() -> funcionario.setDataNascimento(null));
 		assertTrue(thrown.getMessage().contains("O campo data de nascimento é de preenchimento obrigatório."));
 	}
@@ -162,7 +162,7 @@ class FuncionarioTest {
 
 	@Test
 	void nao_deve_aceitar_endereco_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+		NullPointerException thrown = assertThrows(NullPointerException.class,
 				() -> funcionario.setEndereco(null));
 		assertTrue(thrown.getMessage().contains("O campo 'endereço' é de preenchimento obrigatório."));
 	}
@@ -194,14 +194,14 @@ class FuncionarioTest {
 		for (int indice = TAMANHO_MINIMO_LISTA; indice != 0; indice--) {
 			Email email = new Email(("abc@abc.com" + numero++));
 			emails.add(email);
-		}
+		} 
 		funcionario.setEmail(emails);
 		assertEquals(emails, funcionario.getEmail());
 	}
 
 	@Test
 	void nao_deve_aceitar_lista_email_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+		NullPointerException thrown = assertThrows(NullPointerException.class,
 				() -> funcionario.setEmail(null));
 		assertTrue(thrown.getMessage().contains("O campo 'e-mail' é de preenchimento obrigatório."));
 	}
@@ -240,7 +240,7 @@ class FuncionarioTest {
 
 	@Test
 	void nao_deve_aceitar_lista_telefone_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+		NullPointerException thrown = assertThrows(NullPointerException.class,
 				() -> funcionario.setTelefone(null));
 		assertTrue(thrown.getMessage().contains("O campo 'telefone' é de preenchimento obrigatório."));
 	}
@@ -276,7 +276,7 @@ class FuncionarioTest {
 
 	@Test
 	void nao_deve_aceitar_setor_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+		NullPointerException thrown = assertThrows(NullPointerException.class,
 				() -> funcionario.setSetor(null));
 		assertTrue(thrown.getMessage().contains("O campo setor do funcionário é de preenchimento obrigatório."));
 	}

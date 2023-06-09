@@ -21,7 +21,6 @@ import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConsta
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_ENDERECO_VAZIO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_FUNCIONARIO_NULL;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_FUNCIONARIO_VAZIO;
-import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_NATUREZA_JURIDICA_VAZIO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_NOME_FANTASIA_NULA;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_NOME_FANTASIA_VAZIO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_NUMERO_INSCRICAO_NULL;
@@ -37,8 +36,6 @@ import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConsta
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_SETOR_TAMANHO_MINIMO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_SETOR_VAZIO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_SITUACAO_CADASTRAL_NULL;
-import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_SITUACAO_CADASTRAL_REGEX;
-import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_SITUACAO_CADASTRAL_VAZIO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TAMANHO_CNPJ;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TAMANHO_ENDERECO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TAMANHO_FUNCIONARIO;
@@ -52,7 +49,6 @@ import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConsta
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TELEFONE_TAMANHO_MIN;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TELEFONE_VAZIO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.REGEX_NUMERO;
-import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.REGEX_SITUACAO_CADASTRAL;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_CNPJ;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_EMAIL;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_ENDERECO;
@@ -65,259 +61,217 @@ import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConsta
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MINIMO_ENDERECO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MINIMO_LISTA;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_NUMERO_INSCRICAO;
-import static java.util.Objects.hash;
+import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
+import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
+import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
+
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import br.com.contmatic.prova01.model.auditoria.Auditoria;
 import br.com.contmatic.prova01.model.email.Email;
 import br.com.contmatic.prova01.model.endereco.Endereco;
 import br.com.contmatic.prova01.model.telefone.Telefone;
+import br.com.contmatic.prova01.model.util.enums.NaturezaJuridica;
+import br.com.contmatic.prova01.model.util.enums.SituacaoCadastral;
 
 public class Empresa extends Auditoria {
+    
+    private String cnpj;
+    
+    private String numeroInscricao;
 
-	private String cnpj;
+    private String razaoSocial;
 
-	private String numeroInscricao;
+    private String nomeFantasia;
 
-	private String razaoSocial;
+    private NaturezaJuridica naturezaJuridica;
 
-	private String nomeFantasia;
+    private SituacaoCadastral situacaoCadastral;
 
-	private String naturezaJuridica;
+    private LocalDate dataAbertura;
+    
+    private Set<Endereco> enderecos;
 
-	private String situacaoCadastral;
+    private List<Funcionario> funcionarios;
 
-	private LocalDate dataAbertura;
+    private Set<Produto> produtos;
 
-	private Set<Endereco> enderecos;
+    private Set<Email> emails;
 
-	private List<Funcionario> funcionarios;
+    private Set<Telefone> telefones;
 
-	private Set<Produto> produtos;
+    private Set<Setor> setores;
 
-	private Set<Email> emails;
+    public Empresa(String cnpj) {
+        this.setCnpj(cnpj);
+    }
 
-	private Set<Telefone> telefones;
+    public String getCnpj() {
+        return this.cnpj;
+    }
 
-	private Set<Setor> setores;
+    public void setCnpj(String cnpj) {
+        verificarValorNulo(cnpj, MENSAGEM_ERRO_CNPJ_NULL);
+        verificarVazio(cnpj, MENSAGEM_ERRO_CNPJ_VAZIO);
+        verificarRegex(cnpj, REGEX_NUMERO, MENSAGEM_ERRO_REGEX_CNPJ);
+        verificarTamanho(cnpj, TAMANHO_CNPJ, MENSAGEM_ERRO_TAMANHO_CNPJ);
+        isCnpj(cnpj);
+        this.cnpj = cnpj;
+    }
 
-	public Empresa(String cnpj) {
-		this.setCnpj(cnpj);
-	}
+    public String getNumeroInscricao() {
+        return this.numeroInscricao;
+    }
 
-	public String getCnpj() {
-		return this.cnpj;
-	}
+    public void setNumeroInscricao(String numeroInscricao) {
+        verificarValorNulo(numeroInscricao, MENSAGEM_ERRO_NUMERO_INSCRICAO_NULL);
+        verificarVazio(numeroInscricao, MENSAGEM_ERRO_NUMERO_INSCRICAO_VAZIO);
+        verificarRegex(numeroInscricao, REGEX_NUMERO, MENSAGEM_ERRO_REGEX_NUMERO_INSCRICAO);
+        verificarTamanho(numeroInscricao, TAMANHO_NUMERO_INSCRICAO, MENSAGEM_ERRO_NUMERO_INSCRICAO_TAMANHO);
+        this.numeroInscricao = numeroInscricao;
+    }
 
-	public void setCnpj(String cnpj) {
-		verificarValorNulo(cnpj, MENSAGEM_ERRO_CNPJ_NULL);
-		verificarVazio(cnpj, MENSAGEM_ERRO_CNPJ_VAZIO);
-		verificarRegex(cnpj, REGEX_NUMERO, MENSAGEM_ERRO_REGEX_CNPJ);
-		verificarTamanho(cnpj, TAMANHO_CNPJ, MENSAGEM_ERRO_TAMANHO_CNPJ);
-		isCnpj(cnpj);
-		this.cnpj = cnpj;
-	}
+    public LocalDate getDataAbertura() {
+        return this.dataAbertura;
+    }
 
-	public String getNumeroInscricao() {
-		return this.numeroInscricao;
-	}
+    public void setDataAbertura(LocalDate dataAbertura) {
+        verificarValorNulo(dataAbertura, MENSAGEM_ERRO_DATA_NULA);
+        verificarDataMinima(dataAbertura, MENSAGEM_ERRO_DATA);
+        verificarDataLimite(dataAbertura, MENSAGEM_ERRO_DATA_LIMITE);
+        this.dataAbertura = dataAbertura;
+    }
 
-	public void setNumeroInscricao(String numeroInscricao) {
-		verificarValorNulo(numeroInscricao, MENSAGEM_ERRO_NUMERO_INSCRICAO_NULL);
-		verificarVazio(numeroInscricao, MENSAGEM_ERRO_NUMERO_INSCRICAO_VAZIO);
-		verificarRegex(numeroInscricao, REGEX_NUMERO, MENSAGEM_ERRO_REGEX_NUMERO_INSCRICAO);
-		verificarTamanho(numeroInscricao, TAMANHO_NUMERO_INSCRICAO, MENSAGEM_ERRO_NUMERO_INSCRICAO_TAMANHO);
-		this.numeroInscricao = numeroInscricao;
-	}
+    public String getRazaoSocial() {
+        return this.razaoSocial;
+    }
 
-	public LocalDate getDataAbertura() {
-		return this.dataAbertura;
-	}
+    public void setRazaoSocial(String razaoSocial) {
+        verificarValorNulo(razaoSocial, MENSAGEM_ERRO_RAZAO_SOCIAL_NULA);
+        verificarVazio(razaoSocial, MENSAGEM_ERRO_RAZAO_SOCIAL_NULA);
+        verificarTamanhoMinimo(razaoSocial, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO);
+        verificarTamanhoMaximo(razaoSocial, TAMANHO_MAXIMO_STRING, MENSAGEM_ERRO_TAMANHO_MAXIMO);
+        this.razaoSocial = razaoSocial;
+    }
 
-	public void setDataAbertura(LocalDate dataAbertura) {
-		verificarValorNulo(dataAbertura, MENSAGEM_ERRO_DATA_NULA);
-		verificarDataMinima(dataAbertura, MENSAGEM_ERRO_DATA);
-		verificarDataLimite(dataAbertura, MENSAGEM_ERRO_DATA_LIMITE);
-		this.dataAbertura = dataAbertura;
-	}
+    public String getNomeFantasia() {
+        return this.nomeFantasia;
+    }
 
-	public String getRazaoSocial() {
-		return this.razaoSocial;
-	}
+    public void setNomeFantasia(String nomeFantasia) {
+        verificarValorNulo(nomeFantasia, MENSAGEM_ERRO_NOME_FANTASIA_NULA);
+        verificarVazio(nomeFantasia, MENSAGEM_ERRO_NOME_FANTASIA_VAZIO);
+        verificarTamanhoMinimo(nomeFantasia, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO);
+        verificarTamanhoMaximo(nomeFantasia, TAMANHO_MAXIMO_STRING, MENSAGEM_ERRO_TAMANHO_MAXIMO);
+        this.nomeFantasia = nomeFantasia;
+    }
 
-	public void setRazaoSocial(String razaoSocial) {
-		verificarValorNulo(razaoSocial, MENSAGEM_ERRO_RAZAO_SOCIAL_NULA);
-		verificarVazio(razaoSocial, MENSAGEM_ERRO_RAZAO_SOCIAL_NULA);
-		verificarTamanhoMinimo(razaoSocial, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO);
-		verificarTamanhoMaximo(razaoSocial, TAMANHO_MAXIMO_STRING, MENSAGEM_ERRO_TAMANHO_MAXIMO);
-		this.razaoSocial = razaoSocial;
-	}
+    public NaturezaJuridica getNaturezaJuridica() {
+        return this.naturezaJuridica;
+    }
 
-	public String getNomeFantasia() {
-		return this.nomeFantasia;
-	}
+    public void setNaturezaJuridica(NaturezaJuridica naturezaJuridica) {
+        verificarValorNulo(naturezaJuridica, MENSAGEM_ERRO_ATIVIDADE_NATUREZA_JURIDICA_NULL);
+        this.naturezaJuridica = naturezaJuridica;
+    }
 
-	public void setNomeFantasia(String nomeFantasia) {
-		verificarValorNulo(nomeFantasia, MENSAGEM_ERRO_NOME_FANTASIA_NULA);
-		verificarVazio(nomeFantasia, MENSAGEM_ERRO_NOME_FANTASIA_VAZIO);
-		verificarTamanhoMinimo(nomeFantasia, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO);
-		verificarTamanhoMaximo(nomeFantasia, TAMANHO_MAXIMO_STRING, MENSAGEM_ERRO_TAMANHO_MAXIMO);
-		this.nomeFantasia = nomeFantasia;
-	}
+    public Set<Endereco> getEndereco() {
+        return this.enderecos;
+    }
 
-	public String getNaturezaJuridica() {
-		return this.naturezaJuridica;
-	}
+    public void setEndereco(Set<Endereco> endereco) {
+        verificarValorNulo(endereco, MENSAGEM_ERRO_ENDERECO_NULL);
+        verificarVazio(endereco, MENSAGEM_ERRO_ENDERECO_VAZIO);
+        verificarTamanhoMinimo(endereco, TAMANHO_MINIMO_ENDERECO, MENSAGEM_ERRO_TAMANHO_MINIMO);
+        verificarTamanhoMaximo(endereco, TAMANHO_MAXIMO_ENDERECO, MENSAGEM_ERRO_TAMANHO_ENDERECO);
+        this.enderecos = endereco;
+    }
 
-	public void setNaturezaJuridica(String naturezaJuridica) {
-		verificarValorNulo(naturezaJuridica, MENSAGEM_ERRO_ATIVIDADE_NATUREZA_JURIDICA_NULL);
-		verificarVazio(naturezaJuridica, MENSAGEM_ERRO_NATUREZA_JURIDICA_VAZIO);
-		verificarTamanhoMinimo(naturezaJuridica, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO);
-		verificarTamanhoMaximo(naturezaJuridica, TAMANHO_MAXIMO_STRING, MENSAGEM_ERRO_TAMANHO_MAXIMO);
-		this.naturezaJuridica = naturezaJuridica;
-	}
+    public List<Funcionario> getFuncionario() {
+        return this.funcionarios;
+    }
 
-	public Set<Endereco> getEndereco() {
-		return this.enderecos;
-	}
+    public void setFuncionario(List<Funcionario> funcionario) {
+        verificarValorNulo(funcionario, MENSAGEM_ERRO_FUNCIONARIO_NULL);
+        verificarVazio(funcionario, MENSAGEM_ERRO_FUNCIONARIO_VAZIO);
+        verificarTamanhoMinimo(funcionario, TAMANHO_MINIMO_LISTA, MENSAGEM_ERRO_TAMANHO_MINIMO_LISTA);
+        verificarTamanhoMaximo(funcionario, TAMANHO_MAXIMO_FUNCIONARIO, MENSAGEM_ERRO_TAMANHO_FUNCIONARIO);
+        this.funcionarios = funcionario;
+    }
 
-	public void setEndereco(Set<Endereco> endereco) {
-		verificarValorNulo(endereco, MENSAGEM_ERRO_ENDERECO_NULL);
-		verificarVazio(endereco, MENSAGEM_ERRO_ENDERECO_VAZIO);
-		verificarTamanhoMinimo(endereco, TAMANHO_MINIMO_ENDERECO, MENSAGEM_ERRO_TAMANHO_MINIMO);
-		verificarTamanhoMaximo(endereco, TAMANHO_MAXIMO_ENDERECO, MENSAGEM_ERRO_TAMANHO_ENDERECO);
-		this.enderecos = endereco;
-	}
+    public Set<Produto> getProduto() {
+        return this.produtos;
+    }
 
-	public List<Funcionario> getFuncionario() {
-		return this.funcionarios;
-	}
+    public void setProduto(Set<Produto> produto) {
+        verificarValorNulo(produto, MENSAGEM_ERRO_PRODUTO_NULL);
+        verificarVazio(produto, MENSAGEM_ERRO_PRODUTO_VAZIO);
+        verificarTamanhoMinimo(produto, TAMANHO_MINIMO_LISTA, MENSAGEM_ERRO_TAMANHO_MINIMO_LISTA);
+        verificarTamanhoMaximo(produto, TAMANHO_MAXIMO_PRODUTO, MENSAGEM_ERRO_TAMANHO_PRODUTO);
+        this.produtos = produto;
+    }
 
-	public void setFuncionario(List<Funcionario> funcionario) {
-		verificarValorNulo(funcionario, MENSAGEM_ERRO_FUNCIONARIO_NULL);
-		verificarVazio(funcionario, MENSAGEM_ERRO_FUNCIONARIO_VAZIO);
-		verificarTamanhoMinimo(funcionario, TAMANHO_MINIMO_LISTA, MENSAGEM_ERRO_TAMANHO_MINIMO_LISTA);
-		verificarTamanhoMaximo(funcionario, TAMANHO_MAXIMO_FUNCIONARIO, MENSAGEM_ERRO_TAMANHO_FUNCIONARIO);
-		this.funcionarios = funcionario;
-	}
+    public SituacaoCadastral getSituacaoCadastral() {
+        return this.situacaoCadastral;
+    }
 
-	public Set<Produto> getProduto() {
-		return this.produtos;
-	}
+    public void setSituacaoCadastral(SituacaoCadastral situacaoCadastral) {
+        verificarValorNulo(situacaoCadastral, MENSAGEM_ERRO_SITUACAO_CADASTRAL_NULL);
+        this.situacaoCadastral = situacaoCadastral;
+    }
 
-	public void setProduto(Set<Produto> produto) {
-		verificarValorNulo(produto, MENSAGEM_ERRO_PRODUTO_NULL);
-		verificarVazio(produto, MENSAGEM_ERRO_PRODUTO_VAZIO);
-		verificarTamanhoMinimo(produto, TAMANHO_MINIMO_LISTA, MENSAGEM_ERRO_TAMANHO_MINIMO_LISTA);
-		verificarTamanhoMaximo(produto, TAMANHO_MAXIMO_PRODUTO, MENSAGEM_ERRO_TAMANHO_PRODUTO);
-		this.produtos = produto;
-	}
+    public Set<Email> getEmail() {
+        return this.emails;
+    }
 
-	public String getSituacaoCadastral() {
-		return this.situacaoCadastral;
-	}
+    public void setEmail(Set<Email> emails) {
+        verificarValorNulo(emails, MENSAGEM_ERRO_EMAIL_NULL);
+        verificarVazio(emails, MENSAGEM_ERRO_EMAIL_VAZIO);
+        verificarTamanhoMinimo(emails, TAMANHO_MINIMO_LISTA, MENSAGEM_ERRO_TAMANHO_MINIMO_LISTA);
+        verificarTamanhoMaximo(emails, TAMANHO_MAXIMO_EMAIL, MENSAGEM_ERRO_TAMANHO_MAXIMO_EMAIL);
+        this.emails = emails;
+    }
 
-	public void setSituacaoCadastral(String situacaoCadastral) {
-		verificarValorNulo(situacaoCadastral, MENSAGEM_ERRO_SITUACAO_CADASTRAL_NULL);
-		verificarVazio(situacaoCadastral, MENSAGEM_ERRO_SITUACAO_CADASTRAL_VAZIO);
-		verificarTamanhoMinimo(situacaoCadastral, TAMANHO_MINIMO_LISTA, MENSAGEM_ERRO_TAMANHO_MINIMO);
-		verificarTamanhoMaximo(situacaoCadastral, TAMANHO_MAXIMO_STRING, MENSAGEM_ERRO_TAMANHO_MAXIMO);
-		verificarRegex(situacaoCadastral, REGEX_SITUACAO_CADASTRAL, MENSAGEM_ERRO_SITUACAO_CADASTRAL_REGEX);
-		this.situacaoCadastral = situacaoCadastral;
-	}
+    public Set<Telefone> getTelefone() {
+        return this.telefones;
+    }
 
-	public Set<Email> getEmail() {
-		return this.emails;
-	}
+    public void setTelefone(Set<Telefone> telefones) {
+        verificarValorNulo(telefones, MENSAGEM_ERRO_TELEFONE_NULL);
+        verificarVazio(telefones, MENSAGEM_ERRO_TELEFONE_VAZIO);
+        verificarTamanhoMinimo(telefones, TAMANHO_MINIMO_LISTA, MENSAGEM_ERRO_TELEFONE_TAMANHO_MIN);
+        verificarTamanhoMaximo(telefones, TAMANHO_MAXIMO_TELEFONE, MENSAGEM_ERRO_TELEFONE_TAMANHO_MAXIMO);
+        this.telefones = telefones;
+    }
 
-	public void setEmail(Set<Email> emails) {
-		verificarValorNulo(emails, MENSAGEM_ERRO_EMAIL_NULL);
-		verificarVazio(emails, MENSAGEM_ERRO_EMAIL_VAZIO);
-		verificarTamanhoMinimo(emails, TAMANHO_MINIMO_LISTA, MENSAGEM_ERRO_TAMANHO_MINIMO_LISTA);
-		verificarTamanhoMaximo(emails, TAMANHO_MAXIMO_EMAIL, MENSAGEM_ERRO_TAMANHO_MAXIMO_EMAIL);
-		this.emails = emails;
-	}
+    public Set<Setor> getSetor() {
+        return setores;
+    }
 
-	public Set<Telefone> getTelefone() {
-		return this.telefones;
-	}
+    public void setSetor(Set<Setor> setores) {
+        verificarValorNulo(setores, MENSAGEM_ERRO_SETOR_NULL);
+        verificarVazio(setores, MENSAGEM_ERRO_SETOR_VAZIO);
+        verificarTamanhoMinimo(setores, TAMANHO_MINIMO_LISTA, MENSAGEM_ERRO_SETOR_TAMANHO_MINIMO);
+        verificarTamanhoMaximo(setores, TAMANHO_MAXIMO_SETOR, MENSAGEM_ERRO_SETOR_TAMANHO_MAXIMO);
+        this.setores = setores;
+    }
 
-	public void setTelefone(Set<Telefone> telefones) {
-		verificarValorNulo(telefones, MENSAGEM_ERRO_TELEFONE_NULL);
-		verificarVazio(telefones, MENSAGEM_ERRO_TELEFONE_VAZIO);
-		verificarTamanhoMinimo(telefones, TAMANHO_MINIMO_LISTA, MENSAGEM_ERRO_TELEFONE_TAMANHO_MIN);
-		verificarTamanhoMaximo(telefones, TAMANHO_MAXIMO_TELEFONE, MENSAGEM_ERRO_TELEFONE_TAMANHO_MAXIMO);
-		this.telefones = telefones;
-	}
+    @Override
+    public int hashCode() {
+        return reflectionHashCode(this, this.cnpj);
+    }
 
-	public Set<Setor> getSetor() {
-		return setores;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        return reflectionEquals(this, obj, this.cnpj);
+    }
 
-	public void setSetor(Set<Setor> setores) {
-		verificarValorNulo(setores, MENSAGEM_ERRO_SETOR_NULL);
-		verificarVazio(setores, MENSAGEM_ERRO_SETOR_VAZIO);
-		verificarTamanhoMinimo(setores, TAMANHO_MINIMO_LISTA, MENSAGEM_ERRO_SETOR_TAMANHO_MINIMO);
-		verificarTamanhoMaximo(setores, TAMANHO_MAXIMO_SETOR, MENSAGEM_ERRO_SETOR_TAMANHO_MAXIMO);
-		this.setores = setores;
-	}
-
-	@Override
-	public int hashCode() {
-		return hash(cnpj);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		Empresa other = (Empresa) obj;
-		return Objects.equals(cnpj, other.cnpj);
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Empresa [cnpj=");
-		builder.append(cnpj);
-		builder.append(", numeroInscricao=");
-		builder.append(numeroInscricao);
-		builder.append(", razaoSocial=");
-		builder.append(razaoSocial);
-		builder.append(", nomeFantasia=");
-		builder.append(nomeFantasia);
-		builder.append(", naturezaJuridica=");
-		builder.append(naturezaJuridica);
-		builder.append(", situacaoCadastral=");
-		builder.append(situacaoCadastral);
-		builder.append(", dataAbertura=");
-		builder.append(dataAbertura);
-		builder.append(", enderecos=");
-		builder.append(enderecos);
-		builder.append(", funcionarios=");
-		builder.append(funcionarios);
-		builder.append(", produtos=");
-		builder.append(produtos);
-		builder.append(", emails=");
-		builder.append(emails);
-		builder.append(", telefones=");
-		builder.append(telefones);
-		builder.append(", setores=");
-		builder.append(setores);
-		builder.append(", toString()=");
-		builder.append(super.toString());
-		builder.append("]");
-		return builder.toString();
-	}
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this, DEFAULT_STYLE);
+    }
 }

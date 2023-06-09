@@ -1,0 +1,612 @@
+-------------------------------------------------------------------------------
+Test set: br.com.contmatic.prova01.model.empresa.EmpresaTest
+-------------------------------------------------------------------------------
+Tests run: 76, Failures: 0, Errors: 76, Skipped: 0, Time elapsed: 0.078 s <<< FAILURE! - in br.com.contmatic.prova01.model.empresa.EmpresaTest
+nao_deve_aceita_lista_funcionario_excedendo_tamanho_maximo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_setor_lista_menor_minimo  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_lista_funcionario_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_lista_produto_menor_minimo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_cnpj_digito_verificador_invalido  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_endereco_excedendo_tamanho  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_produto_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_nome_fantasia_vazio  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_falso_equals_diferentes_classes  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_situacao_cadastral_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_cnpj_caracteres_insuficientes  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_verdadeiro_equals_mesma_valor  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_lista_email_vazio  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_aceitar_lista_funcionario  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_nome_fantasia_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_setor_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_aceitar_lista_email  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_conter_mesmo_valor_hash_code  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_lista_funcionario_menor_minimo  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_aceitar_natureza_juridica  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_falso_para_equals_comparado_com_nulo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_cnpj_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_lista_telefone_menor_minimo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_razao_social_caracteres_insuficientes  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_lista_email_excedendo_maximo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_razao_social_vazio  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_natureza_juridica_to_string  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_lista_produto_excedendo_tamanho_maximo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_lista_funcionario_vazio  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_cnpj_vazio  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_razao_social_to_string  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_numero_inscricao_to_string  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_aceitar_numero_inscricao  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_endereco_vazio  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_setor_lista_vazia  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_nome_fantasia_caracteres_maximo  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_lista_email_menor_minimo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_produto_to_string  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_numero_inscricao_letras  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_endereco_nulo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_aceitar_nome_fantasia  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_funcionario_to_string  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_produto_vazio  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_cnpj_to_string  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_aceitar_lista_endereco  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_nome_natureza_juridica_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_razao_social_caracteres_maximo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_situacao_cdastral_to_string  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_aceitar_data_abertura_valida  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_lista_telefone_vazio  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_cnpj_letras  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_lista_email_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_email_to_string  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_aceitar_cnpj_valido  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_aceitar_setor_valido  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_lista_telefone_nulo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_telefone_to_string  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_aceitar_razao_social  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_data_maior_maximo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_razao_social_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_endereco_to_string  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_nome_fantasia_to_string  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_data_abertura_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_nome_fantasia_caracteres_insuficientes  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_aceitar_situacao_cadastral  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_setor_lista_excedendo_tamanho_maximo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_data_menor_minimo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_numero_inscricao_tamanho_diferente  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_aceitar_lista_telefone  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_lista_telefone_excedendo_maximo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_numero_inscricao_nulo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_verdadeiro_equals_mesmo_objeto  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_setor_to_string  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_aceitar_lista_produtos  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+deve_retornar_data_abertura_to_string  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+
+nao_deve_aceitar_numero_inscricao_vazio  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+

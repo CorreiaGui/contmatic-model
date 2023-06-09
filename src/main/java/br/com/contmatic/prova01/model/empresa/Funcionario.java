@@ -44,11 +44,14 @@ import static br.com.contmatic.prova01.model.util.constant.empresa.FuncionarioCo
 import static br.com.contmatic.prova01.model.util.constant.empresa.FuncionarioConstant.TAMANHO_MAXIMO_NOME;
 import static br.com.contmatic.prova01.model.util.constant.empresa.FuncionarioConstant.TAMANHO_MINIMO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.FuncionarioConstant.TAMANHO_MINIMO_NOME;
-import static java.util.Objects.hash;
+import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
+import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
+import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Set;
+
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import br.com.contmatic.prova01.model.auditoria.Auditoria;
 import br.com.contmatic.prova01.model.email.Email;
@@ -56,9 +59,9 @@ import br.com.contmatic.prova01.model.endereco.Endereco;
 import br.com.contmatic.prova01.model.telefone.Telefone;
 
 public class Funcionario extends Auditoria {
-
+    
 	private String cpf;
-
+    
 	private String nome;
 
 	private LocalDate dataNascimento;
@@ -160,44 +163,16 @@ public class Funcionario extends Auditoria {
 
 	@Override
 	public int hashCode() {
-		return hash(cpf);
+		return reflectionHashCode(this, this.cpf);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		Funcionario other = (Funcionario) obj;
-		return Objects.equals(cpf, other.cpf);
+		return reflectionEquals(this, obj, this.cpf);
 	}
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Funcionario [cpf=");
-		builder.append(cpf);
-		builder.append(", nome=");
-		builder.append(nome);
-		builder.append(", dataNascimento=");
-		builder.append(dataNascimento);
-		builder.append(", enderecos=");
-		builder.append(enderecos);
-		builder.append(", emails=");
-		builder.append(emails);
-		builder.append(", telefones=");
-		builder.append(telefones);
-		builder.append(", setor=");
-		builder.append(setor);
-		builder.append(", toString()=");
-		builder.append(super.toString());
-		builder.append("]");
-		return builder.toString();
+		return ReflectionToStringBuilder.toString(this, DEFAULT_STYLE);
 	}
 }

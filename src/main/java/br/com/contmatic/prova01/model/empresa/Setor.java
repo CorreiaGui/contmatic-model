@@ -17,10 +17,13 @@ import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant
 import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.TAMANHO_MINIMO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.TAMANHO_MINIMO_NOME;
 import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.TAMANHO_NOME;
-import static java.util.Objects.hash;
+import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
+import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 
 import java.util.List;
-import java.util.Objects;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import br.com.contmatic.prova01.model.auditoria.Auditoria;
 
@@ -71,36 +74,16 @@ public class Setor extends Auditoria {
 
 	@Override
 	public int hashCode() {
-		return hash(nome);
+		return reflectionHashCode(this, this.nome);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		Setor other = (Setor) obj;
-		return Objects.equals(nome, other.nome);
+		return EqualsBuilder.reflectionEquals(this, obj, this.nome);
 	}
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Setor [nome=");
-		builder.append(nome);
-		builder.append(", funcionarios=");
-		builder.append(funcionarios);
-		builder.append(", responsável=");
-		builder.append(responsavel);
-		builder.append(", toString()=");
-		builder.append(super.toString());
-		builder.append("]");
-		return builder.toString();
+		return ReflectionToStringBuilder.toString(this, DEFAULT_STYLE);
 	}
 }

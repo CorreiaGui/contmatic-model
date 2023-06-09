@@ -34,21 +34,24 @@ import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoCons
 import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.TAMANHO_MINIMO_COMPLEMENTO;
 import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.TAMANHO_MINIMO_LOGRADOURO;
 import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.TAMANHO_MINIMO_NUMERO;
+import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 
 import java.util.Objects;
+
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import br.com.contmatic.prova01.model.auditoria.Auditoria;
 
 public class Endereco extends Auditoria {
-
+    
 	private String cep;
 
 	private String logradouro;
-
+	
 	private Integer numero;
-
+	
 	private String complemento;
-
+	
 	private Cidade cidade;
 
 	public Endereco(String cep, Integer numero, String complemento) {
@@ -137,20 +140,6 @@ public class Endereco extends Auditoria {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Endereco [cep=");
-		builder.append(cep);
-		builder.append(", logradouro=");
-		builder.append(logradouro);
-		builder.append(", numero=");
-		builder.append(numero);
-		builder.append(", complemento=");
-		builder.append(complemento);
-		builder.append(", cidade=");
-		builder.append(cidade);
-		builder.append(", toString()=");
-		builder.append(super.toString());
-		builder.append("]");
-		return builder.toString();
+		return ReflectionToStringBuilder.toString(this, MULTI_LINE_STYLE);
 	}
 }

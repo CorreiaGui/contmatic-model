@@ -26,7 +26,7 @@ class TelefoneTest {
 
 	@Test
 	void nao_deve_aceitar_ddi_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> telefone.setDdi(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> telefone.setDdi(null));
 		assertTrue(thrown.getMessage().contains("O campo DDI é de preenchimento obrigatório."));
 	}
 
@@ -56,7 +56,7 @@ class TelefoneTest {
 
 	@Test
 	void nao_deve_aceitar_ddd_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> telefone.setDdd(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> telefone.setDdd(null));
 		assertTrue(thrown.getMessage().contains("O campo DDD é de preenchimento obrigatório."));
 	}
 
@@ -85,7 +85,7 @@ class TelefoneTest {
 
 	@Test
 	void nao_deve_aceitar_numero_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> telefone.setNumero(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> telefone.setNumero(null));
 		assertTrue(thrown.getMessage().contains("O campo Numero é de preenchimento obrigatório."));
 	}
 

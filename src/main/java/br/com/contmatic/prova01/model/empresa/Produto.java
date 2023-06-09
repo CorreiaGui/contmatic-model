@@ -32,11 +32,11 @@ import br.com.contmatic.prova01.model.auditoria.Auditoria;
 
 public class Produto extends Auditoria {
 
+    private Integer codigo;
+
 	private String nome;
 
 	private BigDecimal valor;
-
-	private Integer codigo;
 
 	public Produto(String nome, Integer codigo) {
 		this.setNome(nome);

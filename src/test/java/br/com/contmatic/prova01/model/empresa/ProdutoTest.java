@@ -28,7 +28,7 @@ class ProdutoTest {
 
 	@Test
 	void nao_deve_aceitar_nome_produto_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> produto.setNome(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> produto.setNome(null));
 		assertTrue(thrown.getMessage().contains("O campo nome do produto é de preenchimento obrigatório."));
 	}
 
@@ -66,7 +66,7 @@ class ProdutoTest {
 
 	@Test
 	void nao_deve_aceitar_valor_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> produto.setValor(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> produto.setValor(null));
 		assertTrue(thrown.getMessage().contains("O campo valor do produto é de preenchimento obrigatório."));
 	}
 
@@ -93,7 +93,7 @@ class ProdutoTest {
 
 	@Test
 	void nao_deve_aceitar_codigo_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> produto.setCodigo(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> produto.setCodigo(null));
 		assertTrue(thrown.getMessage().contains("O campo código do produto é de preenchimento obrigatório."));
 	}
 

@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.078" tests="76" errors="76" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\guilherme.martins\Documents\PROVA01\target\test-classes;C:\Users\guilherme.martins\Documents\PROVA01\target\classes;C:\Users\guilherme.martins\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.2\junit-jupiter-5.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.2\junit-jupiter-params-5.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\platform\junit-platform-suite-engine\1.8.1\junit-platform-suite-engine-1.8.1.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\platform\junit-platform-suite-api\1.9.2\junit-platform-suite-api-1.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\platform\junit-platform-suite-commons\1.9.2\junit-platform-suite-commons-1.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\platform\junit-platform-launcher\1.9.2\junit-platform-launcher-1.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\hamcrest\hamcrest-all\1.3\hamcrest-all-1.3.jar;C:\Users\guilherme.martins\.m2\repository\org\apache\commons\commons-lang3\3.5\commons-lang3-3.5.jar;C:\Users\guilherme.martins\.m2\repository\com\google\guava\guava\31.0.1-jre\guava-31.0.1-jre.jar;C:\Users\guilherme.martins\.m2\repository\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;C:\Users\guilherme.martins\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\guilherme.martins\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\guilherme.martins\.m2\repository\org\checkerframework\checker-qual\3.12.0\checker-qual-3.12.0.jar;C:\Users\guilherme.martins\.m2\repository\com\google\errorprone\error_prone_annotations\2.7.1\error_prone_annotations-2.7.1.jar;C:\Users\guilherme.martins\.m2\repository\com\google\j2objc\j2objc-annotations\1.3\j2objc-annotations-1.3.jar;C:\Users\guilherme.martins\.m2\repository\org\hibernate\validator\hibernate-validator\8.0.0.Final\hibernate-validator-8.0.0.Final.jar;C:\Users\guilherme.martins\.m2\repository\jakarta\validation\jakarta.validation-api\2.0.2\jakarta.validation-api-2.0.2.jar;C:\Users\guilherme.martins\.m2\repository\org\jboss\logging\jboss-logging\3.4.3.Final\jboss-logging-3.4.3.Final.jar;C:\Users\guilherme.martins\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\guilherme.martins\.m2\repository\br\com\six2six\fixture-factory\3.1.0\fixture-factory-3.1.0.jar;C:\Users\guilherme.martins\.m2\repository\commons-beanutils\commons-beanutils\1.8.3\commons-beanutils-1.8.3.jar;C:\Users\guilherme.martins\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar;C:\Users\guilherme.martins\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\guilherme.martins\.m2\repository\br\com\six2six\bfgex\1.1.1\bfgex-1.1.1.jar;C:\Users\guilherme.martins\.m2\repository\log4j\log4j\1.2.14\log4j-1.2.14.jar;C:\Users\guilherme.martins\.m2\repository\org\apache\commons\commons-math\2.2\commons-math-2.2.jar;C:\Users\guilherme.martins\.m2\repository\com\rubiconproject\oss\jchronic\0.2.6\jchronic-0.2.6.jar;C:\Users\guilherme.martins\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\guilherme.martins\.m2\repository\org\hamcrest\hamcrest-core\2.2\hamcrest-core-2.2.jar;C:\Users\guilherme.martins\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\guilherme.martins\.m2\repository\com\thoughtworks\paranamer\paranamer\2.5\paranamer-2.5.jar;C:\Users\guilherme.martins\.m2\repository\net\vidageek\mirror\1.6.1\mirror-1.6.1.jar;"/>
+    <property name="java.vm.vendor" value="Azul Systems, Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="http://www.azul.com/"/>
+    <property name="user.timezone" value="America/Sao_Paulo"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="BR"/>
+    <property name="sun.boot.library.path" value="C:\jdks\zulu11.62.17-ca-jdk11.0.18-win_x64\zulu11.62.17-ca-jdk11.0.18-win_x64\bin"/>
+    <property name="sun.java.command" value="C:\Users\GUILHE~1.MAR\AppData\Local\Temp\surefire16518231178065988972\surefirebooter9849871739957917002.jar C:\Users\guilherme.martins\AppData\Local\Temp\surefire16518231178065988972 2023-06-07T14-55-47_950-jvmRun1 surefire8724091985830844123tmp surefire_08070139392273342491tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\guilherme.martins\Documents\PROVA01\target\test-classes;C:\Users\guilherme.martins\Documents\PROVA01\target\classes;C:\Users\guilherme.martins\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.2\junit-jupiter-5.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.2\junit-jupiter-params-5.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\platform\junit-platform-suite-engine\1.8.1\junit-platform-suite-engine-1.8.1.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\platform\junit-platform-suite-api\1.9.2\junit-platform-suite-api-1.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\platform\junit-platform-suite-commons\1.9.2\junit-platform-suite-commons-1.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\junit\platform\junit-platform-launcher\1.9.2\junit-platform-launcher-1.9.2.jar;C:\Users\guilherme.martins\.m2\repository\org\hamcrest\hamcrest-all\1.3\hamcrest-all-1.3.jar;C:\Users\guilherme.martins\.m2\repository\org\apache\commons\commons-lang3\3.5\commons-lang3-3.5.jar;C:\Users\guilherme.martins\.m2\repository\com\google\guava\guava\31.0.1-jre\guava-31.0.1-jre.jar;C:\Users\guilherme.martins\.m2\repository\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;C:\Users\guilherme.martins\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\guilherme.martins\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\guilherme.martins\.m2\repository\org\checkerframework\checker-qual\3.12.0\checker-qual-3.12.0.jar;C:\Users\guilherme.martins\.m2\repository\com\google\errorprone\error_prone_annotations\2.7.1\error_prone_annotations-2.7.1.jar;C:\Users\guilherme.martins\.m2\repository\com\google\j2objc\j2objc-annotations\1.3\j2objc-annotations-1.3.jar;C:\Users\guilherme.martins\.m2\repository\org\hibernate\validator\hibernate-validator\8.0.0.Final\hibernate-validator-8.0.0.Final.jar;C:\Users\guilherme.martins\.m2\repository\jakarta\validation\jakarta.validation-api\2.0.2\jakarta.validation-api-2.0.2.jar;C:\Users\guilherme.martins\.m2\repository\org\jboss\logging\jboss-logging\3.4.3.Final\jboss-logging-3.4.3.Final.jar;C:\Users\guilherme.martins\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\guilherme.martins\.m2\repository\br\com\six2six\fixture-factory\3.1.0\fixture-factory-3.1.0.jar;C:\Users\guilherme.martins\.m2\repository\commons-beanutils\commons-beanutils\1.8.3\commons-beanutils-1.8.3.jar;C:\Users\guilherme.martins\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar;C:\Users\guilherme.martins\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\guilherme.martins\.m2\repository\br\com\six2six\bfgex\1.1.1\bfgex-1.1.1.jar;C:\Users\guilherme.martins\.m2\repository\log4j\log4j\1.2.14\log4j-1.2.14.jar;C:\Users\guilherme.martins\.m2\repository\org\apache\commons\commons-math\2.2\commons-math-2.2.jar;C:\Users\guilherme.martins\.m2\repository\com\rubiconproject\oss\jchronic\0.2.6\jchronic-0.2.6.jar;C:\Users\guilherme.martins\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\guilherme.martins\.m2\repository\org\hamcrest\hamcrest-core\2.2\hamcrest-core-2.2.jar;C:\Users\guilherme.martins\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\guilherme.martins\.m2\repository\com\thoughtworks\paranamer\paranamer\2.5\paranamer-2.5.jar;C:\Users\guilherme.martins\.m2\repository\net\vidageek\mirror\1.6.1\mirror-1.6.1.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\guilherme.martins"/>
+    <property name="user.language" value="pt"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2023-01-17"/>
+    <property name="java.home" value="C:\jdks\zulu11.62.17-ca-jdk11.0.18-win_x64\zulu11.62.17-ca-jdk11.0.18-win_x64"/>
+    <property name="file.separator" value="\"/>
+    <property name="style.color" value="always"/>
+    <property name="basedir" value="C:\Users\guilherme.martins\Documents\PROVA01"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="jdk.vendor.version" value="Zulu11.62+17-CA"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\GUILHE~1.MAR\AppData\Local\Temp\surefire16518231178065988972\surefirebooter9849871739957917002.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="11.0.18+10-LTS"/>
+    <property name="user.name" value="guilherme.martins"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Zulu11.62+17-CA"/>
+    <property name="localRepository" value="C:\Users\guilherme.martins\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="http://www.azul.com/support/"/>
+    <property name="java.io.tmpdir" value="C:\Users\GUILHE~1.MAR\AppData\Local\Temp\"/>
+    <property name="java.version" value="11.0.18"/>
+    <property name="user.dir" value="C:\Users\guilherme.martins\Documents\PROVA01"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\jdks\zulu11.62.17-ca-jdk11.0.18-win_x64\zulu11.62.17-ca-jdk11.0.18-win_x64\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/sts-4.17.2.RELEASE//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.6.v20230125-1136/jre/bin/server;C:/Program Files/sts-4.17.2.RELEASE//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.6.v20230125-1136/jre/bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\guilherme.martins\AppData\Local\Microsoft\WindowsApps;C:\Users\guilherme.martins\AppData\Local\GitHubDesktop\bin;C:\Users\guilherme.martins\AppData\Roaming\npm;C:\Users\guilherme.martins\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.2\bin;;C:\Program Files\sts-4.17.2.RELEASE;;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Azul Systems, Inc."/>
+    <property name="java.vm.version" value="11.0.18+10-LTS"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="55.0"/>
+  </properties>
+  <testcase name="nao_deve_aceita_lista_funcionario_excedendo_tamanho_maximo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_setor_lista_menor_minimo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.002">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_lista_funcionario_nulo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_lista_produto_menor_minimo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_cnpj_digito_verificador_invalido" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_endereco_excedendo_tamanho" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_produto_nulo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_nome_fantasia_vazio" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_falso_equals_diferentes_classes" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_situacao_cadastral_nulo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_cnpj_caracteres_insuficientes" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_verdadeiro_equals_mesma_valor" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_lista_email_vazio" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_aceitar_lista_funcionario" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_nome_fantasia_nulo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_setor_nulo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_aceitar_lista_email" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_conter_mesmo_valor_hash_code" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.003">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_lista_funcionario_menor_minimo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.004">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_aceitar_natureza_juridica" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_falso_para_equals_comparado_com_nulo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_cnpj_nulo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_lista_telefone_menor_minimo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_razao_social_caracteres_insuficientes" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_lista_email_excedendo_maximo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_razao_social_vazio" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_natureza_juridica_to_string" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.002">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_lista_produto_excedendo_tamanho_maximo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_lista_funcionario_vazio" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_cnpj_vazio" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_razao_social_to_string" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_numero_inscricao_to_string" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_aceitar_numero_inscricao" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_endereco_vazio" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_setor_lista_vazia" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_nome_fantasia_caracteres_maximo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.002">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_lista_email_menor_minimo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_produto_to_string" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_numero_inscricao_letras" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_endereco_nulo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_aceitar_nome_fantasia" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_funcionario_to_string" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_produto_vazio" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_cnpj_to_string" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_aceitar_lista_endereco" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_nome_natureza_juridica_nulo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_razao_social_caracteres_maximo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_situacao_cdastral_to_string" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_aceitar_data_abertura_valida" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_lista_telefone_vazio" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_cnpj_letras" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_lista_email_nulo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_email_to_string" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_aceitar_cnpj_valido" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_aceitar_setor_valido" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.002">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_lista_telefone_nulo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_telefone_to_string" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_aceitar_razao_social" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_data_maior_maximo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_razao_social_nulo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_endereco_to_string" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_nome_fantasia_to_string" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.002">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_data_abertura_nulo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_nome_fantasia_caracteres_insuficientes" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_aceitar_situacao_cadastral" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_setor_lista_excedendo_tamanho_maximo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_data_menor_minimo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_numero_inscricao_tamanho_diferente" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_aceitar_lista_telefone" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_lista_telefone_excedendo_maximo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_numero_inscricao_nulo" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_verdadeiro_equals_mesmo_objeto" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_setor_to_string" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_aceitar_lista_produtos" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="deve_retornar_data_abertura_to_string" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.001">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+  <testcase name="nao_deve_aceitar_numero_inscricao_vazio" classname="br.com.contmatic.prova01.model.empresa.EmpresaTest" time="0.002">
+    <error message="Unresolved compilation problems: &#10;	The import jakarta cannot be resolved&#10;	NotNull cannot be resolved to a type&#10;" type="java.lang.Error">java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.EmpresaTest.set_up(EmpresaTest.java:40)
+</error>
+  </testcase>
+</testsuite>

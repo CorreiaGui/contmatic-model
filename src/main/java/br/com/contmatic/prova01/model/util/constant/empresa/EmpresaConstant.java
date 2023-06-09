@@ -6,8 +6,6 @@ public final class EmpresaConstant {
 	}
 
 	public static final String REGEX_NUMERO = "[0-9]*";
-	public static final String REGEX_NATUREZA_JURIDICA = "^(MEI|S[/]?[.]?A|LTDA|EIRELI?|EI|SLU)$";
-	public static final String REGEX_SITUACAO_CADASTRAL = "^(ATIVO|INATIVO|REGULAR|CANCELADO|EXTINTO)$";
 	public static final int TAMANHO_NUMERO_INSCRICAO = 9;
 	public static final int TAMANHO_MAXIMO_PRODUTO = 50;
 	public static final int TAMANHO_MAXIMO_FUNCIONARIO = 50;

@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import br.com.contmatic.prova01.model.util.enums.SiglaEstado;
+
 class CidadeTest {
 
 	Cidade cidade;
@@ -18,7 +20,8 @@ class CidadeTest {
 
 	@BeforeEach
 	void set_up() {
-		estado = new Estado("SP");
+		SiglaEstado sigla = SiglaEstado.valueOf("SP");
+		estado = new Estado(sigla);
 		cidade = new Cidade("São Paulo", estado);
 	}
 
@@ -30,7 +33,7 @@ class CidadeTest {
 
 	@Test
 	void nao_deve_aceitar_nome_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> cidade.setNome(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> cidade.setNome(null));
 		assertTrue(thrown.getMessage().contains("O campo nome da cidade é de preenchimento obrigatório."));
 	}
 
@@ -66,7 +69,7 @@ class CidadeTest {
 
 	@Test
 	void nao_deve_aceitar_estado_null() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> cidade.setEstado(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> cidade.setEstado(null));
 		assertTrue(thrown.getMessage().contains("O campo estado é de preenchimento obrigatório"));
 	}
 

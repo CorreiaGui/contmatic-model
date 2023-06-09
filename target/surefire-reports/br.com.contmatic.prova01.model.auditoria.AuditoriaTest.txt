@@ -1,0 +1,196 @@
+-------------------------------------------------------------------------------
+Test set: br.com.contmatic.prova01.model.auditoria.AuditoriaTest
+-------------------------------------------------------------------------------
+Tests run: 25, Failures: 0, Errors: 24, Skipped: 1, Time elapsed: 0.119 s <<< FAILURE! - in br.com.contmatic.prova01.model.auditoria.AuditoriaTest
+test01_deve_aceitar_nome_criador  Time elapsed: 0.045 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test02_nao_deve_aceitar_nome_criador_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test03_nao_deve_aceitar_nome_criador_vazio  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test04_nao_deve_aceitar_nome_criador_numeros  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test05_nao_deve_aceitar_nome_criador_caracteres_insuficientes  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test06_nao_deve_aceitar_nome_criador_caractere_maximo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test07_deve_aceitar_data_criacao  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test08_nao_deve_aceitar_data_criacao_nulo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test09_nao_deve_aceitar_data_criacao_futuro  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test10_nao_deve_aceitar_data_criacao_passado  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test11_deve_aceitar_nome_editor  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test12_nao_deve_aceitar_nome_editor_nulo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test13_nao_deve_aceitar_nome_editor_vazio  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test14_nao_deve_aceitar_nome_editor_numeros  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test15_nao_deve_aceitar_nome_editor_caracteres_insuficientes  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test16_nao_deve_aceitar_nome_editor_caractere_maximo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test17_deve_aceitar_data_edicao  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test18_nao_deve_aceitar_data_edicao_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test19_nao_deve_aceitar_data_edicao_futuro  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test20_nao_deve_aceitar_data_edicao_passado  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test21_deve_retornar_nome_criador_to_string  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test22_deve_retornar_data_criacao_to_string  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test23_deve_retornar_nome_editor_to_string  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+
+test24_deve_retornar_data_edicao_to_string  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.auditoria.AuditoriaTest.set_up(AuditoriaTest.java:39)
+

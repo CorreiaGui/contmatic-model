@@ -1,0 +1,156 @@
+-------------------------------------------------------------------------------
+Test set: br.com.contmatic.prova01.model.empresa.SetorTest
+-------------------------------------------------------------------------------
+Tests run: 19, Failures: 0, Errors: 19, Skipped: 0, Time elapsed: 0.022 s <<< FAILURE! - in br.com.contmatic.prova01.model.empresa.SetorTest
+deve_comparar_hash_code  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+deve_retornar_nome_to_string  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+nao_deve_aceitar_nome_vazio  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+deve_retornar_responsavel_to_string  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+deve_aceitar_nome_valido  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+nao_deve_aceitar_lista_funcionarios_vazio  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+nao_deve_aceitar_nome_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+nao_deve_aceitar_nome_maior_tamanho_maximo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+deve_comparar_equal_classes_diferentes  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+nao_deve_aceitar_nome_menor_tamanho_minimo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+nao_deve_aceitar_lista_funcionarios_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+deve_retornar_funcionario_to_string  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+nao_deve_aceitar_lista_funcionarios_excedendo_tamanho_maximo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+deve_comparar_equals_objetos_diferentes  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+nao_deve_aceitar_funcionario_responsavel_nulo  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+deve_comparar_equal_nulo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+deve_comparar_equals_mesmo_objeto  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+deve_aceitar_funcionario_responsavel_valido  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+
+deve_aceitar_lista_funcionarios  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.empresa.SetorTest.set_up(SetorTest.java:23)
+

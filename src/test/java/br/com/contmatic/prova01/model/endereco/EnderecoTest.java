@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import br.com.contmatic.prova01.model.util.enums.SiglaEstado;
+
 class EnderecoTest {
 
 	Endereco endereco;
@@ -27,7 +29,7 @@ class EnderecoTest {
 
 	@Test
 	void nao_deve_aceitar_cep_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> endereco.setCep(null));
+	    NullPointerException thrown = assertThrows(NullPointerException.class, () -> endereco.setCep(null));
 		assertTrue(thrown.getMessage().contains("O campo CEP é de preenchimento obrigatório."));
 	}
 
@@ -58,7 +60,7 @@ class EnderecoTest {
 
 	@Test
 	void nao_deve_aceitar_logradouro_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+		NullPointerException thrown = assertThrows(NullPointerException.class,
 				() -> endereco.setLogradouro(null));
 		assertTrue(thrown.getMessage().contains("O campo logradouro é de preenchimento obrigatório."));
 	}
@@ -91,8 +93,8 @@ class EnderecoTest {
 	}
 
 	@Test
-	void nao_deve_aceitar_numero_maior_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> endereco.setNumero(null));
+	void nao_deve_aceitar_numero_nulo() {
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> endereco.setNumero(null));
 		assertTrue(thrown.getMessage().contains("O campo Número é de preenchimento obrigatório"));
 	}
 
@@ -117,7 +119,7 @@ class EnderecoTest {
 
 	@Test
 	void nao_deve_aceitar_complemento_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+		NullPointerException thrown = assertThrows(NullPointerException.class,
 				() -> endereco.setComplemento(null));
 		assertTrue(thrown.getMessage().contains("O campo complemento é de preenchimento obrigatório."));
 	}
@@ -145,7 +147,7 @@ class EnderecoTest {
 
 	@Test
 	void deve_aceitar_cidade_valida() {
-		Estado estado = new Estado("SP");
+		Estado estado = new Estado(SiglaEstado.valueOf("SP"));
 		Cidade cidade = new Cidade("São Paulo", estado);
 		endereco.setCidade(cidade);
 		assertEquals(cidade, endereco.getCidade());
@@ -153,7 +155,7 @@ class EnderecoTest {
 
 	@Test
 	void nao_deve_aceitar_cidade_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> endereco.setCidade(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> endereco.setCidade(null));
 		assertTrue(thrown.getMessage().contains("O campo cidade é de preenchimento obrigatório."));
 	}
 
@@ -213,7 +215,7 @@ class EnderecoTest {
 
 	@Test
 	void deve_retornar_cidade_to_string() {
-		Estado estado = new Estado("SP");
+		Estado estado = new Estado(SiglaEstado.valueOf("SP"));
 		Cidade cidade = new Cidade("São Paulo", estado);
 		endereco.setCidade(cidade);
 		assertThat(endereco.toString(), containsString("nome=São Paulo"));

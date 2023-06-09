@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: br.com.contmatic.prova01.model.fixturefactory.FixtureAuditoriaTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.085 s <<< FAILURE! - in br.com.contmatic.prova01.model.fixturefactory.FixtureAuditoriaTest
+nao_deve_aceitar_valores_nuilos  Time elapsed: 0.08 s  <<< ERROR!
+net.vidageek.mirror.exception.ReflectionProviderException: could not invoke constructor public br.com.contmatic.prova01.model.auditoria.Auditoria() on class br.com.contmatic.prova01.model.auditoria.Auditoria
+	at br.com.contmatic.prova01.model.fixturefactory.FixtureAuditoriaTest.nao_deve_aceitar_valores_nuilos(FixtureAuditoriaTest.java:28)
+Caused by: java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.fixturefactory.FixtureAuditoriaTest.nao_deve_aceitar_valores_nuilos(FixtureAuditoriaTest.java:28)
+
+testeFuncionaPeloAmorDeDEUS  Time elapsed: 0.004 s  <<< ERROR!
+net.vidageek.mirror.exception.ReflectionProviderException: could not invoke constructor public br.com.contmatic.prova01.model.auditoria.Auditoria() on class br.com.contmatic.prova01.model.auditoria.Auditoria
+	at br.com.contmatic.prova01.model.fixturefactory.FixtureAuditoriaTest.testeFuncionaPeloAmorDeDEUS(FixtureAuditoriaTest.java:22)
+Caused by: java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.fixturefactory.FixtureAuditoriaTest.testeFuncionaPeloAmorDeDEUS(FixtureAuditoriaTest.java:22)
+

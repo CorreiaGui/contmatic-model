@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import br.com.contmatic.prova01.model.empresa.Empresa;
+import br.com.contmatic.prova01.model.util.enums.TipoEmail;
 
 class EmailTest {
 
@@ -23,40 +24,16 @@ class EmailTest {
 
 	@Test
 	void deve_aceitar_tipo() {
-		email.setTipo("PESSOAL");
-		assertEquals("PESSOAL", email.getTipo());
+		TipoEmail tipo = TipoEmail.PESSOAL;
+		email.setTipo(tipo);
+		assertEquals(TipoEmail.PESSOAL, email.getTipo());
 	}
 
 	@Test
 	void nao_deve_aceitar_tipo_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> email.setTipo(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, ()
+				-> email.setTipo(null));
 		assertTrue(thrown.getMessage().contains("O campo 'tipo do email' é de preenchimento obrigatório."));
-	}
-
-	@Test
-	void nao_deve_aceitar_tipo_com_um_espaco() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> email.setTipo(""));
-		assertTrue(thrown.getMessage().contains("O campo 'tipo do email' é de preenchimento obrigatório."));
-	}
-
-	@Test
-	void nao_deve_aceitar_tipo_diferente_pessoal_profissional() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> email.setTipo("testeee"));
-		assertTrue(thrown.getMessage()
-				.contains("O campo 'tipo do email' diferente de Pessoal ou Profissional é inválido"));
-	}
-
-	@Test
-	void nao_deve_aceitar_tipo_caracteres_insuficientes() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> email.setTipo("Ab"));
-		assertTrue(thrown.getMessage().contains("O campo contém catacteres insuficientes."));
-	}
-
-	@Test
-	void nao_deve_aceitar_tipo_caracteres_maximo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
-				() -> email.setTipo("testetestetestetestetestetestetestetestetestetesteteste"));
-		assertTrue(thrown.getMessage().contains("O campo 'tipo do email' excedeu o limite de caracteres."));
 	}
 
 	@Test
@@ -67,7 +44,7 @@ class EmailTest {
 
 	@Test
 	void nao_deve_aceitar_endereco_email_nulo() {
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> email.setEndereco(null));
+		NullPointerException thrown = assertThrows(NullPointerException.class, () -> email.setEndereco(null));
 		assertTrue(thrown.getMessage().contains("O campo 'endereço de email' é de preenchimento obrigatório."));
 	}
 
@@ -128,7 +105,7 @@ class EmailTest {
 
 	@Test
 	void deve_retornar_tipo_to_string() {
-		email.setTipo("PESSOAL");
+		email.setTipo(TipoEmail.valueOf("PESSOAL"));
 		assertThat(email.toString(), containsString("PESSOAL"));
 	}
 

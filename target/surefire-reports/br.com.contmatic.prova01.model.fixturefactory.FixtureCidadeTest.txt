@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: br.com.contmatic.prova01.model.fixturefactory.FixtureCidadeTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.219 s <<< FAILURE! - in br.com.contmatic.prova01.model.fixturefactory.FixtureCidadeTest
+testeeeee  Time elapsed: 0.219 s  <<< ERROR!
+net.vidageek.mirror.exception.ReflectionProviderException: could not invoke constructor public br.com.contmatic.prova01.model.endereco.Estado(br.com.contmatic.prova01.model.util.enums.SiglaEstado) on class br.com.contmatic.prova01.model.endereco.Estado
+	at br.com.contmatic.prova01.model.fixturefactory.FixtureCidadeTest.testeeeee(FixtureCidadeTest.java:22)
+Caused by: java.lang.Error: 
+Unresolved compilation problems: 
+	The import jakarta cannot be resolved
+	NotNull cannot be resolved to a type
+
+	at br.com.contmatic.prova01.model.fixturefactory.FixtureCidadeTest.testeeeee(FixtureCidadeTest.java:22)
+

@@ -4,6 +4,9 @@ import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarCaracte
 
 public final class CpfUtil {
 
+	private static final int VALOR_PADRAO = 0;
+	private static final int QUANTIDADE_NUMEROS_SEM_DIGITOS = 9;
+	private static final int QUANTIDADE_NUMEROS_CPF = 11;
 	private static final String ERROR_MESSAGE_NUMEROS_IGUAIS_CPF = "Números repetidos no campo CPF é inválidos.";
 	private static final int POSICAO_SEGUNDO_DIGITO = 10;
 	private static final int POSICAO_PRIMEIRO_DIGITO = 9;
@@ -28,9 +31,9 @@ public final class CpfUtil {
 	}
 
 	private static int obterResultado(int soma) {
-		int resultado = 11 - (soma % 11);
-		if (resultado > 9) {
-			return 0;
+		int resultado = QUANTIDADE_NUMEROS_CPF - (soma % QUANTIDADE_NUMEROS_CPF);
+		if (resultado > QUANTIDADE_NUMEROS_SEM_DIGITOS) {
+			return VALOR_PADRAO;
 		}
 		return resultado;
 	}
