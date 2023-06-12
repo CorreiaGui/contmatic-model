@@ -16,7 +16,7 @@ public class EnderecoFixtureTemplate implements TemplateLoader {
                 add("logradouro", "Rua guararema");
                 add("numero", Integer.valueOf(772));
                 add("complemento", "casa");
-                add("cidade", one(Cidade.class, "valid"));
+                add("cidade", one(Cidade.class, "Cidade valida"));
             }
         });
     }

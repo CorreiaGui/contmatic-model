@@ -11,16 +11,18 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.joda.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import br.com.contmatic.prova01.model.email.Email;
 import br.com.contmatic.prova01.model.endereco.Endereco;
 import br.com.contmatic.prova01.model.telefone.Telefone;
+import br.com.six2six.fixturefactory.Fixture;
+import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 
 class FuncionarioTest {
 
@@ -28,7 +30,8 @@ class FuncionarioTest {
 
 	@BeforeEach
 	void set_up() {
-		funcionario = new Funcionario("41659541875");
+	    FixtureFactoryLoader.loadTemplates("br.com.contmatic.prova01.model.fixturetemplate");
+		funcionario = Fixture.from(Funcionario.class).gimme("Funcionario valido");
 	}
 
 	@Test
@@ -112,8 +115,8 @@ class FuncionarioTest {
 
 	@Test
 	void deve_aceitar_data_nascimento_valida() {
-		funcionario.setDataNascimento(LocalDate.of(2000, 3, 1));
-		LocalDate data = LocalDate.of(2000, 3, 1);
+		LocalDate data = new LocalDate(2000, 3, 1);
+		funcionario.setDataNascimento(data);
 		assertEquals(data, funcionario.getDataNascimento());
 	}
 
@@ -126,7 +129,7 @@ class FuncionarioTest {
 
 	@Test
 	void nao_deve_aceitar_data_nascimento_menor_data_minima() {
-		LocalDate data = LocalDate.of(1300, 3, 1);
+		LocalDate data = new LocalDate(1300, 3, 1);
 		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
 				() -> funcionario.setDataNascimento(data));
 		assertTrue(thrown.getMessage().contains("O campo data nascimento está inválida"));
@@ -134,7 +137,7 @@ class FuncionarioTest {
 
 	@Test
 	void nao_deve_aceitar_data_nascimento_maior_data_limite() {
-		LocalDate data1 = LocalDate.of(3200, 3, 1);
+		LocalDate data1 = new LocalDate(3200, 3, 1);
 		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
 				() -> funcionario.setDataNascimento(data1));
 		assertTrue(thrown.getMessage().contains("O campo data nascimento não permite datas futuras"));
@@ -142,7 +145,7 @@ class FuncionarioTest {
 
 	@Test
 	void nao_deve_aceitar_data_nascimento_funcionario_menor_idade() {
-		LocalDate data2 = LocalDate.of(2022, 3, 1);
+		LocalDate data2 = new LocalDate(2022, 3, 1);
 		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
 				() -> funcionario.setDataNascimento(data2));
 		assertTrue(thrown.getMessage()
@@ -321,7 +324,7 @@ class FuncionarioTest {
 
 	@Test
 	void deve_retornar_data_nascimento_to_string() {
-		funcionario.setDataNascimento(LocalDate.of(2002, 04, 21));
+		funcionario.setDataNascimento(new LocalDate(2002, 04, 21));
 		assertThat(funcionario.toString(), containsString("2002-04-21"));
 	}
 

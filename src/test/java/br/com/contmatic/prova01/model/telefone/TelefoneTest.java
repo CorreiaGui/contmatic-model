@@ -1,5 +1,7 @@
 package br.com.contmatic.prova01.model.telefone;
 
+import static br.com.six2six.fixturefactory.Fixture.from;
+import static br.com.six2six.fixturefactory.loader.FixtureFactoryLoader.loadTemplates;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,7 +18,8 @@ class TelefoneTest {
 
 	@BeforeEach
 	void set_up() {
-		telefone = new Telefone("55", "11", "948623933");
+	    loadTemplates("br.com.contmatic.prova01.model.fixturetemplate");
+		telefone = from(Telefone.class).gimme("Telefone valido");
 	}
 
 	@Test
@@ -117,12 +120,14 @@ class TelefoneTest {
 
 	@Test
 	void deve_retornar_mesmo_hash_code() {
-		assertEquals(telefone.hashCode(), telefone.hashCode());
+	    Telefone tel2 = from(Telefone.class).gimme("Telefone valido");
+		assertEquals(telefone.hashCode(), tel2.hashCode());
 	}
 
 	@Test
 	void deve_retornar_verdadeiro_equals_mesmo_objeto() {
-		assertEquals(telefone, telefone);
+	    Telefone tel2 = from(Telefone.class).gimme("Telefone valido");
+        assertEquals(telefone.hashCode(), tel2.hashCode());
 	}
 
 	@Test
@@ -149,16 +154,16 @@ class TelefoneTest {
 
 	@Test
 	void deve_retornar_ddi_to_string() {
-		assertThat(telefone.toString(), containsString("ddi=55"));
+		assertThat(telefone.toString(), containsString("55"));
 	}
 
 	@Test
 	void deve_retornar_ddd_to_string() {
-		assertThat(telefone.toString(), containsString("ddd=11"));
+		assertThat(telefone.toString(), containsString("11"));
 	}
 
 	@Test
 	void deve_retornar_telefone_to_string() {
-		assertThat(telefone.toString(), containsString("numero=948623933"));
+		assertThat(telefone.toString(), containsString("948623933"));
 	}
 }

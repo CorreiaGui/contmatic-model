@@ -46,12 +46,12 @@ import static br.com.contmatic.prova01.model.util.constant.empresa.FuncionarioCo
 import static br.com.contmatic.prova01.model.util.constant.empresa.FuncionarioConstant.TAMANHO_MINIMO_NOME;
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
-import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
+import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
-import java.time.LocalDate;
 import java.util.Set;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.joda.time.LocalDate;
 
 import br.com.contmatic.prova01.model.auditoria.Auditoria;
 import br.com.contmatic.prova01.model.email.Email;
@@ -59,120 +59,120 @@ import br.com.contmatic.prova01.model.endereco.Endereco;
 import br.com.contmatic.prova01.model.telefone.Telefone;
 
 public class Funcionario extends Auditoria {
-    
-	private String cpf;
-    
-	private String nome;
 
-	private LocalDate dataNascimento;
+    private String cpf;
 
-	private Set<Endereco> enderecos;
+    private String nome;
 
-	private Set<Email> emails;
+    private LocalDate dataNascimento;
 
-	private Set<Telefone> telefones;
+    private Set<Endereco> enderecos;
 
-	private Setor setor;
+    private Set<Email> emails;
 
-	public Funcionario(String cpf) {
-		this.setCpf(cpf);
-	}
+    private Set<Telefone> telefones;
 
-	public String getCpf() {
-		return this.cpf;
-	}
+    private Setor setor;
 
-	public void setCpf(String cpf) {
-		verificarValorNulo(cpf, MENSAGEM_ERRO_CPF_NULL);
-		verificarVazio(cpf, MENSAGEM_ERRO_CPF_VAZIO);
-		verificarRegex(cpf, REGEX_NUMEROS, MENSAGEM_ERRO_CPF_REGEX);
-		verificarTamanho(cpf, TAMAMNHO_CPF, MENSAGEM_ERRO_CPF_TAMANHO);
-		isCpf(cpf);
-		this.cpf = cpf;
-	}
+    public Funcionario(String cpf) {
+        this.setCpf(cpf);
+    }
 
-	public String getNome() {
-		return this.nome;
-	}
+    public String getCpf() {
+        return this.cpf;
+    }
 
-	public void setNome(String nome) {
-		verificarValorNulo(nome, MENSAGEM_ERRO_NOME_NULL);
-		verificarVazio(nome, MENSAGEM_ERRO_NOME_VAZIO);
-		verificarTamanhoMinimo(nome, TAMANHO_MINIMO_NOME, MENSAGEM_ERRO_TAMANHO_MINIMO_NOME);
-		verificarTamanhoMaximo(nome, TAMANHO_MAXIMO_NOME, MENSAGEM_ERRO_NOME_TAMANHO);
-		verificarRegex(nome, REGEX_NOME, MENSAGEM_ERRO_NOME_REGEX);
-		this.nome = nome;
-	}
+    public void setCpf(String cpf) {
+        verificarValorNulo(cpf, MENSAGEM_ERRO_CPF_NULL);
+        verificarVazio(cpf, MENSAGEM_ERRO_CPF_VAZIO);
+        verificarRegex(cpf, REGEX_NUMEROS, MENSAGEM_ERRO_CPF_REGEX);
+        verificarTamanho(cpf, TAMAMNHO_CPF, MENSAGEM_ERRO_CPF_TAMANHO);
+        isCpf(cpf);
+        this.cpf = cpf;
+    }
 
-	public LocalDate getDataNascimento() {
-		return this.dataNascimento;
-	}
+    public String getNome() {
+        return this.nome;
+    }
 
-	public void setDataNascimento(LocalDate dataNascimento) {
-		verificarValorNulo(dataNascimento, MENSAGEM_ERRO_DATA_NULL);
-		verificarDataMinima(dataNascimento, MENSAGEM_ERRO_DATA_MINIMA);
-		verificarDataLimite(dataNascimento, MENSAGEM_ERRO_DATA_LIMITE);
-		verificarMaiorIdade(dataNascimento, MENSAGEM_ERRO_DATA_NASCIMENTO);
-		this.dataNascimento = dataNascimento;
-	}
+    public void setNome(String nome) {
+        verificarValorNulo(nome, MENSAGEM_ERRO_NOME_NULL);
+        verificarVazio(nome, MENSAGEM_ERRO_NOME_VAZIO);
+        verificarTamanhoMinimo(nome, TAMANHO_MINIMO_NOME, MENSAGEM_ERRO_TAMANHO_MINIMO_NOME);
+        verificarTamanhoMaximo(nome, TAMANHO_MAXIMO_NOME, MENSAGEM_ERRO_NOME_TAMANHO);
+        verificarRegex(nome, REGEX_NOME, MENSAGEM_ERRO_NOME_REGEX);
+        this.nome = nome;
+    }
 
-	public Set<Endereco> getEndereco() {
-		return this.enderecos;
-	}
+    public LocalDate getDataNascimento() {
+        return this.dataNascimento;
+    }
 
-	public void setEndereco(Set<Endereco> enderecos) {
-		verificarValorNulo(enderecos, MENSAGEM_ERRO_ENDERECO_NULL);
-		verificarVazio(enderecos, MENSAGEM_ERRO_ENDERECO_VAZIO);
-		verificarTamanhoMinimo(enderecos, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_ENDERECO);
-		verificarTamanhoMaximo(enderecos, TAMANHO_LISTA_ENDERECO, MENSAGEM_ERRO_ENDERECO_TAMANHO);
-		this.enderecos = enderecos;
-	}
+    public void setDataNascimento(LocalDate dataNascimento) {
+        verificarValorNulo(dataNascimento, MENSAGEM_ERRO_DATA_NULL);
+        verificarDataMinima(dataNascimento, MENSAGEM_ERRO_DATA_MINIMA);
+        verificarDataLimite(dataNascimento, MENSAGEM_ERRO_DATA_LIMITE);
+        verificarMaiorIdade(dataNascimento, MENSAGEM_ERRO_DATA_NASCIMENTO);
+        this.dataNascimento = dataNascimento;
+    }
 
-	public Set<Email> getEmail() {
-		return this.emails;
-	}
+    public Set<Endereco> getEndereco() {
+        return this.enderecos;
+    }
 
-	public void setEmail(Set<Email> emails) {
-		verificarValorNulo(emails, MENSAGEM_ERRO_EMAIL_NULL);
-		verificarVazio(emails, MENSAGEM_ERRO_EMAIL_VAZIO);
-		verificarTamanhoMinimo(emails, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_TELEFONE);
-		verificarTamanhoMaximo(emails, TAMANHO_LISTA_EMAIL, MENSAGEM_ERRO_EMAIL_TAMANHO);
-		this.emails = emails;
-	}
+    public void setEndereco(Set<Endereco> enderecos) {
+        verificarValorNulo(enderecos, MENSAGEM_ERRO_ENDERECO_NULL);
+        verificarVazio(enderecos, MENSAGEM_ERRO_ENDERECO_VAZIO);
+        verificarTamanhoMinimo(enderecos, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_ENDERECO);
+        verificarTamanhoMaximo(enderecos, TAMANHO_LISTA_ENDERECO, MENSAGEM_ERRO_ENDERECO_TAMANHO);
+        this.enderecos = enderecos;
+    }
 
-	public Set<Telefone> getTelefone() {
-		return this.telefones;
-	}
+    public Set<Email> getEmail() {
+        return this.emails;
+    }
 
-	public void setTelefone(Set<Telefone> telefones) {
-		verificarValorNulo(telefones, MENSAGEM_ERRO_TELEFONE_NULL);
-		verificarVazio(telefones, MENSAGEM_ERRO_TELEFONE_VAZIO);
-		verificarTamanhoMinimo(telefones, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_TELEFONE);
-		verificarTamanhoMaximo(telefones, TAMANHO_LISTA_TELEFONE, MENSAGEM_ERRO_TELEFONE_TAMANHO);
-		this.telefones = telefones;
-	}
+    public void setEmail(Set<Email> emails) {
+        verificarValorNulo(emails, MENSAGEM_ERRO_EMAIL_NULL);
+        verificarVazio(emails, MENSAGEM_ERRO_EMAIL_VAZIO);
+        verificarTamanhoMinimo(emails, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_TELEFONE);
+        verificarTamanhoMaximo(emails, TAMANHO_LISTA_EMAIL, MENSAGEM_ERRO_EMAIL_TAMANHO);
+        this.emails = emails;
+    }
 
-	public Setor getSetor() {
-		return this.setor;
-	}
+    public Set<Telefone> getTelefone() {
+        return this.telefones;
+    }
 
-	public void setSetor(Setor setor) {
-		verificarValorNulo(setor, MENSAGEM_ERRO_SETOR_NULL);
-		this.setor = setor;
-	}
+    public void setTelefone(Set<Telefone> telefones) {
+        verificarValorNulo(telefones, MENSAGEM_ERRO_TELEFONE_NULL);
+        verificarVazio(telefones, MENSAGEM_ERRO_TELEFONE_VAZIO);
+        verificarTamanhoMinimo(telefones, TAMANHO_MINIMO, MENSAGEM_ERRO_TAMANHO_MINIMO_TELEFONE);
+        verificarTamanhoMaximo(telefones, TAMANHO_LISTA_TELEFONE, MENSAGEM_ERRO_TELEFONE_TAMANHO);
+        this.telefones = telefones;
+    }
 
-	@Override
-	public int hashCode() {
-		return reflectionHashCode(this, this.cpf);
-	}
+    public Setor getSetor() {
+        return this.setor;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		return reflectionEquals(this, obj, this.cpf);
-	}
+    public void setSetor(Setor setor) {
+        verificarValorNulo(setor, MENSAGEM_ERRO_SETOR_NULL);
+        this.setor = setor;
+    }
 
-	@Override
-	public String toString() {
-		return ReflectionToStringBuilder.toString(this, DEFAULT_STYLE);
-	}
+    @Override
+    public int hashCode() {
+        return reflectionHashCode(this, "nome", "dataNascimento", "enderecos", "emails", "telefones", "setor");
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return reflectionEquals(this, obj, "nome", "dataNascimento", "enderecos", "emails", "telefones", "setor");
+    }
+
+    @Override
+    public String toString() {
+        return reflectionToString(this, JSON_STYLE);
+    }
 }

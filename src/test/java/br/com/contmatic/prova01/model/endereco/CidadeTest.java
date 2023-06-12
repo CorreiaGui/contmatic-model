@@ -1,5 +1,7 @@
 package br.com.contmatic.prova01.model.endereco;
 
+import static br.com.six2six.fixturefactory.Fixture.from;
+import static br.com.six2six.fixturefactory.loader.FixtureFactoryLoader.loadTemplates;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,8 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import br.com.contmatic.prova01.model.util.enums.SiglaEstado;
-
 class CidadeTest {
 
 	Cidade cidade;
@@ -20,9 +20,9 @@ class CidadeTest {
 
 	@BeforeEach
 	void set_up() {
-		SiglaEstado sigla = SiglaEstado.valueOf("SP");
-		estado = new Estado(sigla);
-		cidade = new Cidade("São Paulo", estado);
+	    loadTemplates("br.com.contmatic.prova01.model.fixturetemplate");
+	    estado = from(Estado.class).gimme("Estado valido");
+	    cidade = from(Cidade.class).gimme("Cidade valida");
 	}
 
 	@Test
@@ -108,11 +108,11 @@ class CidadeTest {
 
 	@Test
 	void deve_retornar_nome_to_string() {
-		assertThat(cidade.toString(), containsString("nome=São Paulo"));
+		assertThat(cidade.toString(), containsString("São Paulo"));
 	}
 
 	@Test
 	void deve_retornar_estado_to_string() {
-		assertThat(cidade.toString(), containsString("sigla=SP"));
+		assertThat(cidade.toString(), containsString("SP"));
 	}
 }

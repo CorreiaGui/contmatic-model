@@ -1,5 +1,6 @@
 package br.com.contmatic.prova01.model.email;
 
+import static br.com.contmatic.prova01.model.util.enums.TipoEmail.PESSOAL;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,6 +13,8 @@ import org.junit.jupiter.api.Test;
 
 import br.com.contmatic.prova01.model.empresa.Empresa;
 import br.com.contmatic.prova01.model.util.enums.TipoEmail;
+import br.com.six2six.fixturefactory.Fixture;
+import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 
 class EmailTest {
 
@@ -19,14 +22,13 @@ class EmailTest {
 
 	@BeforeEach
 	void setUp() {
-		email = new Email("gc.correia21@gmail.com");
+	    FixtureFactoryLoader.loadTemplates("br.com.contmatic.prova01.model.fixturetemplate");
+		email = Fixture.from(Email.class).gimme("Email valido");
 	}
 
 	@Test
 	void deve_aceitar_tipo() {
-		TipoEmail tipo = TipoEmail.PESSOAL;
-		email.setTipo(tipo);
-		assertEquals(TipoEmail.PESSOAL, email.getTipo());
+		assertEquals(PESSOAL, email.getTipo());
 	}
 
 	@Test
@@ -38,8 +40,7 @@ class EmailTest {
 
 	@Test
 	void deve_aceitar_endereco_email() {
-		email.setEndereco("email.teste213_!@dominio.com");
-		assertEquals("email.teste213_!@dominio.com", email.getEndereco());
+		assertEquals("guilherme@email.com", email.getEndereco());
 	}
 
 	@Test
@@ -111,7 +112,6 @@ class EmailTest {
 
 	@Test
 	void deve_retornar_endereco_to_string() {
-		email.setEndereco("guilherme@email.com");
 		assertThat(email.toString(), containsString("guilherme@email.com"));
 	}
 }

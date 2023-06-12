@@ -105,12 +105,12 @@ class EstadoTest {
 
 	@Test
 	void deve_retornar_sigla_to_string() {
-		assertThat(estado.toString(), containsString("Estado [sigla=SP"));
+		assertThat(estado.toString(), containsString("SP"));
 	}
 
 	@Test
 	void deve_retornar_nome_to_string() {
 		estado.setNome("São Paulo");
-		assertThat(estado.toString(), containsString("nome=São Paulo"));
+		assertThat(estado.toString(), containsString("São Paulo"));
 	}
 }

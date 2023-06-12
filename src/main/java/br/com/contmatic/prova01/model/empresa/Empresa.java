@@ -63,13 +63,13 @@ import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConsta
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_NUMERO_INSCRICAO;
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
-import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
+import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.joda.time.LocalDate;
 
 import br.com.contmatic.prova01.model.auditoria.Auditoria;
 import br.com.contmatic.prova01.model.email.Email;
@@ -79,9 +79,9 @@ import br.com.contmatic.prova01.model.util.enums.NaturezaJuridica;
 import br.com.contmatic.prova01.model.util.enums.SituacaoCadastral;
 
 public class Empresa extends Auditoria {
-    
+
     private String cnpj;
-    
+
     private String numeroInscricao;
 
     private String razaoSocial;
@@ -93,7 +93,7 @@ public class Empresa extends Auditoria {
     private SituacaoCadastral situacaoCadastral;
 
     private LocalDate dataAbertura;
-    
+
     private Set<Endereco> enderecos;
 
     private List<Funcionario> funcionarios;
@@ -262,16 +262,18 @@ public class Empresa extends Auditoria {
 
     @Override
     public int hashCode() {
-        return reflectionHashCode(this, this.cnpj);
+        return reflectionHashCode(this, "numeroInscricao", "razaoSocial", "nomeFantasia", "naturezaJuridica", "situacaoCadastral", "dataAbertura", "enderecos", "funcionarios", "produtos", "emails",
+            "telefones", "setores");
     }
 
     @Override
     public boolean equals(Object obj) {
-        return reflectionEquals(this, obj, this.cnpj);
+        return reflectionEquals(this, obj, "numeroInscricao", "razaoSocial", "nomeFantasia", "naturezaJuridica", "situacaoCadastral", "dataAbertura", "enderecos", "funcionarios", "produtos", "emails",
+            "telefones", "setores");
     }
 
     @Override
     public String toString() {
-        return ReflectionToStringBuilder.toString(this, DEFAULT_STYLE);
+        return reflectionToString(this, JSON_STYLE);
     }
 }

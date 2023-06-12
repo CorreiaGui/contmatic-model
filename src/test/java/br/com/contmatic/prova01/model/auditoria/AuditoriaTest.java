@@ -1,5 +1,9 @@
 package br.com.contmatic.prova01.model.auditoria;
 
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_NOME_CRIADOR_REGEX;
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_NOME_CRIADOR_VAZIO;
+import static br.com.six2six.fixturefactory.Fixture.from;
+import static br.com.six2six.fixturefactory.loader.FixtureFactoryLoader.loadTemplates;
 import static java.time.ZonedDateTime.now;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -11,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Set;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -22,10 +27,21 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.Timeout;
 
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
+
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class AuditoriaTest {
 
     private Auditoria auditoria;
+
+    private Auditoria auditoriaNull;
+
+    private ValidatorFactory factory;
+
+    private Validator validator;
 
     static int numero;
 
@@ -36,7 +52,11 @@ class AuditoriaTest {
 
     @BeforeEach
     void set_up() {
-        auditoria = new Auditoria();
+        loadTemplates("br.com.contmatic.prova01.model.fixturetemplate");
+        auditoria = from(Auditoria.class).gimme("valid");
+        auditoriaNull = from(Auditoria.class).gimme("Auditoria null");
+        factory = Validation.buildDefaultValidatorFactory();
+        validator = factory.getValidator();
         numero++;
     }
 
@@ -53,27 +73,31 @@ class AuditoriaTest {
     @Test
     @Timeout(1)
     void test01_deve_aceitar_nome_criador() {
-        auditoria.setNomeCriador("Guilherme");
-        assertEquals("Guilherme", auditoria.getNomeCriador());
+        assertEquals("Gui", auditoria.getNomeCriador());
     }
 
     @Test
     void test02_nao_deve_aceitar_nome_criador_nulo() {
-        NullPointerException erro = assertThrows(NullPointerException.class, () -> auditoria.setNomeCriador(null));
-        //assertTrue(erro.getMessage().contains("O campo 'nome do criador' é de preenchimento obrigatório."));
-        System.out.println(erro.getMessage());
+        Set<ConstraintViolation<Auditoria>> violations = validator.validate(auditoriaNull);
+        String errorMessage = violations.iterator().next().getMessage();
+        assertThrows(NullPointerException.class, () -> auditoria.setNomeCriador(null));
+        assertEquals("O campo 'nome do criador' é de preenchimento obrigatório.", errorMessage);
     }
 
     @Test
     void test03_nao_deve_aceitar_nome_criador_vazio() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> auditoria.setNomeCriador(""));
-        assertTrue(thrown.getMessage().contains("O campo 'nome do criador' é de preenchimento obrigatório."));
+        Auditoria auditoriaVazio = from(Auditoria.class).gimme("Auditoria vazio");
+        Set<ConstraintViolation<Auditoria>> violations = validator.validate(auditoriaVazio);
+        String errorMessage = violations.iterator().next().getMessage();
+        assertEquals(MENSAGEM_ERRO_NOME_CRIADOR_VAZIO, errorMessage);
     }
 
     @Test
     void test04_nao_deve_aceitar_nome_criador_numeros() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> auditoria.setNomeCriador("Guilherme123!@"));
-        assertTrue(thrown.getMessage().contains("Números e caracteres especiais no campo 'nome do criador' é inválido"));
+        Auditoria auditoriaNumeros = from(Auditoria.class).gimme("Auditoria invalida");
+        Set<ConstraintViolation<Auditoria>> violations = validator.validate(auditoriaNumeros);
+        String errorMessage = violations.iterator().next().getMessage();
+        assertEquals(MENSAGEM_ERRO_NOME_CRIADOR_REGEX, errorMessage);
     }
 
     @Test
@@ -121,8 +145,7 @@ class AuditoriaTest {
 
     @Test
     void test11_deve_aceitar_nome_editor() {
-        auditoria.setNomeEditor("Guilherme Correia Martins");
-        assertEquals("Guilherme Correia Martins", auditoria.getNomeEditor());
+        assertEquals("Gui", auditoria.getNomeEditor());
     }
 
     @Test
@@ -188,10 +211,7 @@ class AuditoriaTest {
 
     @Test
     void test21_deve_retornar_nome_criador_to_string() {
-        String nomeCriador = "Gui";
-        auditoria.setNomeCriador(nomeCriador);
-        String resultado = auditoria.toString();
-        assertThat(resultado, containsString(nomeCriador));
+        assertThat(auditoria.toString(), containsString("Gui"));
     }
 
     @Test
@@ -204,10 +224,7 @@ class AuditoriaTest {
 
     @Test
     void test23_deve_retornar_nome_editor_to_string() {
-        String nomeEditor = "Gui";
-        auditoria.setNomeEditor(nomeEditor);
-        String resultado = auditoria.toString();
-        assertThat(resultado, containsString(nomeEditor));
+        assertThat(auditoria.toString(), containsString("Gui"));
     }
 
     @Test

@@ -28,8 +28,10 @@ import static br.com.contmatic.prova01.model.util.constant.telefone.TelefoneCons
 import static br.com.contmatic.prova01.model.util.constant.telefone.TelefoneConstant.TAMANHO_MINIMO;
 import static br.com.contmatic.prova01.model.util.constant.telefone.TelefoneConstant.TAMANHO_MINIMO_NUMERO;
 import static br.com.contmatic.prova01.model.util.constant.telefone.TelefoneConstant.TAMANHO_NUMERO;
-
-import java.util.Objects;
+import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
+import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
+import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
 import br.com.contmatic.prova01.model.auditoria.Auditoria;
 
@@ -85,36 +87,18 @@ public class Telefone extends Auditoria {
 		this.numero = numero;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(ddd, ddi, numero);
-	}
+    @Override
+    public boolean equals(Object obj) {
+        return reflectionEquals(this, obj);
+    }
+    
+    @Override
+    public int hashCode() {
+        return reflectionHashCode(this);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		Telefone other = (Telefone) obj;
-		return Objects.equals(ddd, other.ddd) && Objects.equals(ddi, other.ddi) && Objects.equals(numero, other.numero);
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Telefone [ddi=");
-		builder.append(ddi);
-		builder.append(", ddd=");
-		builder.append(ddd);
-		builder.append(", numero=");
-		builder.append(numero);
-		builder.append("]");
-		return builder.toString();
-	}
+    @Override
+    public String toString() {
+        return reflectionToString(this, JSON_STYLE);
+    }
 }

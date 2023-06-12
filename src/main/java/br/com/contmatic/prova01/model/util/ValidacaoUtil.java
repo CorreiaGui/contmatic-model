@@ -2,17 +2,22 @@ package br.com.contmatic.prova01.model.util;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
-import static java.time.Period.between;
 import static java.time.ZonedDateTime.now;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Set;
 
+import org.joda.time.LocalDate;
+import org.joda.time.Years;
+
 /**
  * The Class ValidacaoUtil.
+ */
+/**
+ * @author guilherme.martins
+ *
  */
 public final class ValidacaoUtil {
 
@@ -24,16 +29,16 @@ public final class ValidacaoUtil {
 
     /** The Constant MARGEM_ERRO_DATA. */
     private static final long MARGEM_ERRO_DATA = 1L;
-    
+
     /** The Constant IDADE_MINIMA. */
     private static final int IDADE_MINIMA = 18;
-    
+
     /** The Constant DATA_MINIMA. */
-    private static final LocalDate DATA_MINIMA = LocalDate.of(1600, 1, 1);
-    
+    private static final LocalDate DATA_MINIMA = new LocalDate(1600, 1, 1);
+
     /** The Constant DATA_LIMITE. */
     private static final LocalDate DATA_LIMITE = LocalDate.now();
-
+    
     /**
      * Verificar valor minimo.
      *
@@ -66,7 +71,7 @@ public final class ValidacaoUtil {
     public static void verificarValorMinimo(Integer valor, Integer valorMinimo, String errorMessage) {
         checkArgument(valor >= valorMinimo, errorMessage);
     }
- 
+
     /**
      * Verificar valor maximo.
      *
@@ -75,9 +80,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarValorMaximo(Integer valor, Integer valorMaximo, String errorMessage) {
-        /*
-         * if (valor > valorMaximo) { throw new IllegalArgumentException(errorMessage); }
-         */
         checkArgument(valor <= valorMaximo, errorMessage);
     }
 
@@ -88,9 +90,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarValorNulo(Object object, String errorMessage) {
-        /*
-         * if(object == null) { throw new NullPointerException(errorMessage); }
-         */
         checkNotNull(object, errorMessage);
     }
 
@@ -102,11 +101,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarTamanho(String parametro, int tamanho, String errorMessage) {
-
-        if (parametro.length() != tamanho) {
-            throw new IllegalArgumentException(errorMessage);
-        }
-
         checkArgument(parametro.length() == tamanho, errorMessage);
     }
 
@@ -118,9 +112,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarTamanhoMaximo(String parametro, int tamanho, String errorMessage) {
-        /*
-         * if (parametro.length() > tamanho) { throw new IllegalArgumentException(errorMessage); }
-         */
         checkArgument(parametro.length() <= tamanho, errorMessage);
     }
 
@@ -145,9 +136,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarVazio(String string, String errorMessage) {
-        /*
-         * if (string.trim().isEmpty()) { throw new IllegalArgumentException(errorMessage); }
-         */
         checkArgument(!string.trim().isEmpty(), errorMessage);
     }
 
@@ -159,9 +147,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarTamanhoMaximo(Set<?> collection, int tamanho, String errorMessage) {
-        /*
-         * if (collection.size() > tamanho) { throw new IllegalArgumentException(errorMessage); }
-         */
         checkArgument(collection.size() <= tamanho, errorMessage);
     }
 
@@ -173,9 +158,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarTamanhoMaximo(List<?> collection, int tamanho, String errorMessage) {
-        /*
-         * if (collection.size() > tamanho) { throw new IllegalArgumentException(errorMessage); }
-         */
         checkArgument(collection.size() <= tamanho, errorMessage);
     }
 
@@ -187,9 +169,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarTamanhoMinimo(Set<?> collection, int tamanho, String errorMessage) {
-        /*
-         * if (collection.size() < tamanho) { throw new IllegalArgumentException(errorMessage); }
-         */
         checkArgument(collection.size() >= tamanho, errorMessage);
     }
 
@@ -201,9 +180,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarTamanhoMinimo(List<?> collection, int tamanho, String errorMessage) {
-        /*
-         * if (collection.size() < tamanho) { throw new IllegalArgumentException(errorMessage); }
-         */
         checkArgument(collection.size() >= tamanho, errorMessage);
     }
 
@@ -214,9 +190,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarVazio(Set<?> collection, String errorMessage) {
-        /*
-         * if (collection.isEmpty()) { throw new IllegalArgumentException(errorMessage); }
-         */
         checkArgument(!collection.isEmpty(), errorMessage);
     }
 
@@ -227,9 +200,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarVazio(List<?> collection, String errorMessage) {
-        /*
-         * if (collection.isEmpty()) { throw new IllegalArgumentException(errorMessage); }
-         */
         checkArgument(!collection.isEmpty(), errorMessage);
     }
 
@@ -240,9 +210,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarDataMinima(LocalDate data, String errorMessage) {
-        /*
-         * if (data.isBefore(DATA_MINIMA)) { throw new IllegalArgumentException(errorMessage); }
-         */
         checkArgument(!data.isBefore(DATA_MINIMA), errorMessage);
     }
 
@@ -253,9 +220,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarDataLimite(LocalDate data, String errorMessage) {
-        /*
-         * if (data.isAfter(DATA_LIMITE)) { throw new IllegalArgumentException(errorMessage); }
-         */
         checkArgument(!data.isAfter(DATA_LIMITE), errorMessage);
     }
 
@@ -266,10 +230,8 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarMaiorIdade(LocalDate dataNascimento, String errorMessage) {
-        /*
-         * if (between(dataNascimento, DATA_LIMITE).getYears() < IDADE_MINIMA) { throw new IllegalArgumentException(errorMessage); }
-         */
-        checkArgument(between(dataNascimento, DATA_LIMITE).getYears() > IDADE_MINIMA, errorMessage);
+        Years idade = Years.yearsBetween(dataNascimento, DATA_LIMITE);
+        checkArgument(idade.getYears() >= IDADE_MINIMA, errorMessage);
     }
 
     /**
@@ -279,9 +241,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarDataMinima(ZonedDateTime data, String errorMessage) {
-        /*
-         * if (data.isBefore(now().minusMinutes(MARGEM_ERRO_DATA))) { throw new IllegalArgumentException(errorMessage); }
-         */
         checkArgument(!data.isBefore(now().minusMinutes(MARGEM_ERRO_DATA)), errorMessage);
     }
 
@@ -292,9 +251,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarDataMaxima(ZonedDateTime data, String errorMessage) {
-        /*
-         * if (data.isAfter(now().plusMinutes(MARGEM_ERRO_DATA))) { throw new IllegalArgumentException(errorMessage); }
-         */
         checkArgument(!data.isAfter(now().plusMinutes(MARGEM_ERRO_DATA)), errorMessage);
     }
 
@@ -306,9 +262,6 @@ public final class ValidacaoUtil {
      * @param errorMessage the error message
      */
     public static void verificarRegex(String parametro, String regex, String errorMessage) {
-        /*
-         * if (!parametro.matches(regex)) { throw new IllegalArgumentException(errorMessage); }
-         */
         checkArgument(parametro.matches(regex), errorMessage);
     }
 

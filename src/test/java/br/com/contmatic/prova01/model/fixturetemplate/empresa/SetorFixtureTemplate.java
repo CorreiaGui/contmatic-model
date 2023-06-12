@@ -17,5 +17,12 @@ public class SetorFixtureTemplate implements TemplateLoader {
                 add("responsavel", one(Funcionario.class, "Funcionario valido"));
             }
         });
+        Fixture.of(Setor.class).addTemplate("Setor sem funcionario", new Rule() {
+            {
+                add("nome", "adm");
+                add("funcionarios", null);
+                add("responsavel", null);
+            }
+        });
     }
 }

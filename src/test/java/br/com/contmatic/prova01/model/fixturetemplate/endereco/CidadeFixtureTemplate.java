@@ -10,10 +10,10 @@ public class CidadeFixtureTemplate implements TemplateLoader {
 
     @Override
     public void load() {
-        Fixture.of(Cidade.class).addTemplate("valid", new Rule() {
+        Fixture.of(Cidade.class).addTemplate("Cidade valida", new Rule() {
             {
                 add("nome", "São Paulo");
-                add("estado", one(Estado.class, "valid"));
+                add("estado", one(Estado.class, "Estado valido"));
             }
         });
     }

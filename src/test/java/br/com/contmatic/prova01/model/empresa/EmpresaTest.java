@@ -14,13 +14,13 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.IntStream;
 
+import org.joda.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -30,6 +30,8 @@ import br.com.contmatic.prova01.model.telefone.Telefone;
 import br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant;
 import br.com.contmatic.prova01.model.util.enums.NaturezaJuridica;
 import br.com.contmatic.prova01.model.util.enums.SituacaoCadastral;
+import br.com.six2six.fixturefactory.Fixture;
+import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 
 class EmpresaTest {
 
@@ -37,12 +39,13 @@ class EmpresaTest {
 
     @BeforeEach
     void set_up() {
-        empresa = new Empresa("62031611000154");
+        FixtureFactoryLoader.loadTemplates("br.com.contmatic.prova01.model.fixturetemplate");
+        empresa = Fixture.from(Empresa.class).gimme("Empresa valida");
     }
 
     @Test
     void deve_aceitar_cnpj_valido() {
-        assertEquals("62031611000154", empresa.getCnpj());
+        assertEquals("95324764000149", empresa.getCnpj());
     }
 
     @Test
@@ -107,7 +110,7 @@ class EmpresaTest {
 
     @Test
     void deve_aceitar_data_abertura_valida() {
-        LocalDate dataAbertura = LocalDate.of(2021, 04, 21);
+        LocalDate dataAbertura = new LocalDate(2021, 04, 21);
         empresa.setDataAbertura(dataAbertura);
         assertEquals(dataAbertura, empresa.getDataAbertura());
     }
@@ -120,14 +123,14 @@ class EmpresaTest {
 
     @Test
     void nao_deve_aceitar_data_menor_minimo() {
-        LocalDate dataErrada = LocalDate.of(1400, 05, 13);
+        LocalDate dataErrada = new LocalDate(1400, 05, 13);
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setDataAbertura(dataErrada));
         assertTrue(thrown.getMessage().contains("A data inserida é inválida"));
     }
 
     @Test
     void nao_deve_aceitar_data_maior_maximo() {
-        LocalDate dataErrada = LocalDate.of(2500, 05, 13);
+        LocalDate dataErrada = new LocalDate(2500, 05, 13);
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setDataAbertura(dataErrada));
         assertTrue(thrown.getMessage().contains("A data de abertura da empresa está inválida"));
     }
@@ -476,7 +479,7 @@ class EmpresaTest {
 
     @Test
     void deve_retornar_verdadeiro_equals_mesma_valor() {
-        Empresa empresa2 = new Empresa("62031611000154");
+        Empresa empresa2 = Fixture.from(Empresa.class).gimme("Empresa valida");
         assertEquals(empresa, empresa2);
     }
 
@@ -497,13 +500,13 @@ class EmpresaTest {
 
     @Test
     void deve_conter_mesmo_valor_hash_code() {
-        Empresa empresa2 = new Empresa("62031611000154");
+        Empresa empresa2 = new Empresa("95324764000149");
         assertEquals(empresa.hashCode(), empresa2.hashCode());
     }
 
     @Test
     void deve_retornar_cnpj_to_string() {
-        assertThat(empresa.toString(), containsString("62031611000154"));
+        assertThat(empresa.toString(), containsString("95324764000149"));
     }
 
     @Test
@@ -538,7 +541,7 @@ class EmpresaTest {
 
     @Test
     void deve_retornar_data_abertura_to_string() {
-        LocalDate data = LocalDate.of(2023, 04, 04);
+        LocalDate data = new LocalDate(2023, 04, 04);
         empresa.setDataAbertura(data);
         assertThat(empresa.toString(), containsString("2023-04-04"));
     }

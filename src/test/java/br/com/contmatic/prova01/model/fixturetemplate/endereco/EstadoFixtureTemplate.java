@@ -11,7 +11,7 @@ public class EstadoFixtureTemplate implements TemplateLoader {
 
     @Override
     public void load() {
-        Fixture.of(Estado.class).addTemplate("valid", new Rule() {
+        Fixture.of(Estado.class).addTemplate("Estado valido", new Rule() {
             {
                 add("nome", "São Paulo");
                 add("sigla", SP);

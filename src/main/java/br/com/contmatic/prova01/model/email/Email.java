@@ -16,9 +16,8 @@ import static br.com.contmatic.prova01.model.util.constant.email.EmailConstant.T
 import static br.com.contmatic.prova01.model.util.constant.email.EmailConstant.TAMANHO_MINIMO;
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
-import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
-
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
 import br.com.contmatic.prova01.model.auditoria.Auditoria;
 import br.com.contmatic.prova01.model.util.enums.TipoEmail;
@@ -67,6 +66,6 @@ public class Email extends Auditoria {
 
     @Override
     public String toString() {
-        return ReflectionToStringBuilder.toString(this, DEFAULT_STYLE);
+        return reflectionToString(this, JSON_STYLE);
     }
 }

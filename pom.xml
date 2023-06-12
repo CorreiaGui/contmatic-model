@@ -14,8 +14,9 @@
 		<commons-lang3.version>3.5</commons-lang3.version>
 		<guava.version>31.0.1-jre</guava.version>
 		<hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
-		<joda-time.version>2.10.5</joda-time.version>
+		<jakarta.el.version>4.0.0</jakarta.el.version>
 		<fixture-factory.version>3.1.0</fixture-factory.version>
+		<joda-time.version>2.12.5</joda-time.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -46,6 +47,7 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
@@ -53,10 +55,27 @@
 			<version>${hibernate-validator.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>jakarta.el</artifactId>
+			<version>${jakarta.el.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>br.com.six2six</groupId>
 			<artifactId>fixture-factory</artifactId>
 			<version>${fixture-factory.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda-time.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.24</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>
