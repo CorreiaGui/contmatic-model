@@ -1,18 +1,66 @@
+/*
+ * 
+ */
 package br.com.contmatic.prova01.model.empresa;
 
-import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_ENDERECO;
-import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_FUNCIONARIO;
-import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_PRODUTO;
-import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_SETOR;
-import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_TELEFONE;
-import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MINIMO_ENDERECO;
+import static br.com.contmatic.prova01.model.util.TesteUtil.getErrorMessage;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_ATIVIDADE_NATUREZA_JURIDICA_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_CNPJ;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_CNPJ_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_CNPJ_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_DATA_LIMITE;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_DATA_NULA;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_DATA_REUNIAO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_DOMINIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_DOMINIO_ESPACO_BRANCO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_EMAIL_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_EMAIL_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_ENDERECO_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_ENDERECO_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_FUNCIONARIO_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_FUNCIONARIO_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_NOME_FANTASIA_NULA;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_NOME_FANTASIA_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_NUMERO_INSCRICAO_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_NUMERO_INSCRICAO_TAMANHO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_NUMERO_INSCRICAO_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_PRODUTO_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_PRODUTO_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_RAZAO_SOCIAL_NULA;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_REGEX;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_REGEX_NUMERO_INSCRICAO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_SETOR_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_SETOR_TAMANHO_MAXIMO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_SETOR_TAMANHO_MINIMO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_SETOR_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_SITUACAO_CADASTRAL_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TAMANHO_ENDERECO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TAMANHO_FUNCIONARIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TAMANHO_MAXIMO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TAMANHO_MAXIMO_EMAIL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TAMANHO_MINIMO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TAMANHO_MINIMO_LISTA;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TAMANHO_PRODUTO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TELEFONE_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TELEFONE_TAMANHO_MAXIMO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TELEFONE_TAMANHO_MIN;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.MENSAGEM_ERRO_TELEFONE_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.NOME_EXCEDEBDI_LIMITE_CARACTERES;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_LISTA_EMAIL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_LISTA_ENDERECO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_LISTA_FUNCIONARIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_LISTA_PRODUTO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_LISTA_SETOR;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_LISTA_TELEFONE;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MINIMO_LISTA_ENDERECO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MINIMO_LISTA;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_NUMERO_INSCRICAO;
+import static br.com.contmatic.prova01.model.util.enums.NaturezaJuridica.LTDA;
+import static br.com.contmatic.prova01.model.util.enums.SituacaoCadastral.ATIVO;
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,17 +69,18 @@ import java.util.Set;
 import java.util.stream.IntStream;
 
 import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import br.com.contmatic.prova01.model.email.Email;
 import br.com.contmatic.prova01.model.endereco.Endereco;
 import br.com.contmatic.prova01.model.telefone.Telefone;
-import br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant;
-import br.com.contmatic.prova01.model.util.enums.NaturezaJuridica;
 import br.com.contmatic.prova01.model.util.enums.SituacaoCadastral;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
+import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.Warning;
 
 class EmpresaTest {
 
@@ -50,62 +99,82 @@ class EmpresaTest {
 
     @Test
     void nao_deve_aceitar_cnpj_digito_verificador_invalido() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> new Empresa("62031690000154"));
-        assertTrue(thrown.getMessage().contains("CNPJ inválido"));
+        Empresa empresaInvalida = Fixture.from(Empresa.class).gimme("empresa cnpj invalido");
+        assertEquals(MENSAGEM_ERRO_CNPJ, getErrorMessage(empresaInvalida, MENSAGEM_ERRO_CNPJ));
+    }
+    
+    @Test
+    void nao_deve_aceitar_cnpj_com_espaco_braco() {
+        empresa.setCnpj("");
+        assertEquals(MENSAGEM_ERRO_CNPJ_NULL, getErrorMessage(empresa, MENSAGEM_ERRO_CNPJ_NULL));
     }
 
     @Test
     void nao_deve_aceitar_cnpj_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> new Empresa(null));
-        assertTrue(thrown.getMessage().contains("O campo 'CNPJ' é de preenchimento obrigatório."));
+        empresa.setCnpj(null);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_CNPJ_NULL);
+        assertEquals(MENSAGEM_ERRO_CNPJ_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_cnpj_vazio() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> new Empresa(""));
-        assertTrue(thrown.getMessage().contains("O campo 'CNPJ' é de preenchimento obrigatório."));
+        empresa.setCnpj("");
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_CNPJ_VAZIO);
+        assertEquals(MENSAGEM_ERRO_CNPJ_VAZIO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_cnpj_letras() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> new Empresa("abc"));
-        assertTrue(thrown.getMessage().contains("O campo CNPJ aceita apenas números."));
+        empresa.setCnpj("abc");
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_CNPJ);
+        assertEquals(MENSAGEM_ERRO_CNPJ, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_cnpj_caracteres_insuficientes() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> new Empresa("12345678910"));
-        assertTrue(thrown.getMessage().contains("O campo CNPJ da empresa diferente de 14 digitos é inválido."));
+        empresa.setCnpj("12");
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_CNPJ);
+        assertEquals(MENSAGEM_ERRO_CNPJ, errorMessage);
     }
 
     @Test
     void deve_aceitar_numero_inscricao() {
-        empresa.setNumeroInscricao("123456789");
-        assertEquals("123456789", empresa.getNumeroInscricao());
+        assertEquals(TAMANHO_NUMERO_INSCRICAO, empresa.getNumeroInscricao().length());
     }
 
     @Test
     void nao_deve_aceitar_numero_inscricao_vazio() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setNumeroInscricao(""));
-        assertTrue(thrown.getMessage().contains("O campo 'número de inscrição' é de preenchimento obrigatório"));
+        empresa.setNumeroInscricao("");
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_NUMERO_INSCRICAO_VAZIO);
+        assertEquals(MENSAGEM_ERRO_NUMERO_INSCRICAO_VAZIO, errorMessage);
+    }
+    
+    @Test
+    void nao_deve_aceitar_numero_inscricao_espaco_branco() {
+        empresa.setNumeroInscricao("    ");
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_NUMERO_INSCRICAO_VAZIO);
+        assertEquals(MENSAGEM_ERRO_NUMERO_INSCRICAO_VAZIO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_numero_inscricao_letras() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setNumeroInscricao("teste"));
-        assertTrue(thrown.getMessage().contains("O campo Número de Inscrição aceita apenas números."));
+        empresa.setNumeroInscricao("a");
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_REGEX_NUMERO_INSCRICAO);
+        assertEquals(MENSAGEM_ERRO_REGEX_NUMERO_INSCRICAO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_numero_inscricao_tamanho_diferente() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setNumeroInscricao("12345678"));
-        assertTrue(thrown.getMessage().contains("O número de inscrição deve conter 9 digitos."));
+        empresa.setNumeroInscricao("123");
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_NUMERO_INSCRICAO_TAMANHO);
+        assertEquals(MENSAGEM_ERRO_NUMERO_INSCRICAO_TAMANHO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_numero_inscricao_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> empresa.setNumeroInscricao(null));
-        assertTrue(thrown.getMessage().contains("O campo 'número de inscrição' é de preenchimento obrigatório"));
+        empresa.setNumeroInscricao(null);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_NUMERO_INSCRICAO_NULL);
+        assertEquals(MENSAGEM_ERRO_NUMERO_INSCRICAO_NULL, errorMessage);
     }
 
     @Test
@@ -117,53 +186,70 @@ class EmpresaTest {
 
     @Test
     void nao_deve_aceitar_data_abertura_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> empresa.setDataAbertura(null));
-        assertTrue(thrown.getMessage().contains("O campo 'Data de abertura' é de preenchimento obrigatório."));
-    }
-
-    @Test
-    void nao_deve_aceitar_data_menor_minimo() {
-        LocalDate dataErrada = new LocalDate(1400, 05, 13);
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setDataAbertura(dataErrada));
-        assertTrue(thrown.getMessage().contains("A data inserida é inválida"));
+        empresa.setDataAbertura(null);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_DATA_NULA);
+        assertEquals(MENSAGEM_ERRO_DATA_NULA, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_data_maior_maximo() {
         LocalDate dataErrada = new LocalDate(2500, 05, 13);
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setDataAbertura(dataErrada));
-        assertTrue(thrown.getMessage().contains("A data de abertura da empresa está inválida"));
+        empresa.setDataAbertura(dataErrada);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_DATA_LIMITE);
+        assertEquals(MENSAGEM_ERRO_DATA_LIMITE, errorMessage);
     }
-
+    
+    @Test
+    void deve_aceitar_data_reuniao_valida() {
+        LocalDateTime data = new LocalDateTime(2023, 9, 21, 10, 00, 00);
+        empresa.setDataReuniaoGeral(data);
+        assertEquals(data, empresa.getDataReuniaoGeral());
+    }
+    
+    @Test
+    void nao_deve_aceitar_data_reuniao_passado() {
+        empresa.setDataReuniaoGeral(new LocalDateTime(2020, 9, 21, 10, 00, 00));
+        assertEquals(MENSAGEM_ERRO_DATA_REUNIAO ,getErrorMessage(empresa, MENSAGEM_ERRO_DATA_REUNIAO));
+    }
+    
     @Test
     void deve_aceitar_razao_social() {
         empresa.setRazaoSocial("Empresa Teste LDTA");
         assertEquals("Empresa Teste LDTA", empresa.getRazaoSocial());
     }
+    
+    @Test
+    void deve_aceitar_razao_social_regex_errada() {
+        empresa.setRazaoSocial("!@#!@#!");
+        assertEquals(MENSAGEM_ERRO_REGEX, getErrorMessage(empresa, MENSAGEM_ERRO_REGEX));
+    }
 
     @Test
     void nao_deve_aceitar_razao_social_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> empresa.setRazaoSocial(null));
-        assertTrue(thrown.getMessage().contains("O campo 'razão social' é de preenchimento obrigatório."));
+        empresa.setRazaoSocial(null);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_RAZAO_SOCIAL_NULA);
+        assertEquals(MENSAGEM_ERRO_RAZAO_SOCIAL_NULA, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_razao_social_vazio() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setRazaoSocial(""));
-        assertTrue(thrown.getMessage().contains("O campo 'razão social' é de preenchimento obrigatório."));
+        empresa.setRazaoSocial("");
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_RAZAO_SOCIAL_NULA);
+        assertEquals(MENSAGEM_ERRO_RAZAO_SOCIAL_NULA, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_razao_social_caracteres_insuficientes() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setRazaoSocial("f"));
-        assertTrue(thrown.getMessage().contains("O campo contém caracteres insuficientes."));
+        empresa.setRazaoSocial("a");
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TAMANHO_MINIMO);
+        assertEquals(MENSAGEM_ERRO_TAMANHO_MINIMO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_razao_social_caracteres_maximo() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
-            () -> empresa.setRazaoSocial("testetestetestetestetestetestetestetestetestetestetestetestetestetestetestetesteteste"));
-        assertTrue(thrown.getMessage().contains("O tamanho máximo de caracteres foi excedido."));
+        empresa.setRazaoSocial(NOME_EXCEDEBDI_LIMITE_CARACTERES);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TAMANHO_MAXIMO);
+        assertEquals(MENSAGEM_ERRO_TAMANHO_MAXIMO, errorMessage);
     }
 
     @Test
@@ -171,110 +257,125 @@ class EmpresaTest {
         empresa.setNomeFantasia("Guilherme Tech");
         assertEquals("Guilherme Tech", empresa.getNomeFantasia());
     }
+    
+    @Test
+    void deve_aceitar_nome_fantasia_regex_errada() {
+        empresa.setNomeFantasia("!@#!@#!");
+        assertEquals(MENSAGEM_ERRO_REGEX, getErrorMessage(empresa, MENSAGEM_ERRO_REGEX));
+    }
 
     @Test
     void nao_deve_aceitar_nome_fantasia_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> empresa.setNomeFantasia(null));
-        assertTrue(thrown.getMessage().contains("O campo 'nome fantasia' é de preenchimento obrigatório."));
+        empresa.setNomeFantasia(null);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_NOME_FANTASIA_NULA);
+        assertEquals(MENSAGEM_ERRO_NOME_FANTASIA_NULA, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_nome_fantasia_vazio() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setNomeFantasia(""));
-        assertTrue(thrown.getMessage().contains("O campo 'nome fantasia' é de preenchimento obrigatório."));
+        empresa.setNomeFantasia("");
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_NOME_FANTASIA_VAZIO);
+        assertEquals(MENSAGEM_ERRO_NOME_FANTASIA_VAZIO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_nome_fantasia_caracteres_insuficientes() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setNomeFantasia("f"));
-        assertTrue(thrown.getMessage().contains("O campo contém caracteres insuficientes."));
+        empresa.setNomeFantasia("a");
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TAMANHO_MINIMO);
+        assertEquals(MENSAGEM_ERRO_TAMANHO_MINIMO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_nome_fantasia_caracteres_maximo() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
-            () -> empresa.setNomeFantasia("testetestetestetestetestetestetestetestetestetestetestetestetestetestetestetesteteste"));
-        assertTrue(thrown.getMessage().contains("O tamanho máximo de caracteres foi excedido."));
+        empresa.setNomeFantasia(NOME_EXCEDEBDI_LIMITE_CARACTERES);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TAMANHO_MAXIMO);
+        assertEquals(MENSAGEM_ERRO_TAMANHO_MAXIMO, errorMessage);
     }
 
     @Test
     void deve_aceitar_natureza_juridica() {
-        empresa.setNaturezaJuridica(NaturezaJuridica.LTDA);
-        assertEquals(NaturezaJuridica.LTDA, empresa.getNaturezaJuridica());
+        empresa.setNaturezaJuridica(LTDA);
+        assertEquals(LTDA, empresa.getNaturezaJuridica());
     }
 
     @Test
     void nao_deve_aceitar_nome_natureza_juridica_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> empresa.setNaturezaJuridica(null));
-        assertTrue(thrown.getMessage().contains("O campo 'Natureza Jurídica' é de preenchimento obrigatório"));
+        empresa.setNaturezaJuridica(null);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_ATIVIDADE_NATUREZA_JURIDICA_NULL);
+        assertEquals(MENSAGEM_ERRO_ATIVIDADE_NATUREZA_JURIDICA_NULL, errorMessage);
     }
 
     @Test
     void deve_aceitar_situacao_cadastral() {
-        empresa.setSituacaoCadastral(SituacaoCadastral.ATIVO);
+        empresa.setSituacaoCadastral(ATIVO);
         assertEquals(SituacaoCadastral.valueOf("ATIVO"), empresa.getSituacaoCadastral());
     }
 
     @Test
     void nao_deve_aceitar_situacao_cadastral_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> empresa.setSituacaoCadastral(null));
-        assertTrue(thrown.getMessage().contains("O campo 'Situação Cadastral' da empresa é de preenchimento obrigatório."));
+        empresa.setSituacaoCadastral(null);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_SITUACAO_CADASTRAL_NULL);
+        assertEquals(MENSAGEM_ERRO_SITUACAO_CADASTRAL_NULL, errorMessage);
     }
 
     @Test
     void deve_aceitar_lista_endereco() {
         Set<Endereco> enderecos = new HashSet<Endereco>();
-        for(int indice = TAMANHO_MAXIMO_ENDERECO ; indice != 0 ; indice--) {
+        for(int indice = TAMANHO_MAXIMO_LISTA_ENDERECO ; indice != 0 ; indice--) {
             Endereco endereco = new Endereco("04136020", indice, "ap 05");
             enderecos.add(endereco);
         }
-        empresa.setEndereco(enderecos);
-        assertEquals(enderecos, empresa.getEndereco());
+        empresa.setEnderecos(enderecos);
+        assertEquals(enderecos, empresa.getEnderecos());
     }
 
     @Test
     void nao_deve_aceitar_endereco_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> empresa.setEndereco(null));
-        assertTrue(thrown.getMessage().contains("O campo 'endereço' é de preenchimento obrigatório."));
+        empresa.setEnderecos(null);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_ENDERECO_NULL);
+        assertEquals(MENSAGEM_ERRO_ENDERECO_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_endereco_vazio() {
         Set<Endereco> enderecoVazio = new HashSet<Endereco>();
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setEndereco(enderecoVazio));
-        assertTrue(thrown.getMessage().contains("O campo 'endereço' é de preenchimento obrigatório."));
+        empresa.setEnderecos(enderecoVazio);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_ENDERECO_VAZIO);
+        assertEquals(MENSAGEM_ERRO_ENDERECO_VAZIO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_endereco_excedendo_tamanho() {
         Set<Endereco> enderecos = new HashSet<Endereco>();
-        IntStream.range(TAMANHO_MINIMO_ENDERECO, TAMANHO_MAXIMO_ENDERECO + 2).forEach(indice -> enderecos.add(new Endereco("04136030", indice, "ap 04")));
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setEndereco(enderecos));
-        assertTrue(thrown.getMessage().contains("O máximo de 'endereços' excedeu o limite de preenchimento."));
+        IntStream.range(TAMANHO_MINIMO_LISTA_ENDERECO, TAMANHO_MAXIMO_LISTA_ENDERECO + 2).forEach(indice -> enderecos.add(new Endereco("04136030", indice, "ap 04")));
+        empresa.setEnderecos(enderecos);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TAMANHO_ENDERECO);
+        assertEquals(MENSAGEM_ERRO_TAMANHO_ENDERECO, errorMessage);
+
     }
 
     @Test
     void deve_aceitar_lista_funcionario() {
         List<Funcionario> funcionarios = new ArrayList<Funcionario>();
         Funcionario funcionario = new Funcionario("41659541875");
-        Funcionario funcionario2 = new Funcionario("12433534062");
         funcionarios.add(funcionario);
-        funcionarios.add(funcionario2);
-        empresa.setFuncionario(funcionarios);
-        assertEquals(funcionarios, empresa.getFuncionario());
+        empresa.setFuncionarios(funcionarios);
+        assertEquals(funcionarios, empresa.getFuncionarios());
     }
 
     @Test
     void nao_deve_aceitar_lista_funcionario_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> empresa.setFuncionario(null));
-        assertTrue(thrown.getMessage().contains("O campo 'funcionarios da empresa' é de preenchimento obrigatório."));
+        empresa.setFuncionarios(null);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_FUNCIONARIO_NULL);
+        assertEquals(MENSAGEM_ERRO_FUNCIONARIO_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_lista_funcionario_vazio() {
         List<Funcionario> funcionarios = new ArrayList<Funcionario>();
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setFuncionario(funcionarios));
-        assertTrue(thrown.getMessage().contains("O campo 'Funcionarios da empresa' sem um funcionario inserido é inválido."));
+        empresa.setFuncionarios(funcionarios);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_FUNCIONARIO_VAZIO);
+        assertEquals(MENSAGEM_ERRO_FUNCIONARIO_VAZIO, errorMessage);
     }
 
     @Test
@@ -282,18 +383,20 @@ class EmpresaTest {
         List<Funcionario> funcionarios = new ArrayList<Funcionario>();
         Funcionario funcionario = new Funcionario("41659541875");
         funcionarios.add(funcionario);
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setFuncionario(funcionarios));
-        assertTrue(thrown.getMessage().contains("O campo contém quantidade insuficiente para cadastro."));
+        empresa.setFuncionarios(funcionarios);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TAMANHO_MINIMO_LISTA);
+        assertEquals(MENSAGEM_ERRO_TAMANHO_MINIMO_LISTA, errorMessage);
     }
 
     @Test
     void nao_deve_aceita_lista_funcionario_excedendo_tamanho_maximo() {
         List<Funcionario> funcionarios = new ArrayList<Funcionario>();
-        for(int indice = TAMANHO_MAXIMO_FUNCIONARIO + 3 ; indice != 0 ; indice--) {
+        for(int indice = TAMANHO_MAXIMO_LISTA_FUNCIONARIO + 3 ; indice != 0 ; indice--) {
             funcionarios.add(null);
         }
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setFuncionario(funcionarios));
-        assertTrue(thrown.getMessage().contains("A quantidade de Funcionarios cadastrados foi excedido."));
+        empresa.setFuncionarios(funcionarios);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TAMANHO_FUNCIONARIO);
+        assertEquals(MENSAGEM_ERRO_TAMANHO_FUNCIONARIO, errorMessage);
     }
 
     @Test
@@ -303,21 +406,23 @@ class EmpresaTest {
             Produto produto = new Produto("Bola", indice + 1);
             produtos.add(produto);
         }
-        empresa.setProduto(produtos);
-        assertEquals(produtos, empresa.getProduto());
+        empresa.setProdutos(produtos);
+        assertEquals(produtos, empresa.getProdutos());
     }
 
     @Test
     void nao_deve_aceitar_produto_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> empresa.setProduto(null));
-        assertTrue(thrown.getMessage().contains("O campo 'Produtos' da empresa é de preenchimento obrigatório."));
+        empresa.setProdutos(null);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_PRODUTO_NULL);
+        assertEquals(MENSAGEM_ERRO_PRODUTO_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_produto_vazio() {
         Set<Produto> produtoVazio = new HashSet<Produto>();
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setProduto(produtoVazio));
-        assertTrue(thrown.getMessage().contains("O campo 'Produtos' da empresa é de preenchimento obrigatório."));
+        empresa.setProdutos(produtoVazio);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_PRODUTO_VAZIO);
+        assertEquals(MENSAGEM_ERRO_PRODUTO_VAZIO, errorMessage);
     }
 
     @Test
@@ -325,20 +430,22 @@ class EmpresaTest {
         Set<Produto> produtos = new HashSet<Produto>();
         Produto produto = new Produto("Bola", 1);
         produtos.add(produto);
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setProduto(produtos));
-        assertTrue(thrown.getMessage().contains("O campo contém quantidade insuficiente para cadastro."));
+        empresa.setProdutos(produtos);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TAMANHO_MINIMO_LISTA);
+        assertEquals(MENSAGEM_ERRO_TAMANHO_MINIMO_LISTA, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_lista_produto_excedendo_tamanho_maximo() {
         Set<Produto> produtos = new HashSet<>();
         int numero = 1;
-        for(int indice = TAMANHO_MAXIMO_PRODUTO + 2 ; indice != 0 ; indice--) {
+        for(int indice = TAMANHO_MAXIMO_LISTA_PRODUTO + 2 ; indice != 0 ; indice--) {
             Produto produto = new Produto("bola", numero++);
             produtos.add(produto);
         }
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setProduto(produtos));
-        assertTrue(thrown.getMessage().contains("A quantidade de produtos cadastrados foi excedido."));
+        empresa.setProdutos(produtos);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TAMANHO_PRODUTO);
+        assertEquals(MENSAGEM_ERRO_TAMANHO_PRODUTO, errorMessage);
     }
 
     @Test
@@ -349,21 +456,23 @@ class EmpresaTest {
             Email email = new Email(("abc@abc.com" + numero++));
             emails.add(email);
         }
-        empresa.setEmail(emails);
-        assertEquals(emails, empresa.getEmail());
+        empresa.setEmails(emails);
+        assertEquals(emails, empresa.getEmails());
     }
 
     @Test
     void nao_deve_aceitar_lista_email_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> empresa.setEmail(null));
-        assertTrue(thrown.getMessage().contains("O campo 'e-mail' é de preenchimento obrigatório."));
+        empresa.setEmails(null);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_EMAIL_NULL);
+        assertEquals(MENSAGEM_ERRO_EMAIL_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_lista_email_vazio() {
-        Set<Email> emails = new HashSet<Email>();
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setEmail(emails));
-        assertTrue(thrown.getMessage().contains("O campo 'e-mail' é de preenchimento obrigatório."));
+        Set<Email> emails = new HashSet<>();
+        empresa.setEmails(emails);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_EMAIL_VAZIO);
+        assertEquals(MENSAGEM_ERRO_EMAIL_VAZIO, errorMessage);
     }
 
     @Test
@@ -371,19 +480,22 @@ class EmpresaTest {
         Set<Email> emails = new HashSet<Email>();
         Email email = new Email("teste@teste");
         emails.add(email);
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setEmail(emails));
-        assertTrue(thrown.getMessage().contains("O campo contém quantidade insuficiente para cadastro."));
+        empresa.setEmails(emails);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TAMANHO_MINIMO_LISTA);
+        assertEquals(MENSAGEM_ERRO_TAMANHO_MINIMO_LISTA, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_lista_email_excedendo_maximo() {
         Set<Email> emails = new HashSet<Email>();
-        for(int indice = EmpresaConstant.TAMANHO_MAXIMO_EMAIL + 2 ; indice != 0 ; indice--) {
-            Email email = new Email("teste@teste");
-            emails.add(email);
+        String a = "a";
+        for(int indice = TAMANHO_MAXIMO_LISTA_EMAIL + 2 ; indice != 0 ; indice--) {
+            Email emailss = new Email("teste".concat(a += "a"));
+            emails.add(emailss);
         }
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setEmail(emails));
-        assertTrue(thrown.getMessage().contains("O campo contém quantidade insuficiente para cadastro."));
+        empresa.setEmails(emails);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TAMANHO_MAXIMO_EMAIL);
+        assertEquals(MENSAGEM_ERRO_TAMANHO_MAXIMO_EMAIL, errorMessage);
     }
 
     @Test
@@ -393,21 +505,23 @@ class EmpresaTest {
         Telefone telefone2 = new Telefone("55", "11", "948623932");
         telefones.add(telefone);
         telefones.add(telefone2);
-        empresa.setTelefone(telefones);
-        assertEquals(telefones, empresa.getTelefone());
+        empresa.setTelefones(telefones);
+        assertEquals(telefones, empresa.getTelefones());
     }
 
     @Test
     void nao_deve_aceitar_lista_telefone_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> empresa.setTelefone(null));
-        assertTrue(thrown.getMessage().contains("O campo 'telefone' é de preenchimento obrigatório."));
+        empresa.setTelefones(null);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TELEFONE_NULL);
+        assertEquals(MENSAGEM_ERRO_TELEFONE_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_lista_telefone_vazio() {
         Set<Telefone> telefones = new HashSet<Telefone>();
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setTelefone(telefones));
-        assertTrue(thrown.getMessage().contains("O campo 'telefone' é de preenchimento obrigatório."));
+        empresa.setTelefones(telefones);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TELEFONE_VAZIO);
+        assertEquals(MENSAGEM_ERRO_TELEFONE_VAZIO, errorMessage);
     }
 
     @Test
@@ -415,20 +529,22 @@ class EmpresaTest {
         Set<Telefone> telefones = new HashSet<Telefone>();
         Telefone telefone = new Telefone("55", "11", "948623932");
         telefones.add(telefone);
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setTelefone(telefones));
-        assertTrue(thrown.getMessage().contains("O campo não contém quantidade mínima 2 telefones."));
+        empresa.setTelefones(telefones);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TELEFONE_TAMANHO_MIN);
+        assertEquals(MENSAGEM_ERRO_TELEFONE_TAMANHO_MIN, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_lista_telefone_excedendo_maximo() {
         Set<Telefone> telefones = new HashSet<Telefone>();
-        for(Integer indice = TAMANHO_MAXIMO_TELEFONE + 2 ; indice != 0 ; indice--) {
+        for(Integer indice = TAMANHO_MAXIMO_LISTA_TELEFONE + 2 ; indice != 0 ; indice--) {
             String ddd = indice.toString().length() == 1 ? "0" + indice.toString() : indice.toString();
             Telefone telefone = new Telefone("55", ddd, "948623932");
             telefones.add(telefone);
         }
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setTelefone(telefones));
-        assertTrue(thrown.getMessage().contains("O campo 'lista de telefone', excedeu a quantidade máxima permitida."));
+        empresa.setTelefones(telefones);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_TELEFONE_TAMANHO_MAXIMO);
+        assertEquals(MENSAGEM_ERRO_TELEFONE_TAMANHO_MAXIMO, errorMessage);
     }
 
     @Test
@@ -438,21 +554,23 @@ class EmpresaTest {
         Setor setor2 = new Setor("Comercial");
         setores.add(setor2);
         setores.add(setor1);
-        empresa.setSetor(setores);
-        assertEquals(setores, empresa.getSetor());
+        empresa.setSetores(setores);
+        assertEquals(setores, empresa.getSetores());
     }
 
     @Test
     void nao_deve_aceitar_setor_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> empresa.setSetor(null));
-        assertTrue(thrown.getMessage().contains("O campo 'Setor' é de preenchimento obrigatório."));
+        empresa.setSetores(null);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_SETOR_NULL);
+        assertEquals(MENSAGEM_ERRO_SETOR_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_setor_lista_vazia() {
         Set<Setor> setores = new HashSet<Setor>();
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setSetor(setores));
-        assertTrue(thrown.getMessage().contains("O campo lista de 'setores' vazio é inválido."));
+        empresa.setSetores(setores);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_SETOR_VAZIO);
+        assertEquals(MENSAGEM_ERRO_SETOR_VAZIO, errorMessage);
     }
 
     @Test
@@ -460,21 +578,40 @@ class EmpresaTest {
         Set<Setor> setores = new HashSet<Setor>();
         Setor setor = new Setor("teste");
         setores.add(setor);
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setSetor(setores));
-        assertTrue(thrown.getMessage().contains("O campo não contém a quantidade mínima de dois setores."));
+        empresa.setSetores(setores);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_SETOR_TAMANHO_MINIMO);
+        assertEquals(MENSAGEM_ERRO_SETOR_TAMANHO_MINIMO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_setor_lista_excedendo_tamanho_maximo() {
         Set<Setor> setores = new HashSet<Setor>();
         String stringInicial = "Nome";
-        for(int indice = TAMANHO_MAXIMO_SETOR + 2 ; indice != 0 ; indice--) {
-            stringInicial = stringInicial.concat("s");
-            Setor setor = new Setor(stringInicial.concat(stringInicial));
+        for(int indice = TAMANHO_MAXIMO_LISTA_SETOR + 2 ; indice != 0 ; indice--) {
+            Setor setor = new Setor(stringInicial += "a");
             setores.add(setor);
         }
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> empresa.setSetor(setores));
-        assertTrue(thrown.getMessage().contains("O campo 'Setor' excedeu a quantidade maxima."));
+        empresa.setSetores(setores);
+        String errorMessage = getErrorMessage(empresa, MENSAGEM_ERRO_SETOR_TAMANHO_MAXIMO);
+        assertEquals(MENSAGEM_ERRO_SETOR_TAMANHO_MAXIMO, errorMessage);
+    }
+    
+    @Test
+    void deve_aceitar_dominio_valido() {
+        empresa.setDominio("https://empresa.com.br");
+        assertEquals("https://empresa.com.br", empresa.getDominio());
+    }
+    
+    @Test
+    void nao_deve_aceitar_dominio_invalido() {
+        empresa.setDominio("teste");
+        assertEquals(MENSAGEM_ERRO_DOMINIO, getErrorMessage(empresa, MENSAGEM_ERRO_DOMINIO));
+    }
+    
+    @Test
+    void nao_deve_aceitar_dominio_espaco_branco() {
+        empresa.setDominio("     ");
+        assertEquals(MENSAGEM_ERRO_DOMINIO_ESPACO_BRANCO, getErrorMessage(empresa, MENSAGEM_ERRO_DOMINIO_ESPACO_BRANCO));
     }
 
     @Test
@@ -551,7 +688,7 @@ class EmpresaTest {
         Set<Endereco> enderecos = new HashSet<Endereco>();
         Endereco endereco = new Endereco("04136030", 772, "casa");
         enderecos.add(endereco);
-        empresa.setEndereco(enderecos);
+        empresa.setEnderecos(enderecos);
         assertThat(empresa.toString(), containsString("04136030"));
     }
 
@@ -562,7 +699,7 @@ class EmpresaTest {
         Funcionario funcionario2 = new Funcionario("15308679835");
         funcionarios.add(funcionario2);
         funcionarios.add(funcionario1);
-        empresa.setFuncionario(funcionarios);
+        empresa.setFuncionarios(funcionarios);
         assertThat(empresa.toString(), containsString("41659541875"));
         assertThat(empresa.toString(), containsString("15308679835"));
     }
@@ -574,7 +711,7 @@ class EmpresaTest {
         Produto produto2 = new Produto("boné", 1);
         produtos.add(produto);
         produtos.add(produto2);
-        empresa.setProduto(produtos);
+        empresa.setProdutos(produtos);
         assertThat(empresa.toString(), containsString("bola"));
         assertThat(empresa.toString(), containsString("boné"));
     }
@@ -586,7 +723,7 @@ class EmpresaTest {
         Email email2 = new Email("testeee@teste.com");
         emails.add(email);
         emails.add(email2);
-        empresa.setEmail(emails);
+        empresa.setEmails(emails);
         assertThat(empresa.toString(), containsString("teste@teste.com"));
         assertThat(empresa.toString(), containsString("testeee@teste.com"));
     }
@@ -598,7 +735,7 @@ class EmpresaTest {
         Telefone telefone2 = new Telefone("55", "11", "912345444");
         telefones.add(telefone);
         telefones.add(telefone2);
-        empresa.setTelefone(telefones);
+        empresa.setTelefones(telefones);
         assertThat(empresa.toString(), containsString("912345678"));
         assertThat(empresa.toString(), containsString("912345444"));
     }
@@ -610,8 +747,14 @@ class EmpresaTest {
         Setor setor2 = new Setor("informatica");
         setores.add(setor);
         setores.add(setor2);
-        empresa.setSetor(setores);
+        empresa.setSetores(setores);
         assertThat(empresa.toString(), containsString("adm"));
         assertThat(empresa.toString(), containsString("informatica"));
+    }
+    
+    @Test
+    void test_equals() {
+        EqualsVerifier.simple().forClass(Empresa.class).withPrefabValues(Funcionario.class, 
+            new Funcionario("1"), new Funcionario("2")).suppress(Warning.ALL_FIELDS_SHOULD_BE_USED).verify();
     }
 }

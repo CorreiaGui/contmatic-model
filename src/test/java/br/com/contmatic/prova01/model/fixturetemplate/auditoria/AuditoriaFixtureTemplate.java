@@ -14,12 +14,12 @@ public class AuditoriaFixtureTemplate implements TemplateLoader {
     public void load() {
         of(Auditoria.class).addTemplate("valid", new Rule() {
             {
-                add("nomeCriador", "Gui");
+                add("nomeCriador", random("Gui", "outro"));
                 add("dataCriacao", ZonedDateTime.now());
-                add("nomeEditor", "Gui");
+                add("nomeEditor", random("Gui", "outro"));
                 add("dataEdicao", ZonedDateTime.now());
             }
-        });
+        }); 
 
         of(Auditoria.class).addTemplate("Auditoria null", new Rule() {
             {
@@ -44,6 +44,24 @@ public class AuditoriaFixtureTemplate implements TemplateLoader {
                 add("nomeCriador", "123123");
                 add("dataCriacao", null);
                 add("nomeEditor", "123123");
+                add("dataEdicao", null);
+            }
+        });
+        
+        of(Auditoria.class).addTemplate("Auditoria caracteres insuficientes", new Rule() {
+            {
+                add("nomeCriador", "ab");
+                add("dataCriacao", null);
+                add("nomeEditor", "ab");
+                add("dataEdicao", null);
+            }
+        });
+        
+        of(Auditoria.class).addTemplate("Auditoria caracteres excedendo tamanho maximo", new Rule() {
+            {
+                add("nomeCriador", "testetestetestetestetestetestetestetestetestetestetestetestetestetestetestetesteteste");
+                add("dataCriacao", null);
+                add("nomeEditor", "testetestetestetestetestetestetestetestetestetestetestetestetestetestetestetesteteste");
                 add("dataEdicao", null);
             }
         });

@@ -12,7 +12,7 @@ public class SetorFixtureTemplate implements TemplateLoader {
     public void load() {
         Fixture.of(Setor.class).addTemplate("Setor valido", new Rule() {
             {
-                add("nome", "adm");
+                add("nome", random("info", "adm"));
                 add("funcionarios", has(1).of(Funcionario.class, "Funcionario valido"));
                 add("responsavel", one(Funcionario.class, "Funcionario valido"));
             }

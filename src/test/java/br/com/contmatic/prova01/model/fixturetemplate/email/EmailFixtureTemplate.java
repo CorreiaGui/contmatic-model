@@ -1,6 +1,7 @@
 package br.com.contmatic.prova01.model.fixturetemplate.email;
 
 import static br.com.contmatic.prova01.model.util.enums.TipoEmail.PESSOAL;
+import static br.com.contmatic.prova01.model.util.enums.TipoEmail.PROFISSIONAL;
 
 import br.com.contmatic.prova01.model.email.Email;
 import br.com.six2six.fixturefactory.Fixture;
@@ -13,10 +14,9 @@ public class EmailFixtureTemplate implements TemplateLoader{
     public void load() {
         Fixture.of(Email.class).addTemplate("Email valido", new Rule() {
             {
-                add("tipo", PESSOAL);
-                add("endereco", "guilherme@email.com");
+                add("tipo", random(PESSOAL, PROFISSIONAL));
+                add("endereco", random("guilherme@email.com", "outro@email.com"));
             }
         });
     }
-
 }

@@ -1,16 +1,33 @@
 package br.com.contmatic.prova01.model.endereco;
 
+import static br.com.contmatic.prova01.model.util.TesteUtil.getErrorMessage;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_CEP_NULL;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_CEP_REGEX;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_CEP_TAMANHO;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_CEP_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_CIDADE_NULL;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_COMPLEMENTO_TAMANHO;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_COMPLEMENTO_TAMANHO_MINIMO;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_COMPLEMENTO_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_LOGRADOURO_NULL;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_LOGRADOURO_TAMANHO;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_LOGRADOURO_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_NUMERO_MAXIMO;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_NUMERO_MINIMO;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_NUMERO_NULL;
+import static br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant.MENSAGEM_ERRO_TAMANHO_MINIMO_LOGRADOURO;
 import static br.com.six2six.fixturefactory.loader.FixtureFactoryLoader.loadTemplates;
+import static nl.jqno.equalsverifier.EqualsVerifier.simple;
+import static nl.jqno.equalsverifier.Warning.ALL_FIELDS_SHOULD_BE_USED;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import br.com.contmatic.prova01.model.util.constant.endereco.EnderecoConstant;
 import br.com.contmatic.prova01.model.util.enums.SiglaEstado;
 import br.com.six2six.fixturefactory.Fixture;
 
@@ -32,26 +49,36 @@ class EnderecoTest {
 
     @Test
     void nao_deve_aceitar_cep_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> endereco.setCep(null));
-        assertTrue(thrown.getMessage().contains("O campo CEP é de preenchimento obrigatório."));
+        endereco.setCep(null);
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_CEP_NULL);
+        assertEquals(MENSAGEM_ERRO_CEP_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_cep_vazio() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> endereco.setCep(""));
-        assertTrue(thrown.getMessage().contains("O campo CEP com espaço em branco é inválido."));
+        endereco.setCep("");
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_CEP_VAZIO);
+        assertEquals(MENSAGEM_ERRO_CEP_VAZIO, errorMessage);
+    }
+    
+    void nao_deve_aceitar_cep_espaco_branco() {
+        endereco.setCep("    ");
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_CEP_VAZIO);
+        assertEquals(MENSAGEM_ERRO_CEP_VAZIO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_cep_diferente_8_digitos() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> endereco.setCep("1234567"));
-        assertTrue(thrown.getMessage().contains("O campo CEP diferente de oito caracteres é inválido."));
+        endereco.setCep("123");
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_CEP_TAMANHO);
+        assertEquals(MENSAGEM_ERRO_CEP_TAMANHO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_cep_com_letras() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> endereco.setCep("1acsa"));
-        assertTrue(thrown.getMessage().contains("O campo CEP não permite letras, apenas números."));
+        endereco.setCep("a");
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_CEP_REGEX);
+        assertEquals(MENSAGEM_ERRO_CEP_REGEX, errorMessage);
     }
 
     @Test
@@ -62,26 +89,30 @@ class EnderecoTest {
 
     @Test
     void nao_deve_aceitar_logradouro_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> endereco.setLogradouro(null));
-        assertTrue(thrown.getMessage().contains("O campo logradouro é de preenchimento obrigatório."));
+        endereco.setLogradouro(null);
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_LOGRADOURO_NULL);
+        assertEquals(MENSAGEM_ERRO_LOGRADOURO_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_logradouro_vazio() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> endereco.setLogradouro(""));
-        assertTrue(thrown.getMessage().contains("O campo logradouro com apenas espaços em branco é inválido."));
+        endereco.setLogradouro("");
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_LOGRADOURO_VAZIO);
+        assertEquals(MENSAGEM_ERRO_LOGRADOURO_VAZIO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_logradouro_menor_tamanho_minimo() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> endereco.setLogradouro("as"));
-        assertTrue(thrown.getMessage().contains("O campo logradouro necessita de pelo três um caracteres."));
+        endereco.setLogradouro("a");
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_TAMANHO_MINIMO_LOGRADOURO);
+        assertEquals(MENSAGEM_ERRO_TAMANHO_MINIMO_LOGRADOURO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_logradouro_maior_tamanho_maximo() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> endereco.setLogradouro("testetestetestetestetestetestetestetestetestetestetestetestetestetesteteste"));
-        assertTrue(thrown.getMessage().contains("O campo logradouro excedeu o limite de caracteres."));
+        endereco.setLogradouro(EnderecoConstant.NOME_EXCEDENDO_LIMITE_CARACTERES);
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_LOGRADOURO_TAMANHO);
+        assertEquals(MENSAGEM_ERRO_LOGRADOURO_TAMANHO, errorMessage);
     }
 
     @Test
@@ -92,20 +123,23 @@ class EnderecoTest {
 
     @Test
     void nao_deve_aceitar_numero_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> endereco.setNumero(null));
-        assertTrue(thrown.getMessage().contains("O campo Número é de preenchimento obrigatório"));
+        endereco.setNumero(null);
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_NUMERO_NULL);
+        assertEquals(MENSAGEM_ERRO_NUMERO_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_numero_menor_tamanho_minimo() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> endereco.setNumero(0));
-        assertTrue(thrown.getMessage().contains("O número do endereço menor que um é inválido"));
+        endereco.setNumero(0);
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_NUMERO_MINIMO);
+        assertEquals(MENSAGEM_ERRO_NUMERO_MINIMO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_numero_maior_tamanho_maximo() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> endereco.setNumero(100001));
-        assertTrue(thrown.getMessage().contains("O número do endereço maior que 100000 é inválido"));
+        endereco.setNumero(10000000);
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_NUMERO_MAXIMO);
+        assertEquals(MENSAGEM_ERRO_NUMERO_MAXIMO, errorMessage);
     }
 
     @Test
@@ -115,27 +149,24 @@ class EnderecoTest {
     }
 
     @Test
-    void nao_deve_aceitar_complemento_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> endereco.setComplemento(null));
-        assertTrue(thrown.getMessage().contains("O campo complemento é de preenchimento obrigatório."));
-    }
-
-    @Test
     void nao_deve_aceitar_complemento_vazio() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> endereco.setComplemento("  "));
-        assertTrue(thrown.getMessage().contains("O campo com espaços em branco é inválido."));
+        endereco.setComplemento("");
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_COMPLEMENTO_VAZIO);
+        assertEquals(MENSAGEM_ERRO_COMPLEMENTO_VAZIO, errorMessage);
     }
 
     @Test
-    void nao_deve_aceitar_complemento_menor_caracteres_necessarios() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> endereco.setComplemento("a"));
-        assertTrue(thrown.getMessage().contains("O campo complemento com menos de três caracteres é inválido."));
+    void nao_deve_aceitar_complemento_caracteres_menor_necessario() {
+        endereco.setComplemento("a");
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_COMPLEMENTO_TAMANHO_MINIMO);
+        assertEquals(MENSAGEM_ERRO_COMPLEMENTO_TAMANHO_MINIMO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_complemento_excedendo_caracteres_permitidos() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> endereco.setComplemento("testetestetestetestetestetestetestetestetestetestetestetesteteste"));
-        assertTrue(thrown.getMessage().contains("O campo complemento excedeu a quantidade de caracteres permitidos."));
+        endereco.setComplemento(EnderecoConstant.NOME_EXCEDENDO_LIMITE_CARACTERES);
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_COMPLEMENTO_TAMANHO);
+        assertEquals(MENSAGEM_ERRO_COMPLEMENTO_TAMANHO, errorMessage);
     }
 
     @Test
@@ -148,14 +179,16 @@ class EnderecoTest {
 
     @Test
     void nao_deve_aceitar_cidade_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> endereco.setCidade(null));
-        assertTrue(thrown.getMessage().contains("O campo cidade é de preenchimento obrigatório."));
+        endereco.setCidade(null);
+        String errorMessage = getErrorMessage(endereco, MENSAGEM_ERRO_CIDADE_NULL);
+        assertEquals(MENSAGEM_ERRO_CIDADE_NULL, errorMessage);
     }
 
     @Test
     void deve_retornar_mesmo_hash_code() {
         Endereco endereco2 = new Endereco("04136030", 772, "casa");
-        assertEquals(endereco.hashCode(), endereco2.hashCode());
+        Endereco endereco3 = new Endereco("04136030", 772, "casa");
+        assertEquals(endereco3.hashCode(), endereco2.hashCode());
     }
 
     @Test
@@ -176,7 +209,8 @@ class EnderecoTest {
     @Test
     void deve_retornar_verdadeiro_equals_mesma_instancia() {
         Endereco endereco2 = new Endereco("04136030", 772, "casa");
-        assertEquals(endereco, endereco2);
+        Endereco endereco3 = new Endereco("04136030", 772, "casa");
+        assertEquals(endereco3, endereco2);
     }
 
     @Test
@@ -187,11 +221,13 @@ class EnderecoTest {
 
     @Test
     void deve_retornar_cep_to_string() {
+        Endereco endereco = new Endereco("04136030", 772, "casa");
         assertThat(endereco.toString(), containsString("04136030"));
     }
 
     @Test
     void deve_retornar_numero_to_string() {
+        Endereco endereco = new Endereco("12345678", 772, "casa");
         assertThat(endereco.toString(), containsString("772"));
     }
 
@@ -212,5 +248,10 @@ class EnderecoTest {
         Cidade cidade = new Cidade("São Paulo", estado);
         endereco.setCidade(cidade);
         assertThat(endereco.toString(), containsString("São Paulo"));
+    }
+    
+    @Test
+    void equals_test() {
+        simple().forClass(Endereco.class).suppress(ALL_FIELDS_SHOULD_BE_USED).verify();
     }
 }

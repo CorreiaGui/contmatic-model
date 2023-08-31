@@ -16,8 +16,8 @@ public class FuncionarioFixtureTemplate implements TemplateLoader {
     public void load() {
         Fixture.of(Funcionario.class).addTemplate("Funcionario valido", new Rule() {
             {
-                add("cpf", "41659541875");
-                add("nome", "Guilherme Correia");
+                add("cpf", random("15308679835", "41659541875"));
+                add("nome", random("Correia", "Guilherme Correia"));
                 add("dataNascimento", new LocalDate(2002, 04, 21));
                 add("enderecos", has(1).of(Endereco.class, "Endereco valido"));
                 add("emails", has(1).of(Email.class, "Email valido"));

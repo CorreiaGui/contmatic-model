@@ -1,21 +1,35 @@
 package br.com.contmatic.prova01.model.auditoria;
 
+import static br.com.contmatic.prova01.model.util.TesteUtil.getErrorMessage;
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_DATA_CRIACAO;
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_DATA_CRIACAO_NULL;
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_DATA_EDICAO;
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_DATA_EDICAO_NULL;
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_NOME_CRIADOR_NULL;
 import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_NOME_CRIADOR_REGEX;
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_NOME_CRIADOR_TAMANHO;
 import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_NOME_CRIADOR_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_NOME_EDITOR_NULL;
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_NOME_EDITOR_REGEX;
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_NOME_EDITOR_TAMANHO;
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.MENSAGEM_ERRO_NOME_EDITOR_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.NOME_CRIADOR_ULTRAPASSANDO_LIMITE_CARACTERES;
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.TAMANHO_NOME_MAXIMO;
+import static br.com.contmatic.prova01.model.util.constant.auditoria.AuditoriaConstant.TAMANHO_NOME_MINIMO;
 import static br.com.six2six.fixturefactory.Fixture.from;
 import static br.com.six2six.fixturefactory.loader.FixtureFactoryLoader.loadTemplates;
 import static java.time.ZonedDateTime.now;
+import static nl.jqno.equalsverifier.EqualsVerifier.simple;
+import static nl.jqno.equalsverifier.Warning.ALL_FIELDS_SHOULD_BE_USED;
+import static nl.jqno.equalsverifier.Warning.INHERITED_DIRECTLY_FROM_OBJECT;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Set;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -27,21 +41,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.Timeout;
 
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validation;
-import jakarta.validation.Validator;
-import jakarta.validation.ValidatorFactory;
+import br.com.six2six.fixturefactory.Fixture;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class AuditoriaTest {
 
     private Auditoria auditoria;
-
-    private Auditoria auditoriaNull;
-
-    private ValidatorFactory factory;
-
-    private Validator validator;
 
     static int numero;
 
@@ -54,9 +59,6 @@ class AuditoriaTest {
     void set_up() {
         loadTemplates("br.com.contmatic.prova01.model.fixturetemplate");
         auditoria = from(Auditoria.class).gimme("valid");
-        auditoriaNull = from(Auditoria.class).gimme("Auditoria null");
-        factory = Validation.buildDefaultValidatorFactory();
-        validator = factory.getValidator();
         numero++;
     }
 
@@ -73,149 +75,155 @@ class AuditoriaTest {
     @Test
     @Timeout(1)
     void test01_deve_aceitar_nome_criador() {
-        assertEquals("Gui", auditoria.getNomeCriador());
+        assertTrue(auditoria.getNomeCriador().length() < TAMANHO_NOME_MAXIMO
+            && auditoria.getNomeEditor().length() >= TAMANHO_NOME_MINIMO);
     }
 
     @Test
     void test02_nao_deve_aceitar_nome_criador_nulo() {
-        Set<ConstraintViolation<Auditoria>> violations = validator.validate(auditoriaNull);
-        String errorMessage = violations.iterator().next().getMessage();
-        assertThrows(NullPointerException.class, () -> auditoria.setNomeCriador(null));
-        assertEquals("O campo 'nome do criador' é de preenchimento obrigatório.", errorMessage);
-    }
-
+        auditoria.setNomeCriador(null);
+        String errorMessageee = getErrorMessage(auditoria, MENSAGEM_ERRO_NOME_CRIADOR_NULL);
+        assertEquals(MENSAGEM_ERRO_NOME_CRIADOR_NULL, errorMessageee);
+    } 
+    
     @Test
     void test03_nao_deve_aceitar_nome_criador_vazio() {
-        Auditoria auditoriaVazio = from(Auditoria.class).gimme("Auditoria vazio");
-        Set<ConstraintViolation<Auditoria>> violations = validator.validate(auditoriaVazio);
-        String errorMessage = violations.iterator().next().getMessage();
+        auditoria.setNomeCriador("");
+        String errorMessage = getErrorMessage(auditoria, MENSAGEM_ERRO_NOME_CRIADOR_VAZIO);
         assertEquals(MENSAGEM_ERRO_NOME_CRIADOR_VAZIO, errorMessage);
     }
 
     @Test
     void test04_nao_deve_aceitar_nome_criador_numeros() {
-        Auditoria auditoriaNumeros = from(Auditoria.class).gimme("Auditoria invalida");
-        Set<ConstraintViolation<Auditoria>> violations = validator.validate(auditoriaNumeros);
-        String errorMessage = violations.iterator().next().getMessage();
+        auditoria.setNomeCriador("123");
+        String errorMessage = getErrorMessage(auditoria, MENSAGEM_ERRO_NOME_CRIADOR_REGEX);
         assertEquals(MENSAGEM_ERRO_NOME_CRIADOR_REGEX, errorMessage);
     }
 
     @Test
-    void test05_nao_deve_aceitar_nome_criador_caracteres_insuficientes() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> auditoria.setNomeCriador("Cj"));
-        assertTrue(thrown.getMessage().contains("O campo nome do criador contém caracteres insuficientes."));
+    void test05_nao_deve_aceitar_nome_criador_caractere_maximo() {
+        auditoria.setNomeCriador(NOME_CRIADOR_ULTRAPASSANDO_LIMITE_CARACTERES);
+        String errorMessage = getErrorMessage(auditoria, MENSAGEM_ERRO_NOME_CRIADOR_TAMANHO);
+        assertEquals(MENSAGEM_ERRO_NOME_CRIADOR_TAMANHO, errorMessage);
     }
 
     @Test
-    void test06_nao_deve_aceitar_nome_criador_caractere_maximo() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> auditoria.setNomeCriador("Teestetestetestetestetestetestetestetestetesteteste"));
-        assertTrue(thrown.getMessage().contains("O campo nome do criador excedeu o limite de caracteres válidos."));
-    }
-
-    @Test
-    void test07_deve_aceitar_data_criacao() {
+    void test06_deve_aceitar_data_criacao() {
         ZonedDateTime teste = now();
         auditoria.setDataCriacao(teste);
         assertEquals(teste, auditoria.getDataCriacao());
     }
 
     @Test
-    void test08_nao_deve_aceitar_data_criacao_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> auditoria.setDataCriacao(null));
-        assertTrue(thrown.getMessage().contains("O campo 'data de criação' é de preenchimento obrigatório."));
+    void test07_nao_deve_aceitar_data_criacao_nulo() {
+        auditoria.setDataCriacao(null);
+        String errorMessage = getErrorMessage(auditoria, MENSAGEM_ERRO_DATA_CRIACAO_NULL);
+        assertEquals(MENSAGEM_ERRO_DATA_CRIACAO_NULL, errorMessage);
     }
-
+    
+    @Test
+    void test08_nao_deve_aceitar_data_criacao_passado() {
+        ZoneId zoneId = ZoneId.of("America/Phoenix");
+        LocalDateTime date = LocalDateTime.now();
+        ZonedDateTime data = ZonedDateTime.of(date.minusDays(1), zoneId);
+        Auditoria auditoria = Fixture.from(Auditoria.class).gimme("valid");
+        auditoria.setDataCriacao(data);
+        assertEquals(MENSAGEM_ERRO_DATA_CRIACAO, getErrorMessage(auditoria, MENSAGEM_ERRO_DATA_CRIACAO));
+    }
+    
     @Test
     void test09_nao_deve_aceitar_data_criacao_futuro() {
-        LocalDateTime hora = LocalDateTime.of(2028, Month.MARCH, 21, 15, 50);
-        ZoneId fusoHorario = ZoneId.of("America/Phoenix");
-        ZonedDateTime data = ZonedDateTime.of(hora, fusoHorario);
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> auditoria.setDataCriacao(data));
-        assertTrue(thrown.getMessage().contains("A data de criação inserida é inválida."));
+        ZoneId zoneId = ZoneId.of("America/Phoenix");
+        LocalDateTime date = LocalDateTime.now();
+        ZonedDateTime data = ZonedDateTime.of(date.plusDays(1), zoneId);
+        Auditoria auditoria = Fixture.from(Auditoria.class).gimme("valid");
+        auditoria.setDataCriacao(data);
+        assertEquals(MENSAGEM_ERRO_DATA_CRIACAO, getErrorMessage(auditoria, MENSAGEM_ERRO_DATA_CRIACAO));
     }
 
     @Test
-    void test10_nao_deve_aceitar_data_criacao_passado() {
-        LocalDateTime hora = LocalDateTime.of(1900, Month.MARCH, 21, 15, 50);
-        ZoneId fusoHorario = ZoneId.of("America/Phoenix");
-        ZonedDateTime data1 = ZonedDateTime.of(hora, fusoHorario);
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> auditoria.setDataCriacao(data1));
-        assertTrue(thrown.getMessage().contains("A data de criação inserida é inválida."));
+    void test10_deve_aceitar_nome_editor() {
+        assertTrue(auditoria.getNomeEditor().length() < TAMANHO_NOME_MAXIMO
+            && auditoria.getNomeEditor().length() >= TAMANHO_NOME_MINIMO);
     }
 
     @Test
-    void test11_deve_aceitar_nome_editor() {
-        assertEquals("Gui", auditoria.getNomeEditor());
+    void test11_nao_deve_aceitar_nome_editor_nulo() {
+        auditoria.setNomeEditor(null);
+        String errorMessage = getErrorMessage(auditoria, MENSAGEM_ERRO_NOME_EDITOR_NULL);
+        assertEquals(MENSAGEM_ERRO_NOME_EDITOR_NULL, errorMessage);
     }
 
     @Test
-    void test12_nao_deve_aceitar_nome_editor_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> auditoria.setNomeEditor(null));
-        assertTrue(thrown.getMessage().contains("O campo 'nome do editor' é de preenchimento obrigatório"));
+    void test12_nao_deve_aceitar_nome_editor_vazio() {
+        auditoria.setNomeEditor("");
+        String errorMessage = getErrorMessage(auditoria, MENSAGEM_ERRO_NOME_EDITOR_VAZIO);
+        assertEquals(MENSAGEM_ERRO_NOME_EDITOR_NULL, errorMessage);
     }
 
     @Test
-    void test13_nao_deve_aceitar_nome_editor_vazio() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> auditoria.setNomeEditor(""));
-        assertTrue(thrown.getMessage().contains("O campo 'nome do editor' é de preenchimento obrigatório"));
+    void test13_nao_deve_aceitar_nome_editor_numeros() {
+        auditoria.setNomeEditor("123");
+        String errorMessage = getErrorMessage(auditoria, MENSAGEM_ERRO_NOME_EDITOR_REGEX);
+        assertEquals(MENSAGEM_ERRO_NOME_EDITOR_REGEX, errorMessage);
     }
 
     @Test
-    void test14_nao_deve_aceitar_nome_editor_numeros() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> auditoria.setNomeEditor("Guilherme123!@"));
-        assertTrue(thrown.getMessage().contains("Números e caracteres especiais no campo 'nome do editor' é inválido"));
+    void test14_nao_deve_aceitar_nome_editor_caracteres_insuficientes() {
+        auditoria.setNomeEditor("a");
+        String errorMessage = getErrorMessage(auditoria, MENSAGEM_ERRO_NOME_EDITOR_TAMANHO);
+        assertEquals(MENSAGEM_ERRO_NOME_EDITOR_TAMANHO, errorMessage);
     }
 
     @Test
-    void test15_nao_deve_aceitar_nome_editor_caracteres_insuficientes() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> auditoria.setNomeEditor("Cj"));
-        assertTrue(thrown.getMessage().contains("O campo nome do editor contém caracteres insuficientes."));
+    void test15_nao_deve_aceitar_nome_editor_caractere_maximo() {
+        auditoria.setNomeEditor(NOME_CRIADOR_ULTRAPASSANDO_LIMITE_CARACTERES);
+        String errorMessage = getErrorMessage(auditoria, MENSAGEM_ERRO_NOME_EDITOR_TAMANHO);
+        assertEquals(MENSAGEM_ERRO_NOME_EDITOR_TAMANHO, errorMessage);
     }
 
     @Test
-    void test16_nao_deve_aceitar_nome_editor_caractere_maximo() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> auditoria.setNomeEditor("Teestetestetestetestetestetestetestetestetesteteste"));
-        assertTrue(thrown.getMessage().contains("O campo 'nome do editor' excedeu o limite de caracteres válidos."));
-    }
-
-    @Test
-    void test17_deve_aceitar_data_edicao() {
+    void test16_deve_aceitar_data_edicao() {
         ZonedDateTime teste = now();
         auditoria.setDataEdicao(teste);
         assertEquals(teste, auditoria.getDataEdicao());
     }
 
     @Test
-    void test18_nao_deve_aceitar_data_edicao_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> auditoria.setDataEdicao(null));
-        assertTrue(thrown.getMessage().contains("O campo 'data de edição' é de preenchimento obrigatório."));
+    void test17_nao_deve_aceitar_data_edicao_nulo() {
+        auditoria.setDataEdicao(null);
+        String errorMessage = getErrorMessage(auditoria, MENSAGEM_ERRO_DATA_EDICAO_NULL);
+        assertEquals(MENSAGEM_ERRO_DATA_EDICAO_NULL, errorMessage);
+    }
+    
+    @Test
+    void test18_nao_deve_aceitar_data_edicao_futuro() {
+        ZoneId zoneId = ZoneId.of("America/Phoenix");
+        LocalDateTime date = LocalDateTime.now();
+        ZonedDateTime data = ZonedDateTime.of(date.plusDays(1), zoneId);
+        Auditoria auditoria = Fixture.from(Auditoria.class).gimme("valid");
+        auditoria.setDataEdicao(data);
+        assertEquals(MENSAGEM_ERRO_DATA_EDICAO, getErrorMessage(auditoria, MENSAGEM_ERRO_DATA_EDICAO));
+    }
+    
+    @Test
+    void test19_nao_deve_aceitar_data_edicao_passado() {
+        ZoneId zoneId = ZoneId.of("America/Phoenix");
+        LocalDateTime date = LocalDateTime.now();
+        ZonedDateTime data = ZonedDateTime.of(date.minusDays(1), zoneId);
+        Auditoria auditoria = Fixture.from(Auditoria.class).gimme("valid");
+        auditoria.setDataEdicao(data);
+        assertEquals(MENSAGEM_ERRO_DATA_EDICAO, getErrorMessage(auditoria, MENSAGEM_ERRO_DATA_EDICAO));
     }
 
     @Test
-    void test19_nao_deve_aceitar_data_edicao_futuro() {
-        LocalDateTime hora = LocalDateTime.of(2028, Month.MARCH, 21, 15, 50);
-        ZoneId fusoHorario = ZoneId.of("America/Phoenix");
-        ZonedDateTime data = ZonedDateTime.of(hora, fusoHorario);
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> auditoria.setDataEdicao(data));
-        assertTrue(thrown.getMessage().contains("A data de edição inserida é inválida."));
+    void test20_deve_retornar_nome_criador_to_string() {
+        auditoria.setNomeCriador("Guilherme");
+        assertThat(auditoria.toString(), containsString("Guilherme"));
     }
 
     @Test
-    void test20_nao_deve_aceitar_data_edicao_passado() {
-        LocalDateTime hora = LocalDateTime.of(1900, Month.MARCH, 21, 15, 50);
-        ZoneId fusoHorario = ZoneId.of("America/Phoenix");
-        ZonedDateTime data1 = ZonedDateTime.of(hora, fusoHorario);
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> auditoria.setDataEdicao(data1));
-        assertTrue(thrown.getMessage().contains("A data de edição inserida é inválida."));
-    }
-
-    @Test
-    void test21_deve_retornar_nome_criador_to_string() {
-        assertThat(auditoria.toString(), containsString("Gui"));
-    }
-
-    @Test
-    void test22_deve_retornar_data_criacao_to_string() {
+    void test21_deve_retornar_data_criacao_to_string() {
         ZonedDateTime data = ZonedDateTime.now();
         auditoria.setDataCriacao(data);
         String dataString = data.toString();
@@ -223,21 +231,29 @@ class AuditoriaTest {
     }
 
     @Test
-    void test23_deve_retornar_nome_editor_to_string() {
-        assertThat(auditoria.toString(), containsString("Gui"));
+    void test22_deve_retornar_nome_editor_to_string() {
+        auditoria.setNomeEditor("Guilherme");
+        assertThat(auditoria.toString(), containsString("Guilherme"));
     }
 
     @Test
-    void test24_deve_retornar_data_edicao_to_string() {
+    void test23_deve_retornar_data_edicao_to_string() {
         ZonedDateTime data = ZonedDateTime.now();
         auditoria.setDataEdicao(data);
         String dataString = data.toString();
         assertThat(auditoria.toString(), containsString(dataString));
     }
+    
+    @Test
+    void test_equals() {
+        simple().forClass(Auditoria.class)
+            .suppress(INHERITED_DIRECTLY_FROM_OBJECT)
+            .suppress(ALL_FIELDS_SHOULD_BE_USED).verify();
+    }
 
     @Test
     @Disabled
-    void test25_deve_ser_ignorado() {
+    void test24_deve_ser_ignorado() {
         auditoria.setNomeCriador("teste");
         assertEquals("teste", auditoria.getNomeCriador());
         System.out.println(auditoria.getNomeCriador());

@@ -1,12 +1,25 @@
 package br.com.contmatic.prova01.model.empresa;
 
+import static br.com.contmatic.prova01.model.util.TesteUtil.getErrorMessage;
+import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_CODIGO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_NOME_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_NOME_REGEX;
+import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_NOME_TAMANHO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_NOME_TAMANHO_MINIMO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_NOME_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_VALOR;
+import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_VALOR_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.NOME_EXCEDENDO_CARACTERES;
+import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.TAMANHO_MINIMO_NOME;
+import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.TAMANHO_NOME;
 import static br.com.six2six.fixturefactory.loader.FixtureFactoryLoader.loadTemplates;
+import static nl.jqno.equalsverifier.EqualsVerifier.simple;
+import static nl.jqno.equalsverifier.Warning.ALL_FIELDS_SHOULD_BE_USED;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 
@@ -27,37 +40,42 @@ class ProdutoTest {
 
     @Test
     void deve_aceitar_nome_produto_valido() {
-        assertEquals("camisa", produto.getNome());
+        assertTrue(produto.getNome().length() >= TAMANHO_MINIMO_NOME && produto.getNome().length() <= TAMANHO_NOME);
     }
 
     @Test
     void nao_deve_aceitar_nome_produto_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> produto.setNome(null));
-        assertTrue(thrown.getMessage().contains("O campo nome do produto é de preenchimento obrigatório."));
+        produto.setNome(null);
+        String errorMessage = getErrorMessage(produto, MENSAGEM_ERRO_NOME_NULL);
+        assertEquals(MENSAGEM_ERRO_NOME_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_nome_produto_vazio() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> produto.setNome(""));
-        assertTrue(thrown.getMessage().contains("O campo nome do produto não permite espaço em branco."));
+        produto.setNome("");
+        String errorMessage = getErrorMessage(produto, MENSAGEM_ERRO_NOME_VAZIO);
+        assertEquals(MENSAGEM_ERRO_NOME_VAZIO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_nome_produto_numeros() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> produto.setNome("123"));
-        assertTrue(thrown.getMessage().contains("O campo nome do produto com números é inválido."));
+        produto.setNome("1");
+        String errorMessage = getErrorMessage(produto, MENSAGEM_ERRO_NOME_REGEX);
+        assertEquals(MENSAGEM_ERRO_NOME_REGEX, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_nome_produto_menor_tamanho_minimo() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> produto.setNome("a"));
-        assertTrue(thrown.getMessage().contains("O campo nome do produto com menos de dois caractere é inválido."));
+        produto.setNome("a");
+        String errorMessage = getErrorMessage(produto, MENSAGEM_ERRO_NOME_TAMANHO_MINIMO);
+        assertEquals(MENSAGEM_ERRO_NOME_TAMANHO_MINIMO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_nome_produto_maior_tamanho_maximo() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> produto.setNome("testetestetestetestetestetestetestetestetestetestetestetesteteste"));
-        assertTrue(thrown.getMessage().contains("O campo nome do produto excedeu o limite de caracteres"));
+        produto.setNome(NOME_EXCEDENDO_CARACTERES);
+        String errorMessage = getErrorMessage(produto, MENSAGEM_ERRO_NOME_TAMANHO);
+        assertEquals(MENSAGEM_ERRO_NOME_TAMANHO, errorMessage);
     }
 
     @Test
@@ -69,22 +87,24 @@ class ProdutoTest {
 
     @Test
     void nao_deve_aceitar_valor_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> produto.setValor(null));
-        assertTrue(thrown.getMessage().contains("O campo valor do produto é de preenchimento obrigatório."));
+        produto.setValor(null);
+        String errorMessage = getErrorMessage(produto, MENSAGEM_ERRO_VALOR_NULL);
+        assertEquals(MENSAGEM_ERRO_VALOR_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_valor_negativo() {
-        BigDecimal valorNegativo = BigDecimal.valueOf(-1.0);
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> produto.setValor(valorNegativo));
-        assertTrue(thrown.getMessage().contains("O valor inserido para o produto é inválido"));
+        produto.setValor(BigDecimal.valueOf(-1.0));
+        String errorMessage = getErrorMessage(produto, MENSAGEM_ERRO_VALOR);
+        assertEquals(MENSAGEM_ERRO_VALOR, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_valor_maior_maximo() {
         BigDecimal valor = BigDecimal.valueOf(10000000.0);
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> produto.setValor(valor));
-        assertTrue(thrown.getMessage().contains("O valor inserido para o produto é inválido"));
+        produto.setValor(valor);
+        String errorMessage = getErrorMessage(produto, MENSAGEM_ERRO_VALOR);
+        assertEquals(MENSAGEM_ERRO_VALOR, errorMessage);
     }
 
     @Test
@@ -95,32 +115,37 @@ class ProdutoTest {
 
     @Test
     void nao_deve_aceitar_codigo_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> produto.setCodigo(null));
-        assertTrue(thrown.getMessage().contains("O campo código do produto é de preenchimento obrigatório."));
+        produto.setCodigo(null);
+        String errorMessage = getErrorMessage(produto, MENSAGEM_ERRO_VALOR_NULL);
+        assertEquals(MENSAGEM_ERRO_VALOR_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_codigo_neativo() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> produto.setCodigo(-1));
-        assertTrue(thrown.getMessage().contains("O código do produto é inválido"));
+        produto.setCodigo(-1);
+        String errorMessage = getErrorMessage(produto, MENSAGEM_ERRO_CODIGO);
+        assertEquals(MENSAGEM_ERRO_CODIGO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_codigo_maior_maximo() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> produto.setCodigo(1001));
-        assertTrue(thrown.getMessage().contains("O código do produto é inválido"));
+        produto.setCodigo(1000000);
+        String errorMessage = getErrorMessage(produto, MENSAGEM_ERRO_CODIGO);
+        assertEquals(MENSAGEM_ERRO_CODIGO, errorMessage);
     }
 
     @Test
     void deve_comparar_hash_code() {
-        Produto produto2 = Fixture.from(Produto.class).gimme("Produto valido");
-        assertEquals(produto.hashCode(), produto2.hashCode());
+        Produto prod = new Produto("camisa", 1);
+        Produto prod2 = new Produto("camisa", 1);
+        assertEquals(prod.hashCode(), prod2.hashCode());
     }
 
     @Test
     void deve_retornar_verdadeir_equals_mesma_instancia() {
         Produto produto2 = new Produto("camisa", 1);
-        assertEquals(produto, produto2);
+        Produto produto3 = new Produto("camisa", 1);
+        assertEquals(produto3, produto2);
     }
 
     @Test
@@ -140,11 +165,13 @@ class ProdutoTest {
 
     @Test
     void deve_retornar_nome_to_string() {
+        produto.setNome("camisa");
         assertThat(produto.toString(), containsString("camisa"));
     }
 
     @Test
     void deve_retornar_codigo_to_string() {
+        produto.setCodigo(1);
         assertThat(produto.toString(), containsString("1"));
     }
 
@@ -152,5 +179,10 @@ class ProdutoTest {
     void deve_retornar_valor_to_string() {
         produto.setValor(BigDecimal.valueOf(19.90));
         assertThat(produto.toString(), containsString("19.9"));
+    }
+    
+    @Test
+    void equals_test() {
+        simple().forClass(Produto.class).suppress(ALL_FIELDS_SHOULD_BE_USED).verify();
     }
 }

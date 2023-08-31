@@ -1,14 +1,6 @@
 package br.com.contmatic.prova01.model.empresa;
 
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarRegex;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMaximo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarTamanhoMinimo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorMaximo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorMinimo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarValorNulo;
-import static br.com.contmatic.prova01.model.util.ValidacaoUtil.verificarVazio;
 import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_CODIGO;
-import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_CODIGO_NULL;
 import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_NOME_NULL;
 import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_NOME_REGEX;
 import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.MENSAGEM_ERRO_NOME_TAMANHO;
@@ -19,25 +11,47 @@ import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConsta
 import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.REGEX_LETRAS;
 import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.TAMANHO_MINIMO_NOME;
 import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.TAMANHO_NOME;
-import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.VALOR_CODIGO_MAXIMO;
-import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.VALOR_CODIGO_MINIMO;
-import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.VALOR_MAXIMO;
-import static br.com.contmatic.prova01.model.util.constant.empresa.ProdutoConstant.VALOR_MINIMO;
-import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
-import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
 import java.math.BigDecimal;
 
-import br.com.contmatic.prova01.model.auditoria.Auditoria;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
+import br.com.contmatic.prova01.model.auditoria.Auditoria;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Produto extends Auditoria {
 
-    private Integer codigo;
+    public static final BigDecimal VALOR_MINIMO = BigDecimal.valueOf(0.0);
 
+    public static final BigDecimal VALOR_MAXIMO = BigDecimal.valueOf(10000.0);
+
+    @NotBlank(message = MENSAGEM_ERRO_NOME_VAZIO)
+    @NotNull(message = MENSAGEM_ERRO_NOME_NULL)
+    @Pattern(regexp = REGEX_LETRAS, message = MENSAGEM_ERRO_NOME_REGEX)
+    @Length(min = TAMANHO_MINIMO_NOME, message = MENSAGEM_ERRO_NOME_TAMANHO_MINIMO)
+    @Length(max = TAMANHO_NOME, message = MENSAGEM_ERRO_NOME_TAMANHO)
     private String nome;
 
+    @NotNull(message = MENSAGEM_ERRO_VALOR_NULL)
+    @Range(min = 1, max = 1000, message = MENSAGEM_ERRO_CODIGO)
+    private Integer codigo;
+
+    @DecimalMin(value = "1", message = MENSAGEM_ERRO_VALOR)
+    @DecimalMax(value = "10000.00", message = MENSAGEM_ERRO_VALOR)
+    @NotNull(message = MENSAGEM_ERRO_VALOR_NULL)
     private BigDecimal valor;
 
     public Produto(String nome, Integer codigo) {
@@ -45,49 +59,28 @@ public class Produto extends Auditoria {
         this.setCodigo(codigo);
     }
 
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
-        verificarValorNulo(nome, MENSAGEM_ERRO_NOME_NULL);
-        verificarVazio(nome, MENSAGEM_ERRO_NOME_VAZIO);
-        verificarRegex(nome, REGEX_LETRAS, MENSAGEM_ERRO_NOME_REGEX);
-        verificarTamanhoMinimo(nome, TAMANHO_MINIMO_NOME, MENSAGEM_ERRO_NOME_TAMANHO_MINIMO);
-        verificarTamanhoMaximo(nome, TAMANHO_NOME, MENSAGEM_ERRO_NOME_TAMANHO);
-        this.nome = nome;
-    }
-
-    public BigDecimal getValor() {
-        return this.valor;
-    }
-
-    public void setValor(BigDecimal valor) {
-        verificarValorNulo(valor, MENSAGEM_ERRO_VALOR_NULL);
-        verificarValorMinimo(valor, VALOR_MINIMO, MENSAGEM_ERRO_VALOR);
-        verificarValorMaximo(valor, VALOR_MAXIMO, MENSAGEM_ERRO_VALOR);
-        this.valor = valor;
-    }
-
-    public Integer getCodigo() {
-        return this.codigo;
-    }
-
-    public void setCodigo(Integer codigo) {
-        verificarValorNulo(codigo, MENSAGEM_ERRO_CODIGO_NULL);
-        verificarValorMinimo(codigo, VALOR_CODIGO_MINIMO, MENSAGEM_ERRO_CODIGO);
-        verificarValorMaximo(codigo, VALOR_CODIGO_MAXIMO, MENSAGEM_ERRO_CODIGO);
-        this.codigo = codigo;
-    }
-
     @Override
     public boolean equals(Object obj) {
-        return reflectionEquals(this, obj, "valor");
+        if (obj == null) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Produto other = (Produto) obj;
+        return new EqualsBuilder()
+                .append(this.nome, other.nome)
+                .append(this.codigo, other.codigo).isEquals();
     }
-    
+
     @Override
     public int hashCode() {
-        return reflectionHashCode(this, "valor");
+        return new HashCodeBuilder()
+                .append(nome)
+                .append(codigo).toHashCode();
     }
 
     @Override

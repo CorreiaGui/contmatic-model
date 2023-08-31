@@ -14,9 +14,9 @@ public class ProdutoFixtureTemplate implements TemplateLoader {
     public void load() {
         Fixture.of(Produto.class).addTemplate("Produto valido", new Rule() {
             {
-                add("codigo", valueOf(1));
-                add("nome", "camisa");
-                add("valor", valueOf(69.99));
+                add("codigo", random(valueOf(1), valueOf(2)));
+                add("nome", random("camisa", "boné", "bermuda"));
+                add("valor", random(valueOf(69.99), valueOf(1000.5), valueOf(250.5)));
             }
         });
     }

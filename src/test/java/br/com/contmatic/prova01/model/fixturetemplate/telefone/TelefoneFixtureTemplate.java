@@ -11,9 +11,9 @@ public class TelefoneFixtureTemplate implements TemplateLoader {
     public void load() {
         Fixture.of(Telefone.class).addTemplate("Telefone valido", new Rule() {
             {
-                add("ddi", "55");
-                add("ddd", "11");
-                add("numero", "948623933");
+                add("ddi", random("12", "55"));
+                add("ddd", random("85", "11"));
+                add("numero", random("12345678", "948623933"));
             }
         });
     }

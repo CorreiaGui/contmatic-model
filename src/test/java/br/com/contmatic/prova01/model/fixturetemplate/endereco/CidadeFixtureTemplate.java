@@ -12,7 +12,7 @@ public class CidadeFixtureTemplate implements TemplateLoader {
     public void load() {
         Fixture.of(Cidade.class).addTemplate("Cidade valida", new Rule() {
             {
-                add("nome", "São Paulo");
+                add("nome", random("São Paulo", "São Bernardo"));
                 add("estado", one(Estado.class, "Estado valido"));
             }
         });

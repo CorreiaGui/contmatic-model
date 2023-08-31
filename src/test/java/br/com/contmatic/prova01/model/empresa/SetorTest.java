@@ -1,13 +1,23 @@
 package br.com.contmatic.prova01.model.empresa;
 
+import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.MENSAGEM_ERRO_LISTA_FUNCIONARIO_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.MENSAGEM_ERRO_LISTA_FUNCIONARIO_TAMANHO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.MENSAGEM_ERRO_LSITA_FUNCIONARIO_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.MENSAGEM_ERRO_NOME_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.MENSAGEM_ERRO_NOME_TAMANHO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.MENSAGEM_ERRO_NOME_VAZIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.MENSAGEM_ERRO_RESPONSAVEL_NULL;
+import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.MENSAGEM_ERRO_TAMANHO_MINIMO_NOME;
+import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.NOME_EXCEDENDO_LIMITE_CARACTERES;
 import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.TAMANHO_LISTA_FUNCIONARIO;
+import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.TAMANHO_MINIMO_NOME;
+import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.TAMANHO_MAXIMO_NOME;
 import static br.com.six2six.fixturefactory.loader.FixtureFactoryLoader.loadTemplates;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +25,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import br.com.contmatic.prova01.model.util.TesteUtil;
 import br.com.six2six.fixturefactory.Fixture;
 
 class SetorTest {
@@ -29,31 +40,41 @@ class SetorTest {
 
     @Test
     void deve_aceitar_nome_valido() {
+        setor.setNome("adm");
         assertEquals("adm", setor.getNome());
+    }
+    
+    @Test
+    void deve_aceitar_nome_valido_randomico() {
+        assertTrue(setor.getNome().length() >= TAMANHO_MINIMO_NOME && setor.getNome().length() <= TAMANHO_MAXIMO_NOME);
     }
 
     @Test
     void nao_deve_aceitar_nome_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> setor.setNome(null));
-        assertTrue(thrown.getMessage().contains("O campo nome do setor é de preenchimento obrigatório."));
+        setor.setNome(null);
+        String errorMessage = TesteUtil.getErrorMessage(setor, MENSAGEM_ERRO_NOME_NULL);
+        assertEquals(MENSAGEM_ERRO_NOME_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_nome_vazio() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> setor.setNome(""));
-        assertTrue(thrown.getMessage().contains("O campo nome do setor com espaço em branco é inválido."));
+        setor.setNome("");
+        String errorMessage = TesteUtil.getErrorMessage(setor, MENSAGEM_ERRO_NOME_VAZIO);
+        assertEquals(MENSAGEM_ERRO_NOME_VAZIO, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_nome_menor_tamanho_minimo() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> setor.setNome("ad"));
-        assertTrue(thrown.getMessage().contains("O campo nome do setor com menos de dois caracteres é inválido."));
+        setor.setNome("a");
+        String errorMessage = TesteUtil.getErrorMessage(setor, MENSAGEM_ERRO_TAMANHO_MINIMO_NOME);
+        assertEquals(MENSAGEM_ERRO_TAMANHO_MINIMO_NOME, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_nome_maior_tamanho_maximo() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> setor.setNome("testetestetestetestetestetestetestetesteteste"));
-        assertTrue(thrown.getMessage().contains("O campo nome do setor excedeu o limite de caracteres"));
+        setor.setNome(NOME_EXCEDENDO_LIMITE_CARACTERES);
+        String errorMessage = TesteUtil.getErrorMessage(setor, MENSAGEM_ERRO_NOME_TAMANHO);
+        assertEquals(MENSAGEM_ERRO_NOME_TAMANHO, errorMessage);
     }
 
     @Test
@@ -67,15 +88,17 @@ class SetorTest {
 
     @Test
     void nao_deve_aceitar_lista_funcionarios_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> setor.setFuncionarios(null));
-        assertTrue(thrown.getMessage().contains("O campo funcionarios do setor é de preenchimento obrigatório."));
+        setor.setFuncionarios(null);
+        String errorMessage = TesteUtil.getErrorMessage(setor, MENSAGEM_ERRO_LISTA_FUNCIONARIO_NULL);
+        assertEquals(MENSAGEM_ERRO_LISTA_FUNCIONARIO_NULL, errorMessage);
     }
 
     @Test
     void nao_deve_aceitar_lista_funcionarios_vazio() {
-        List<Funcionario> funcionarios = new ArrayList<Funcionario>();
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> setor.setFuncionarios(funcionarios));
-        assertTrue(thrown.getMessage().contains("O campo funcionarios do setor é de preenchimento obrigatório."));
+        List<Funcionario> funcionarios = new ArrayList<>();
+        setor.setFuncionarios(funcionarios);
+        String errorMessage = TesteUtil.getErrorMessage(setor, MENSAGEM_ERRO_LSITA_FUNCIONARIO_VAZIO);
+        assertEquals(MENSAGEM_ERRO_LSITA_FUNCIONARIO_VAZIO, errorMessage);
     }
 
     @Test
@@ -85,8 +108,9 @@ class SetorTest {
             Funcionario funcionario = new Funcionario("41659541875");
             funcionarios.add(funcionario);
         }
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> setor.setFuncionarios(funcionarios));
-        assertTrue(thrown.getMessage().contains("A lista de funcionários do setor excedeu o limite de cadastro"));
+        setor.setFuncionarios(funcionarios);
+        String errorMessage = TesteUtil.getErrorMessage(setor, MENSAGEM_ERRO_LISTA_FUNCIONARIO_TAMANHO);
+        assertEquals(MENSAGEM_ERRO_LISTA_FUNCIONARIO_TAMANHO, errorMessage);
     }
 
     @Test
@@ -98,8 +122,9 @@ class SetorTest {
 
     @Test
     void nao_deve_aceitar_funcionario_responsavel_nulo() {
-        NullPointerException thrown = assertThrows(NullPointerException.class, () -> setor.setResponsavel(null));
-        assertTrue(thrown.getMessage().contains("O campo responsável do setor é de preenchimento obrigatório."));
+        setor.setResponsavel(null);
+        String errorMessage = TesteUtil.getErrorMessage(setor, MENSAGEM_ERRO_RESPONSAVEL_NULL);
+        assertEquals(MENSAGEM_ERRO_RESPONSAVEL_NULL, errorMessage);
     }
 
     @Test
@@ -123,6 +148,9 @@ class SetorTest {
         assertNotEquals(setor, new Object());
     }
 
+    /**
+     * Deve comparar equals objetos diferentes.
+     */
     @Test
     void deve_comparar_equals_objetos_diferentes() {
         Setor setor2 = new Setor("adm");
