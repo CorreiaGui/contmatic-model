@@ -24,7 +24,6 @@ public class EmpresaFixtureTemplate implements TemplateLoader {
     public void load() {
         Fixture.of(Empresa.class).addTemplate("Empresa valida", new Rule() {
             {
-                //TODO: RANDOM
                 add("cnpj", random("95324764000149", "95324764000149"));
                 add("numeroInscricao", random("123456789", "987654321"));
                 add("razaoSocial", random("Empresa Teste", "Empresa dois"));
