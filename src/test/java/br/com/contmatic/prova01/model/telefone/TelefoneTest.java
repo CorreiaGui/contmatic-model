@@ -21,6 +21,8 @@ import static br.com.contmatic.prova01.model.util.constant.telefone.TelefoneCons
 import static br.com.contmatic.prova01.model.util.constant.telefone.TelefoneConstant.TAMANHO_NUMERO;
 import static br.com.six2six.fixturefactory.Fixture.from;
 import static br.com.six2six.fixturefactory.loader.FixtureFactoryLoader.loadTemplates;
+import static nl.jqno.equalsverifier.EqualsVerifier.simple;
+import static nl.jqno.equalsverifier.Warning.ALL_FIELDS_SHOULD_BE_USED;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -219,5 +221,10 @@ class TelefoneTest {
 	void deve_retornar_telefone_to_string() {
 	    telefone.setNumero("948623933");
 		assertThat(telefone.toString(), containsString("948623933"));
+	}
+	
+	@Test
+	void equals_test() {
+	    simple().forClass(Telefone.class).suppress(ALL_FIELDS_SHOULD_BE_USED).verify();
 	}
 }
