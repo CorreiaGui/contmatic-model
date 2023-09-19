@@ -52,11 +52,13 @@ import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConsta
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_LISTA_PRODUTO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_LISTA_SETOR;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MAXIMO_LISTA_TELEFONE;
-import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MINIMO_LISTA_ENDERECO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MINIMO_LISTA;
+import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_MINIMO_LISTA_ENDERECO;
 import static br.com.contmatic.prova01.model.util.constant.empresa.EmpresaConstant.TAMANHO_NUMERO_INSCRICAO;
 import static br.com.contmatic.prova01.model.util.enums.NaturezaJuridica.LTDA;
 import static br.com.contmatic.prova01.model.util.enums.SituacaoCadastral.ATIVO;
+import static nl.jqno.equalsverifier.EqualsVerifier.simple;
+import static nl.jqno.equalsverifier.Warning.ALL_FIELDS_SHOULD_BE_USED;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -79,8 +81,6 @@ import br.com.contmatic.prova01.model.telefone.Telefone;
 import br.com.contmatic.prova01.model.util.enums.SituacaoCadastral;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
-import nl.jqno.equalsverifier.EqualsVerifier;
-import nl.jqno.equalsverifier.Warning;
 
 class EmpresaTest {
 
@@ -754,7 +754,7 @@ class EmpresaTest {
     
     @Test
     void test_equals() {
-        EqualsVerifier.simple().forClass(Empresa.class).withPrefabValues(Funcionario.class, 
-            new Funcionario("1"), new Funcionario("2")).suppress(Warning.ALL_FIELDS_SHOULD_BE_USED).verify();
+        simple().forClass(Empresa.class).withPrefabValues(Funcionario.class, 
+            new Funcionario("1"), new Funcionario("2")).suppress(ALL_FIELDS_SHOULD_BE_USED).verify();
     }
 }

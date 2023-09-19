@@ -24,18 +24,13 @@ public class TesteUtil {
      * @return the error message
      */
     public static <T> String getErrorMessage(T obj, String erro) {
-
         ValidatorFactory factory = buildDefaultValidatorFactory();
-
         Validator validator = factory.getValidator();
-
         Set<ConstraintViolation<T>> violations = validator.validate(obj);
-        
         ConstraintViolation<T> errorMessage = violations.stream()
             .filter(parametro -> erro.equals(parametro.getMessage()))
             .findFirst() 
             .orElse(null); 
-        
         return errorMessage != null ? errorMessage.getMessage() : null;
     }
 }
