@@ -8,6 +8,8 @@ import static br.com.contmatic.prova01.model.util.constant.endereco.EstadoConsta
 import static br.com.contmatic.prova01.model.util.constant.endereco.EstadoConstant.MENSAGEM_ERRO_SIGLA_NULL;
 import static br.com.contmatic.prova01.model.util.constant.endereco.EstadoConstant.MENSAGEM_ERRO_TAMANHO_MAXIMO_NOME;
 import static br.com.contmatic.prova01.model.util.constant.endereco.EstadoConstant.MENSAGEM_ERRO_TAMANHO_MINIMO_NOME;
+import static nl.jqno.equalsverifier.EqualsVerifier.simple;
+import static nl.jqno.equalsverifier.Warning.ALL_FIELDS_SHOULD_BE_USED;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -121,5 +123,10 @@ class EstadoTest {
     void deve_retornar_nome_to_string() {
         estado.setNome("São Paulo");
         assertThat(estado.toString(), containsString("São Paulo"));
+    }
+
+    @Test
+    void equals_test() {
+        simple().forClass(Estado.class).suppress(ALL_FIELDS_SHOULD_BE_USED).verify();
     }
 }

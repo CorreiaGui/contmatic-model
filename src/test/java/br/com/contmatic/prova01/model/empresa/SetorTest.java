@@ -10,9 +10,11 @@ import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant
 import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.MENSAGEM_ERRO_TAMANHO_MINIMO_NOME;
 import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.NOME_EXCEDENDO_LIMITE_CARACTERES;
 import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.TAMANHO_LISTA_FUNCIONARIO;
-import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.TAMANHO_MINIMO_NOME;
 import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.TAMANHO_MAXIMO_NOME;
+import static br.com.contmatic.prova01.model.util.constant.empresa.SetorConstant.TAMANHO_MINIMO_NOME;
 import static br.com.six2six.fixturefactory.loader.FixtureFactoryLoader.loadTemplates;
+import static nl.jqno.equalsverifier.EqualsVerifier.simple;
+import static nl.jqno.equalsverifier.Warning.ALL_FIELDS_SHOULD_BE_USED;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -47,7 +49,7 @@ class SetorTest {
     @Test
     void deve_aceitar_nome_valido_randomico() {
         assertTrue(setor.getNome().length() >= TAMANHO_MINIMO_NOME && setor.getNome().length() <= TAMANHO_MAXIMO_NOME);
-    }
+    } 
 
     @Test
     void nao_deve_aceitar_nome_nulo() {
@@ -148,9 +150,6 @@ class SetorTest {
         assertNotEquals(setor, new Object());
     }
 
-    /**
-     * Deve comparar equals objetos diferentes.
-     */
     @Test
     void deve_comparar_equals_objetos_diferentes() {
         Setor setor2 = new Setor("adm");
@@ -177,5 +176,11 @@ class SetorTest {
         responsavel.setNome("Guilherme");
         setor.setResponsavel(responsavel);
         assertThat(setor.toString(), containsString("Guilherme"));
+    }
+    
+    @Test
+    void equals_test() {
+        simple().forClass(Setor.class).withPrefabValues(Funcionario.class, 
+            new Funcionario("1"), new Funcionario("2")).suppress(ALL_FIELDS_SHOULD_BE_USED).verify();
     }
 }

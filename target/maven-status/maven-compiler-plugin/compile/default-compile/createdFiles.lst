@@ -18,6 +18,7 @@ br\com\contmatic\prova01\model\annotation\FullAgeValidator.class
 br\com\contmatic\prova01\model\empresa\Setor.class
 br\com\contmatic\prova01\model\util\constant\empresa\SetorConstant.class
 br\com\contmatic\prova01\model\endereco\Endereco.class
+br\com\contmatic\prova01\program\Program.class
 br\com\contmatic\prova01\model\util\constant\endereco\EstadoConstant.class
 br\com\contmatic\prova01\model\telefone\Telefone.class
 br\com\contmatic\prova01\model\annotation\PresentValidator.class

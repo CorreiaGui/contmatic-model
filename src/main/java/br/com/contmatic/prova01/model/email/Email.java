@@ -66,4 +66,5 @@ public class Email extends Auditoria {
     public String toString() {
         return reflectionToString(this, JSON_STYLE);
     }
+
 }
