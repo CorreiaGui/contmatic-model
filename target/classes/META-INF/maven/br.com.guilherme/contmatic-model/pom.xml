@@ -2,7 +2,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.guilherme</groupId>
 	<artifactId>contmatic-model</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>contmatic-model</name>
 	<parent>
 		<groupId>br.com.api</groupId>
